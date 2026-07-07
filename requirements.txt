@@ -6,6 +6,8 @@ line-bot-sdk>=3.0
 ultralytics>=8.0
 opencv-python>=4.8
 openai>=1.0
+# 大圖切片（tiling）偵測，提升遠處小物件召回率；缺少時自動退回單次整張推論
+sahi>=0.11
 
 # 資料庫（選填，無需 PostgreSQL 可不安裝）
 psycopg[binary]>=3.1

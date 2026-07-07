@@ -29,6 +29,22 @@ DEFAULT_KEYWORDS = ["person", "helmet", "vest", "gloves", "boots", "safety", "ha
 # （如把斜靠的木板/雜物看成人員）當成鐵證，腦補出未實際發生的高風險缺失。
 YOLO_LOW_CONF_THRESHOLD = float(os.getenv("YOLO_LOW_CONF_THRESHOLD", "0.4"))
 
+# --- 切片（tiling / SAHI）偵測設定 ---
+# 大圖直接整張丟給 YOLO 時，遠處的小物件（遠方工人、小型安全裝備）容易漏偵測。
+# 切片偵測會把大圖切成有重疊的小塊、逐塊跑 YOLO、再用 NMS 合併，明顯提升小物件召回率。
+# 為了避免小圖也付出多次推論的代價，預設只在「長邊 > YOLO_SLICE_TRIGGER_SIDE」的大圖才啟用。
+YOLO_USE_SLICING = os.getenv("YOLO_USE_SLICING", "1").strip() not in ("0", "false", "False", "no")
+# 圖片長邊超過此像素才切片；小於此值維持單次整張推論。
+# 模型輸入 imgsz=640，長邊 >960 的圖被縮到 640 時遠處小物件已明顯損失，故從 960 起切片。
+YOLO_SLICE_TRIGGER_SIDE = int(os.getenv("YOLO_SLICE_TRIGGER_SIDE", "960"))
+# 每個切片的寬高（像素）。SAHI 會依圖片大小自動算出要切幾塊，不需手動指定塊數。
+YOLO_SLICE_SIZE = int(os.getenv("YOLO_SLICE_SIZE", "512"))
+# 相鄰切片的重疊比例（0~1），避免物件剛好被切在邊界上而漏偵測。
+YOLO_SLICE_OVERLAP = float(os.getenv("YOLO_SLICE_OVERLAP", "0.2"))
+# 切片專用的最小信心門檻。切片會把雜物（鋼筋切面、樹葉）放大，容易誤判成小物件，
+# 故預設用比整張推論（min_conf 0.25）更嚴的 0.3 過濾明顯雜訊；可依現場調整。
+YOLO_SLICE_MIN_CONF = float(os.getenv("YOLO_SLICE_MIN_CONF", "0.3"))
+
 BASE_SYSTEM_PROMPT = (
     "你是專業的工地職安稽核主管，依照交通部公路總局「交通、安衛、環保稽核表」格式，用繁體中文分析施工現場的違規項目。\n"
     "【分工】YOLO 偵測清單（含編號、類別、信心分數、座標、畫面區域）代表模型「看到」的物件與位置，一般情況下請以此為準；"
@@ -584,6 +600,100 @@ def resolve_yolo_model_path(yolo_model_path: str | Path) -> str:
     return "yolov8n.pt"
 
 
+def _should_slice(image_path: Path) -> bool:
+    """依設定與圖片長邊判斷這張圖要不要走切片偵測。"""
+    if not YOLO_USE_SLICING:
+        return False
+    im = cv2.imread(str(image_path))
+    if im is None:
+        return False
+    h, w = im.shape[:2]
+    return max(h, w) > YOLO_SLICE_TRIGGER_SIDE
+
+
+def _draw_detections(image_path: Path, detections: list[dict], annotated_file: Path) -> None:
+    """把偵測框畫到原圖上並存成 annotated_file。切片模式沒有 YOLO 內建的 r.plot()，
+    所以自己用 cv2 畫框＋標籤，維持與單次推論一致的標註圖輸出。"""
+    im = cv2.imread(str(image_path))
+    if im is None:
+        shutil.copy(image_path, annotated_file)
+        return
+    for d in detections:
+        x1, y1, x2, y2 = (int(v) for v in d["box"])
+        label = f"{d.get('yolo_class', '')} {float(d.get('confidence', 0)):.2f}"
+        cv2.rectangle(im, (x1, y1), (x2, y2), (0, 0, 255), 2)
+        (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
+        cv2.rectangle(im, (x1, max(0, y1 - th - 6)), (x1 + tw + 4, y1), (0, 0, 255), -1)
+        cv2.putText(im, label, (x1 + 2, max(10, y1 - 4)),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1, cv2.LINE_AA)
+    if not cv2.imwrite(str(annotated_file), im):
+        print(f"[YOLO] 切片標註圖寫入失敗：{annotated_file}")
+        shutil.copy(image_path, annotated_file)
+
+
+def run_sliced_detection(
+    image_path: Path, yolo_model_path: str, min_conf: float, annotated_file: Path
+) -> list[dict]:
+    """用 SAHI 對大圖做切片偵測：切成有重疊的小塊、逐塊跑 YOLO、再用 NMS 合併，
+    回傳與單次推論相同格式的 parsed_items（yolo_class / confidence / box）。
+    SAHI 依 slice 尺寸與圖片大小自動決定要切幾塊，不需手動指定塊數。"""
+    from sahi import AutoDetectionModel
+    from sahi.predict import get_sliced_prediction
+
+    # 切片放大雜物易誤判，故用專屬（通常較嚴）的 YOLO_SLICE_MIN_CONF，
+    # 但不低於整張推論的 min_conf，避免使用者把整張門檻調高後切片反而更寬鬆。
+    slice_conf = max(min_conf, YOLO_SLICE_MIN_CONF)
+    detection_model = AutoDetectionModel.from_pretrained(
+        model_type="ultralytics",
+        model_path=yolo_model_path,
+        confidence_threshold=slice_conf,
+    )
+    result = get_sliced_prediction(
+        str(image_path),
+        detection_model,
+        slice_height=YOLO_SLICE_SIZE,
+        slice_width=YOLO_SLICE_SIZE,
+        overlap_height_ratio=YOLO_SLICE_OVERLAP,
+        overlap_width_ratio=YOLO_SLICE_OVERLAP,
+        verbose=0,
+    )
+    parsed_items: list[dict] = []
+    for obj in result.object_prediction_list:
+        box = obj.bbox.to_xyxy()  # [x1, y1, x2, y2]
+        parsed_items.append({
+            "yolo_class": obj.category.name,
+            "confidence": float(obj.score.value),
+            "box": [float(v) for v in box],
+        })
+    _draw_detections(image_path, parsed_items, annotated_file)
+    return parsed_items
+
+
+def _run_full_detection(
+    image_path: Path, yolo_model_path: str, min_conf: float, annotated_file: Path
+) -> list[dict]:
+    """單次整張推論（原本的做法）：直接對整張圖跑 YOLO，並用 r.plot() 存標註圖。"""
+    parsed_items: list[dict] = []
+    model = YOLO(yolo_model_path)
+    results = model.predict(source=image_path, conf=min_conf, save=False)
+    for r in results:
+        im_array = r.plot()
+        if not cv2.imwrite(str(annotated_file), im_array):
+            print(f"[YOLO] 標註圖寫入失敗：{annotated_file}")
+        for box in r.boxes:
+            try:
+                cls_id = int(box.cls[0])
+                name = model.names[cls_id]
+                parsed_items.append({
+                    "yolo_class": name,
+                    "confidence": float(box.conf[0]),
+                    "box": box.xyxy[0].tolist(),
+                })
+            except (IndexError, RuntimeError) as _box_err:
+                print(f"[YOLO] box 解析失敗，跳過：{_box_err}")
+    return parsed_items
+
+
 def analyze_image(
     image_path: str | Path,
     yolo_model_path: str | Path = "best.pt",
@@ -612,32 +722,29 @@ def analyze_image(
     if use_yolo:
         try:
             yolo_model_path = resolve_yolo_model_path(yolo_model_path)
-            model = YOLO(yolo_model_path)
-            results = model.predict(source=image_path, conf=min_conf, save=False)
-            
-            # 繪製偵測結果
-            for r in results:
-                im_array = r.plot()
-                ok = cv2.imwrite(str(annotated_file), im_array)
-                if not ok:
-                    print(f"[YOLO] 標註圖寫入失敗：{annotated_file}")
 
-                for box in r.boxes:
-                    try:
-                        cls_id = int(box.cls[0])
-                        name = model.names[cls_id]
-                        parsed_items.append({
-                            "yolo_class": name,
-                            "confidence": float(box.conf[0]),
-                            "box": box.xyxy[0].tolist(),
-                        })
-                    except (IndexError, RuntimeError) as _box_err:
-                        print(f"[YOLO] box 解析失敗，跳過：{_box_err}")
-            
+            # 大圖走 SAHI 切片偵測（提升遠處小物件召回率）；小圖維持單次整張推論。
+            if _should_slice(image_path):
+                try:
+                    print(f"[YOLO] 大圖啟用切片偵測（slice={YOLO_SLICE_SIZE}, overlap={YOLO_SLICE_OVERLAP}）")
+                    parsed_items = run_sliced_detection(
+                        image_path, yolo_model_path, min_conf, annotated_file
+                    )
+                except Exception as slice_err:
+                    # 切片失敗（如 sahi 未安裝）時退回單次整張推論，確保流程不中斷
+                    print(f"[YOLO] 切片偵測失敗，退回單次整張推論：{slice_err}")
+                    parsed_items = _run_full_detection(
+                        image_path, yolo_model_path, min_conf, annotated_file
+                    )
+            else:
+                parsed_items = _run_full_detection(
+                    image_path, yolo_model_path, min_conf, annotated_file
+                )
+
             # 如果沒畫到圖（沒偵測到任何東西），也複製一份原圖確保檔案存在
             if not annotated_file.exists():
                 shutil.copy(image_path, annotated_file)
-                
+
         except Exception as e:
             print(f"YOLO 偵測錯誤: {e}")
             shutil.copy(image_path, annotated_file)
