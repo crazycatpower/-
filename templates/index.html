@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 職安稽核系統</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header h1 { font-size: 1.1rem; font-weight: 600; }
+    header span { font-size: 1.5rem; }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    }
+    .card h2 { font-size: .95rem; font-weight: 600; margin-bottom: 14px; color: #555; text-transform: uppercase; letter-spacing: .04em; }
+
+    /* Camera / file area */
+    .capture-area {
+      position: relative;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #video, #preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #preview { display: none; position: absolute; inset: 0; }
+    .cam-hint { color: #888; font-size: .85rem; text-align: center; padding: 20px; }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    button, label.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    button:disabled { opacity: .45; cursor: default; }
+    button:active, label.btn:active { opacity: .75; }
+
+    .btn-primary  { background: #4f46e5; color: #fff; }
+    .btn-success  { background: #16a34a; color: #fff; }
+    .btn-danger   { background: #dc2626; color: #fff; }
+    .btn-neutral  { background: #e5e7eb; color: #374151; }
+
+    input[type=file] { display: none; }
+
+    /* Mode toggle */
+    #modeRow { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .mode-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 2px solid #d1d5db;
+      background: #fff;
+      font-size: .82rem;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .mode-btn.active { border-color: #4f46e5; background: #eef2ff; color: #4f46e5; font-weight: 600; }
+
+    /* Prompt */
+    textarea#prompt {
+      width: 100%;
+      border: 1.5px solid #d1d5db;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: .9rem;
+      resize: vertical;
+      min-height: 72px;
+      font-family: inherit;
+      transition: border-color .15s;
+    }
+    textarea#prompt:focus { outline: none; border-color: #4f46e5; }
+
+    /* Options */
+    .option-row { display: flex; align-items: center; gap: 10px; font-size: .9rem; margin-top: 8px; }
+    input[type=checkbox] { width: 16px; height: 16px; accent-color: #4f46e5; cursor: pointer; }
+
+    /* Loading */
+    #loadingBar {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0 4px;
+      color: #4f46e5;
+      font-size: .9rem;
+    }
+    .spinner {
+      width: 22px; height: 22px;
+      border: 3px solid #c7d2fe;
+      border-top-color: #4f46e5;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Results */
+    #resultSection { display: none; }
+
+    .result-img-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      margin-bottom: 14px;
+    }
+    #resultImg { width: 100%; display: block; }
+
+    .report-block {
+      background: #f8fafc;
+      border-left: 4px solid #4f46e5;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      font-size: .88rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .meta-row {
+      font-size: .78rem;
+      color: #6b7280;
+      margin-top: 10px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .meta-row a { color: #4f46e5; text-decoration: none; }
+    .meta-row a:hover { text-decoration: underline; }
+
+    .detection-list {
+      margin-top: 12px;
+      font-size: .83rem;
+      color: #374151;
+    }
+    .detection-list summary { cursor: pointer; font-weight: 600; margin-bottom: 6px; }
+    .detection-item {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      padding: 4px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .det-idx { color: #9ca3af; min-width: 20px; }
+    .det-class { font-weight: 600; }
+    .det-conf { color: #6b7280; }
+    .det-region { color: #4f46e5; font-size: .78rem; }
+
+    /* Compare mode */
+    #compareSection { display: none; }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .compare-slot {
+      aspect-ratio: 4/3;
+      background: #111;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .compare-slot img { width: 100%; height: 100%; object-fit: cover; }
+    .compare-slot .slot-label {
+      position: absolute;
+      bottom: 6px;
+      left: 8px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      font-size: .72rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .slot-placeholder { color: #666; font-size: .82rem; }
+
+    @media (max-width: 480px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span>🔍</span>
+  <h1>AI 職安稽核系統</h1>
+</header>
+
+<main>
+
+  <!-- Mode -->
+  <div class="card">
+    <h2>分析模式</h2>
+    <div id="modeRow">
+      <button class="mode-btn active" data-mode="single" onclick="switchMode('single', this)">單張分析</button>
+      <button class="mode-btn" data-mode="compare" onclick="switchMode('compare', this)">前後比對</button>
+    </div>
+  </div>
+
+  <!-- Single image capture -->
+  <div class="card" id="singleSection">
+    <h2>拍照 / 上傳</h2>
+    <div class="capture-area">
+      <video id="video" autoplay playsinline muted></video>
+      <img id="preview" alt="預覽" />
+      <p class="cam-hint" id="camHint">點擊「開啟鏡頭」或上傳圖片</p>
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="startCamera()">📷 開啟鏡頭</button>
+      <button class="btn-success" id="snapBtn" onclick="snap()" disabled>✅ 拍照</button>
+      <label class="btn btn-neutral" for="fileInput">📁 上傳圖片</label>
+      <input type="file" id="fileInput" accept="image/*" onchange="loadFile(event)" />
+      <button class="btn-danger" onclick="resetCapture()" id="resetBtn" style="display:none">✖ 重拍</button>
+    </div>
+  </div>
+
+  <!-- Compare capture -->
+  <div class="card" id="compareSection">
+    <h2>前後對比（各自拍照或上傳）</h2>
+    <div class="compare-grid">
+      <div class="compare-slot">
+        <img id="imgStart" style="display:none" />
+        <p class="slot-placeholder" id="hintStart">稽核前</p>
+        <span class="slot-label">稽核前</span>
+      </div>
+      <div class="compare-slot">
+        <img id="imgEnd" style="display:none" />
+        <p class="slot-placeholder" id="hintEnd">稽核後</p>
+        <span class="slot-label">稽核後</span>
+      </div>
+    </div>
+    <div class="btn-row" style="margin-top:12px">
+      <label class="btn btn-primary" for="fileStart">📁 上傳「稽核前」</label>
+      <input type="file" id="fileStart" accept="image/*" onchange="loadCompareFile('start', event)" />
+      <label class="btn btn-success" for="fileEnd">📁 上傳「稽核後」</label>
+      <input type="file" id="fileEnd" accept="image/*" onchange="loadCompareFile('end', event)" />
+    </div>
+  </div>
+
+  <!-- Prompt + options -->
+  <div class="card">
+    <h2>分析設定</h2>
+    <textarea id="prompt" placeholder="輸入分析需求（選填），例如：請重點分析高空作業風險…"></textarea>
+    <div class="option-row">
+      <input type="checkbox" id="useYolo" checked />
+      <label for="useYolo">啟用 YOLO 物件偵測</label>
+    </div>
+    <div class="btn-row" style="margin-top:14px">
+      <button class="btn-primary" id="analyzeBtn" onclick="submitAnalysis()">🚀 開始分析</button>
+    </div>
+    <div id="loadingBar">
+      <div class="spinner"></div>
+      <span>AI 正在分析，請稍候…</span>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="card" id="resultSection">
+    <h2>分析結果</h2>
+    <div class="result-img-wrap">
+      <img id="resultImg" alt="標記圖" />
+    </div>
+    <div class="report-block" id="reportText"></div>
+    <details class="detection-list" id="detectionDetails">
+      <summary>偵測物件清單</summary>
+      <div id="detectionList"></div>
+    </details>
+    <div class="meta-row" id="metaRow"></div>
+  </div>
+
+</main>
+
+<canvas id="canvas" style="display:none"></canvas>
+
+<script>
+  let stream = null;
+  let capturedDataUrl = null;
+  let compareStart = null;
+  let compareEnd = null;
+  let currentMode = 'single';
+
+  function switchMode(mode, btn) {
+    currentMode = mode;
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('singleSection').style.display = mode === 'single' ? '' : 'none';
+    document.getElementById('compareSection').style.display = mode === 'compare' ? '' : 'none';
+  }
+
+  async function startCamera() {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+      const video = document.getElementById('video');
+      video.srcObject = stream;
+      video.style.display = 'block';
+      document.getElementById('camHint').style.display = 'none';
+      document.getElementById('snapBtn').disabled = false;
+    } catch (e) {
+      alert('無法存取鏡頭：' + e.message);
+    }
+  }
+
+  function snap() {
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    capturedDataUrl = canvas.toDataURL('image/jpeg', 0.92);
+    showPreview(capturedDataUrl);
+    if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+  }
+
+  function loadFile(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => { capturedDataUrl = ev.target.result; showPreview(capturedDataUrl); };
+    reader.readAsDataURL(file);
+  }
+
+  function showPreview(dataUrl) {
+    const preview = document.getElementById('preview');
+    preview.src = dataUrl;
+    preview.style.display = 'block';
+    document.getElementById('video').style.display = 'none';
+    document.getElementById('camHint').style.display = 'none';
+    document.getElementById('snapBtn').disabled = true;
+    document.getElementById('resetBtn').style.display = '';
+  }
+
+  function resetCapture() {
+    capturedDataUrl = null;
+    document.getElementById('preview').style.display = 'none';
+    document.getElementById('video').style.display = 'block';
+    document.getElementById('camHint').style.display = '';
+    document.getElementById('resetBtn').style.display = 'none';
+    document.getElementById('snapBtn').disabled = false;
+    document.getElementById('fileInput').value = '';
+  }
+
+  function loadCompareFile(slot, e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const dataUrl = ev.target.result;
+      if (slot === 'start') {
+        compareStart = dataUrl;
+        const img = document.getElementById('imgStart');
+        img.src = dataUrl; img.style.display = 'block';
+        document.getElementById('hintStart').style.display = 'none';
+      } else {
+        compareEnd = dataUrl;
+        const img = document.getElementById('imgEnd');
+        img.src = dataUrl; img.style.display = 'block';
+        document.getElementById('hintEnd').style.display = 'none';
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  async function submitAnalysis() {
+    const prompt = document.getElementById('prompt').value.trim();
+    const useYolo = document.getElementById('useYolo').checked;
+    let body;
+
+    if (currentMode === 'compare') {
+      if (!compareStart || !compareEnd) { alert('請分別上傳「稽核前」和「稽核後」圖片。'); return; }
+      body = { image_start: compareStart, image_end: compareEnd, prompt, use_yolo: useYolo };
+    } else {
+      if (!capturedDataUrl) { alert('請先拍照或上傳圖片。'); return; }
+      body = { image: capturedDataUrl, prompt, use_yolo: useYolo };
+    }
+
+    setLoading(true);
+    document.getElementById('resultSection').style.display = 'none';
+
+    try {
+      const res = await fetch('/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) { const err = await res.json().catch(() => ({})); throw new Error(err.error || res.statusText); }
+      const data = await res.json();
+      showResults(data);
+    } catch (e) {
+      alert('分析失敗：' + e.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function setLoading(on) {
+    document.getElementById('loadingBar').style.display = on ? 'flex' : 'none';
+    document.getElementById('analyzeBtn').disabled = on;
+  }
+
+  function showResults(data) {
+    // Annotated image
+    if (data.annotated_image && data.annotated_image.length > 6) {
+      document.getElementById('resultImg').src = data.annotated_image;
+    } else if (data.annotated_image_url) {
+      document.getElementById('resultImg').src = data.annotated_image_url;
+    }
+
+    // Report text
+    const scene = data.scene_analysis || {};
+    const parts = [];
+    if (scene.summary) parts.push('📝 摘要：' + scene.summary);
+    const risks = (scene.risks || []).filter(Boolean);
+    if (risks.length) parts.push('⚠️ 風險：' + risks.join('、'));
+    if (scene.next_action) parts.push('⚖️ 建議：' + scene.next_action);
+    const refs = (scene.regulation_refs || []).slice(0, 4).map(r =>
+      typeof r === 'object' ? (r.cite || r.source || JSON.stringify(r)) : String(r)
+    );
+    if (refs.length) parts.push('📚 法規：' + refs.join('；'));
+    if (scene.answer) parts.push('💡 ' + scene.answer.slice(0, 500));
+    document.getElementById('reportText').textContent = parts.join('\n') || '分析完成';
+
+    // Detections
+    const dets = data.detections || [];
+    const detList = document.getElementById('detectionList');
+    if (dets.length) {
+      detList.innerHTML = dets.map((d, i) =>
+        `<div class="detection-item">
+          <span class="det-idx">#${d.detection_index ?? i + 1}</span>
+          <span class="det-class">${d.yolo_class ?? d.class ?? ''}</span>
+          <span class="det-conf">${d.confidence != null ? (d.confidence * 100).toFixed(0) + '%' : ''}</span>
+          <span class="det-region">${d.region_zh ?? ''}</span>
+        </div>`
+      ).join('');
+      document.getElementById('detectionDetails').style.display = '';
+    } else {
+      document.getElementById('detectionDetails').style.display = 'none';
+    }
+
+    // Meta
+    const meta = [];
+    if (data.audit_record_time) meta.push('⏱ ' + data.audit_record_time);
+    if (data.audit_record_id) meta.push(`<a href="/audit-records/${data.audit_record_id}" target="_blank">紀錄 #${data.audit_record_id}</a>`);
+    document.getElementById('metaRow').innerHTML = meta.join('<span>·</span>');
+
+    document.getElementById('resultSection').style.display = '';
+    document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Init
+  switchMode('single', document.querySelector('.mode-btn[data-mode="single"]'));
+</script>
+</body>
+</html>

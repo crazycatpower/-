@@ -1,0 +1,22 @@
+flask>=3.0
+python-dotenv>=1.0
+line-bot-sdk>=3.0
+
+# 圖片分析
+ultralytics>=8.0
+opencv-python>=4.8
+openai>=1.0
+
+# 資料庫（選填，無需 PostgreSQL 可不安裝）
+psycopg[binary]>=3.1
+
+# 知識庫文件解析（選填，缺少時對應格式不可用）
+pypdf>=4.0
+python-docx>=1.1
+openpyxl>=3.1
+python-pptx>=0.6
+beautifulsoup4>=4.12
+chardet>=5.0
+
+# Gemini（選填）
+# google-generativeai>=0.5
