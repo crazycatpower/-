@@ -384,10 +384,14 @@ def _ensure_required_fields(obj: dict[str, Any]) -> dict[str, Any]:
         it for items in categories.values() if isinstance(items, list)
         for it in items if isinstance(it, dict)
     ]
+    # 只挑「真的有缺失」的項目來當 next_action fallback 的依據；現在 categories 會把
+    # 1~6類全部54條（含○符合規定）都列出，若不篩掉○，max() 在同分時會選到清單裡
+    # 排序最前面的○項目（如1.01），誤把「符合規定」當成「最嚴重缺失」推薦改善。
+    defect_items = [it for it in all_items if str(it.get("result") or "").strip() in ("×", "△")]
 
     if not str(obj.get("next_action") or "").strip():
-        if all_items:
-            worst = max(all_items, key=lambda it: _MARKER_SEVERITY.get(str(it.get("marker") or ""), 0))
+        if defect_items:
+            worst = max(defect_items, key=lambda it: _MARKER_SEVERITY.get(str(it.get("marker") or ""), 0))
             obj["next_action"] = (
                 f"依現場缺失（{worst.get('item', '')}，{worst.get('deadline') or '五日內改善'}）安排改善，"
                 "並落實工地安全巡檢與人員教育訓練。"
