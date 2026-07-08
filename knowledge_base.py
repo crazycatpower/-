@@ -69,10 +69,6 @@ def _score(query: str, text: str) -> float:
     return float(overlap + bonus)
 
 
-def _keywords(query: str) -> list[str]:
-    return [k for k in re.split(r"[^\w一-鿿]+", (query or "").strip()) if len(k) >= 2]
-
-
 # =============================================================================
 # DB 操作
 # =============================================================================
@@ -100,24 +96,31 @@ def init_regulations_table() -> None:
 
 
 def retrieve_regulations_from_db(query: str, top_k: int = 4) -> list[KBSnippet]:
-    keywords = _keywords(query)
-    if not keywords:
+    if not (query or "").strip():
         return []
     try:
         from db import db_conn
-        kw_params = tuple(f"%{k}%" for k in keywords)
-        cond_text    = " OR ".join(["text ILIKE %s"]    * len(keywords))
 
-        # 查 regulations 表（regulations_kb 為已棄用的舊表，不再查詢）
-        sql = f"""
-            SELECT source, article, text
-            FROM regulations WHERE {cond_text}
-            LIMIT %s
+        # 查兩張表：regulations 是 LINE 知識庫上傳功能實際在寫入的表（新資料的來源）；
+        # regulations_kb 雖然沒有新資料寫入，但已有 625 筆真實法規條文（含條號，如
+        # 職業安全衛生法、營造安全衛生設施標準），內容遠比 regulations 目前的 8 筆
+        # 豐富且有條號可引用，不查它等於讓模型每次都只能憑印象猜法規。
+        #
+        # 不用 ILIKE 關鍵字前篩：_keywords() 沒有中文斷詞能力，一整句「請分析這張施工
+        # 現場照片的職安合規性」會變成一個17字的完整字串，幾乎不可能在法規條文裡逐字
+        # 出現，導致原本的 ILIKE 前篩實測幾乎永遠篩掉所有真正相關的條文。改成把兩張表
+        # （合計約600多筆，量不大）整批撈出來，交給下面已有的 _score()（bigram 重疊比對，
+        # 不需要斷詞）在 Python 端排序，跟檔案版 retrieve_regulations_from_files 做法一致。
+        sql = """
+            SELECT source, article, text FROM regulations
+            UNION ALL
+            SELECT source_file AS source, article_title AS article, content AS text
+            FROM regulations_kb
+            LIMIT 2000
         """
-        params = kw_params + (top_k * 5,)
         with db_conn() as conn:
             with conn.cursor() as cur:
-                cur.execute(sql, params)
+                cur.execute(sql)
                 rows = cur.fetchall()
         if not rows:
             return []
