@@ -824,36 +824,34 @@ def backfill_audit_record_binary_data(conn=None) -> None:
 # 風險等級評估
 # =============================================================================
 
-_HIGH_RISK_KW = {"墜落", "感電", "觸電", "火災", "爆炸", "倒塌", "中毒", "高空", "缺氧", "窒息"}
-_MED_RISK_KW  = {"未佩戴", "未穿", "缺少", "違規", "no-helmet", "no-vest", "未配戴", "未戴"}
-
-
 def assess_risk_level(result: dict) -> tuple[str, str, str]:
-    """回傳 (等級文字, Flex 標題背景色, emoji)。"""
+    """回傳 (等級文字, Flex 標題背景色, emoji)。
+
+    只依 categories 裡「真的有缺失」的項目（result 為 × 或 △）之 marker 判斷等級，
+    不再用關鍵字比對 summary/answer 全文。categories 現在是逐條打勾的完整清單，
+    這些文字欄位本來就會提到「墜落」「感電」「火災」等類別名稱——即使該類別完全
+    符合規定、答案是在說「現場符合墜落、感電防護規定」，關鍵字比對一樣會命中，
+    完全無法反映有沒有真的缺失，實測幾乎每次都被誤判成「高風險」。
+    """
     scene = result.get("scene_analysis") or {}
+    categories = scene.get("categories") or {}
 
-    # 從 categories 抽取描述文字（新格式）
-    cat_texts: list[str] = []
-    for items in (scene.get("categories") or {}).values():
-        for item in (items or []):
-            if isinstance(item, dict):
-                cat_texts.append(str(item.get("description", "")))
-                if item.get("marker") == "☆":
-                    return "高", "#991b1b", "🔴"
+    defect_markers = {
+        str(item.get("marker") or "")
+        for items in categories.values()
+        for item in (items or [])
+        if isinstance(item, dict) and item.get("result") in ("×", "△")
+    }
 
-    texts = " ".join([
-        str(scene.get("summary") or ""),
-        str(scene.get("answer") or ""),
-        *[str(r) for r in (scene.get("risks") or [])],
-        *cat_texts,
-        *[str(d.get("yolo_class") or d.get("class") or "") for d in (result.get("detections") or [])],
-    ])
-    det_count = len(result.get("detections") or [])
-
-    if any(kw in texts for kw in _HIGH_RISK_KW):
+    if "☆" in defect_markers:
         return "高", "#991b1b", "🔴"
-    if det_count >= 3 or any(kw in texts for kw in _MED_RISK_KW):
+    if "※" in defect_markers:
         return "中", "#92400e", "🟠"
+    if defect_markers:
+        # 空字串 marker（五日內改善）的缺失，或舊格式沒有 marker 的一般缺失
+        return "低", "#14532d", "🟡"
+
+    det_count = len(result.get("detections") or [])
     if det_count >= 1:
         return "低", "#14532d", "🟡"
     return "低", "#14532d", "🟢"
