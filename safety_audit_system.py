@@ -15,6 +15,7 @@ from ultralytics import YOLO
 
 from knowledge_base import format_snippets, retrieve_regulations
 from audit_checklist import (
+    ALL_KNOWN_CODES,
     CHECKLIST_1_TO_6,
     CODE_TO_EXPECTED_CATEGORY,
     official_marker_and_deadline,
@@ -87,6 +88,10 @@ BASE_SYSTEM_PROMPT = (
     "禁止混入任何其他語言文字（含英文單字、日文、韓文、泰文等），法規條號、專有名詞除外。\n"
     "【必填欄位】next_action 與 answer 不得為空字串；regulation_refs 若無合適法規可引用，"
     "請填 [\"無明確對應法規，建議由專業技師依現場實際狀況評估\"]，不得留空陣列。\n"
+    "【regulation_refs 只能是真正的外部法規】regulation_refs 必須引用真實存在的法規名稱與條號"
+    "（如《職業安全衛生法》第幾條、《營造安全衛生設施標準》第幾條），並優先引用【參考法規】片段"
+    "（若有提供）；絕對不可以把本系統自己的稽核表項次代碼（如「1.02」「10.02」「環保-3」）當成"
+    "法規來源填進 regulation_refs——項次代碼只是用來對照 categories 裡的缺失項目，不是法規本身。\n"
     "只輸出 JSON，物件內每個 item 的格式如下（categories 底下 6 個類別各自的陣列，"
     "務必包含該類別官方清單的每一條，一條一個物件，不得省略任何一條）：\n"
     '{"summary":"現場概況簡述",'
@@ -101,7 +106,7 @@ BASE_SYSTEM_PROMPT = (
     '},'
     '"next_action":"建議改善措施",'
     '"answer":"詳細法律與技術說明",'
-    '"regulation_refs":["條號或出處簡述（須與參考法規對應或標註為一般性說明）"],'
+    '"regulation_refs":["《職業安全衛生法》第OO條（或參考法規片段中的實際條號）"],'
     '"by_detection":[{"detection_index":1,"note":"與該框相關之風險或合規說明（無則留空字串）"}]}'
 )
 
@@ -373,6 +378,16 @@ def _downgrade_uncertain_results(obj: dict[str, Any]) -> dict[str, Any]:
     return obj
 
 
+_CHECKLIST_CODE_PREFIX_RE = re.compile(r"^([0-9]+\.[0-9]+|環保-[0-9]+|其他不符-[0-9]+)\b")
+
+
+def _looks_like_checklist_code(ref: str) -> bool:
+    """判斷一段 regulation_refs 文字是不是把本系統自己的稽核表項次代碼
+    （如「1.02」「環保-3」）誤當成外部法規來源填進來。"""
+    m = _CHECKLIST_CODE_PREFIX_RE.match(ref.strip())
+    return bool(m and m.group(1) in ALL_KNOWN_CODES)
+
+
 def _ensure_required_fields(obj: dict[str, Any]) -> dict[str, Any]:
     """確保 next_action/answer/regulation_refs 一定有內容。
     LLM 偶爾會漏填這幾個欄位（非結構錯位，而是內容缺漏），導致 LINE 回覆
@@ -401,6 +416,15 @@ def _ensure_required_fields(obj: dict[str, Any]) -> dict[str, Any]:
 
     if not str(obj.get("answer") or "").strip():
         obj["answer"] = str(obj.get("summary") or "").strip() or "本次分析未提供詳細說明。"
+
+    # regulation_refs 只能是真正的外部法規；曾實測觀察到模型把自己的稽核表項次代碼
+    # （如「環保-3」「10.02」）當成法規來源填進來，這裡濾掉開頭是已知項次代碼的條目。
+    refs = obj.get("regulation_refs")
+    if isinstance(refs, list):
+        obj["regulation_refs"] = [
+            r for r in refs
+            if not (isinstance(r, str) and _looks_like_checklist_code(r))
+        ]
 
     if not obj.get("regulation_refs"):
         obj["regulation_refs"] = ["無明確對應法規，建議由專業技師依現場實際狀況評估"]

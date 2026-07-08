@@ -178,6 +178,20 @@ def official_marker_and_deadline(item_code: str) -> tuple[str, str]:
     return "", "五日內改善"
 
 
+def official_text(item_code: str) -> str:
+    """回傳某代碼在 PDF 上的官方條文原文，供報告顯示，讓使用者不需要另外查表
+    就知道這個代碼實際在規範什麼（而不是只看模型自己的白話描述）。"""
+    for items in CHECKLIST_1_TO_6.values():
+        for it in items:
+            if it.item == item_code:
+                return it.text
+    for items in OTHER_REFERENCE_ITEMS.values():
+        for it in items:
+            if it.item == item_code:
+                return it.text
+    return ""
+
+
 def render_checklist_1_to_6() -> str:
     """把第1~6類（54條）官方項次與條文轉成 prompt 用的純文字清單。"""
     lines: list[str] = []

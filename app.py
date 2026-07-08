@@ -53,6 +53,8 @@ except ImportError:
     def analyze_image(**kwargs):
         return {"scene_analysis": {"summary": "分析模組異常"}, "detections": [], "annotated_image": ""}
 
+from audit_checklist import official_text
+
 # 法規知識庫（選填）
 try:
     from knowledge_base import retrieve_regulations, list_regulation_sources
@@ -424,9 +426,12 @@ def _format_categories_text(scene: dict, categories: dict) -> str:
                 desc     = str(it.get("description", "")).strip()
                 location = str(it.get("location", "")).strip()
                 deadline = str(it.get("deadline", "")).strip()
+                rule_text = official_text(item_id)
                 r_label  = _RESULT_LABELS.get(result, result)
                 m_label  = _MARKER_LABELS.get(marker, "")
                 line     = f"  {tick} {item_id} [{r_label}]{m_label}"
+                if rule_text:
+                    line += f"\n     📖 {rule_text}"
                 if desc:
                     line += f"\n     {desc}"
                 if location:
@@ -449,9 +454,12 @@ def _format_categories_text(scene: dict, categories: dict) -> str:
             desc     = str(it.get("description", "")).strip()
             location = str(it.get("location", "")).strip()
             deadline = str(it.get("deadline", "")).strip()
+            rule_text = official_text(item_id)
             r_label  = _RESULT_LABELS.get(result, result)
             m_label  = _MARKER_LABELS.get(marker, "")
             line     = f"  {marker}{item_id} [{r_label}]{m_label}"
+            if rule_text:
+                line += f"\n    📖 {rule_text}"
             if desc:
                 line += f"\n    {desc}"
             if location:
@@ -567,11 +575,24 @@ def summarize_scene_analysis(result: dict) -> str:
     return "\n".join(parts)[:1500]
 
 
+def _summarize_detections(detections: list[dict]) -> str:
+    """把 YOLO 偵測清單濃縮成「類別 x數量」，取代單純的物件總數字，
+    讓使用者一眼看出偵測到的是什麼（如「安全錐 x4」），而不只是「4 項目」。"""
+    if not detections:
+        return "無"
+    from collections import Counter
+    counts = Counter(str(d.get("yolo_class") or d.get("class") or "未知") for d in detections)
+    return "、".join(f"{cls} x{n}" for cls, n in counts.most_common())
+
+
 def build_line_analysis_reply(result: dict, prompt: str) -> str:
     scene = result.get("scene_analysis") or {}
     risk_level, _, risk_emoji = assess_risk_level(result)
-    det_count = len(result.get("detections") or [])
-    header = f"{risk_emoji} 風險等級：{risk_level}　偵測到 {det_count} 項目"
+    detections = result.get("detections") or []
+    header = (
+        f"{risk_emoji} 風險等級：{risk_level}　"
+        f"偵測到 {len(detections)} 項目（{_summarize_detections(detections)}）"
+    )
     compact = scene_audit_json_text(scene)
     if compact:
         return f"{header}\n\n{compact}"[:4900]
