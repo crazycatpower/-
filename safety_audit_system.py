@@ -379,6 +379,7 @@ def _downgrade_uncertain_results(obj: dict[str, Any]) -> dict[str, Any]:
 
 
 _CHECKLIST_CODE_PREFIX_RE = re.compile(r"^([0-9]+\.[0-9]+|環保-[0-9]+|其他不符-[0-9]+)\b")
+_NO_REGULATION_FALLBACK = "無明確對應法規，建議由專業技師依現場實際狀況評估"
 
 
 def _looks_like_checklist_code(ref: str) -> bool:
@@ -427,7 +428,14 @@ def _ensure_required_fields(obj: dict[str, Any]) -> dict[str, Any]:
         ]
 
     if not obj.get("regulation_refs"):
-        obj["regulation_refs"] = ["無明確對應法規，建議由專業技師依現場實際狀況評估"]
+        obj["regulation_refs"] = [_NO_REGULATION_FALLBACK]
+    elif len(obj["regulation_refs"]) > 1:
+        # 「無明確對應法規」只有在完全沒有其他真實引用時才有意義；模型有時會把這句
+        # 保底文字原封不動跟真實法規引用一起塞進來，變成前後矛盾（既有明確法規，
+        # 又說無明確對應法規），這裡把它從有其他真實引用的清單中濾掉。
+        obj["regulation_refs"] = [
+            r for r in obj["regulation_refs"] if r != _NO_REGULATION_FALLBACK
+        ] or [_NO_REGULATION_FALLBACK]
 
     return obj
 
