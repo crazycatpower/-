@@ -605,13 +605,21 @@ def resolve_yolo_model_path(yolo_model_path: str | Path) -> str:
 
 
 def _should_slice(image_path: Path) -> bool:
-    """依設定與圖片長邊判斷這張圖要不要走切片偵測。"""
+    """依設定與圖片長邊判斷這張圖要不要走切片偵測。
+
+    只需要圖片尺寸，用 PIL 讀 header 即可（不解碼像素資料），
+    避免對大圖（切片偵測正是為大圖設計的）多花一次完整 cv2.imread 解碼的成本，
+    這張圖後面 _run_full_detection/run_sliced_detection 跟 enrich_detections_spatial
+    還會各自再讀一次，這裡沒必要跟著解碼一次全尺寸像素。
+    """
     if not YOLO_USE_SLICING:
         return False
-    im = cv2.imread(str(image_path))
-    if im is None:
+    try:
+        from PIL import Image
+        with Image.open(image_path) as img:
+            w, h = img.size
+    except Exception:
         return False
-    h, w = im.shape[:2]
     return max(h, w) > YOLO_SLICE_TRIGGER_SIDE
 
 
