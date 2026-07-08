@@ -1868,15 +1868,12 @@ def _process_image_async(
 
     try:
         analysis_qr = _qr(*_QR_IMAGE_MODES)
-        flex_msg = build_flex_analysis_message(result, audit_id=audit_id)
-        if flex_msg is None:
-            reply_text = build_line_analysis_reply(result, prompt)
-            if audit_id:
-                reply_text += f"\n\n📋 紀錄 ID：#{audit_id}"
-            result_message = TextMessage(text=reply_text, quick_reply=analysis_qr)
-        else:
-            flex_msg.quick_reply = analysis_qr
-            result_message = flex_msg
+        # 一律回傳純文字，不用 Flex 卡片：Flex 是圖形化氣泡卡，使用者在 LINE 裡
+        # 沒辦法整段選取複製；純文字才能讓使用者複製貼上（例如轉貼給其他人或存檔）。
+        reply_text = build_line_analysis_reply(result, prompt)
+        if audit_id:
+            reply_text += f"\n\n📋 紀錄 ID：#{audit_id}"
+        result_message = TextMessage(text=reply_text, quick_reply=analysis_qr)
     except Exception as e:
         print(f"結果訊息組裝失敗: {e}")
         _line_push(user_id, TextMessage(text="❌ 分析結果格式異常，無法顯示完整報告，請稍後再試或聯絡管理員。"))
