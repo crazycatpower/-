@@ -503,6 +503,69 @@ def get_llm_client_and_config() -> tuple[OpenAI | None, str, bool]:
     client = OpenAI(api_key=api_key, base_url=os.getenv("LLM_BASE_URL") or None)
     return client, model, supports_vision
 
+def _is_ollama_backend(base_url: str | None) -> bool:
+    return bool(base_url) and ("11434" in base_url or "ollama" in base_url.lower())
+
+
+def _ollama_native_chat(
+    base_url: str,
+    messages: list[dict[str, Any]],
+    model: str,
+    max_tokens: int,
+    num_ctx: int,
+    use_json_format: bool,
+    disable_thinking: bool,
+) -> str:
+    """繞過 Ollama 這個版本 OpenAI 相容端點（/v1/chat/completions）的一個實測缺陷：
+    無論透過 extra_body 傳多大的 num_ctx，該端點回報的 total_tokens 都被錨死在 4096，
+    導致視覺模型（圖片編碼本身就可能吃掉 5000+ tokens）+ 本系統的完整54條清單 prompt
+    組合起來時，輸出常常被腰斬成空字串（finish_reason="length" 但 content 是空的）。
+    改打 Ollama 原生 /api/chat 端點則能正確套用 num_ctx／think，故直連此端點取代
+    openai client 呼叫，避免每次分析都因為這個相容層問題而分析失敗。
+    """
+    import requests
+
+    api_base = base_url.rstrip("/")
+    if api_base.endswith("/v1"):
+        api_base = api_base[: -len("/v1")]
+
+    native_messages: list[dict[str, Any]] = []
+    for m in messages:
+        content = m.get("content")
+        if isinstance(content, str):
+            native_messages.append({"role": m["role"], "content": content})
+            continue
+        texts: list[str] = []
+        images: list[str] = []
+        for part in content or []:
+            if part.get("type") == "text":
+                texts.append(part.get("text", ""))
+            elif part.get("type") == "image_url":
+                url = (part.get("image_url") or {}).get("url", "")
+                if url.startswith("data:") and "," in url:
+                    images.append(url.split(",", 1)[1])
+        entry: dict[str, Any] = {"role": m["role"], "content": "\n".join(texts)}
+        if images:
+            entry["images"] = images
+        native_messages.append(entry)
+
+    payload: dict[str, Any] = {
+        "model": model,
+        "messages": native_messages,
+        "stream": False,
+        "options": {"num_ctx": num_ctx, "num_predict": max_tokens},
+    }
+    if use_json_format:
+        payload["format"] = "json"
+    if disable_thinking:
+        payload["think"] = False
+
+    resp = requests.post(f"{api_base}/api/chat", json=payload, timeout=240)
+    resp.raise_for_status()
+    data = resp.json()
+    return (data.get("message") or {}).get("content") or ""
+
+
 def ask_llm_scene_analysis(
     client: OpenAI,
     model: str,
@@ -568,19 +631,46 @@ def ask_llm_scene_analysis(
         use_json_format = os.getenv("LLM_FORCE_JSON", "1").strip() != "0"
         create_kwargs: dict[str, Any] = {"model": model, "messages": messages}
         # 限制輸出長度上限，避免模型話太多被中途截斷導致 JSON 不完整、解析失敗
-        # 完整 schema（summary+7類別+next_action+answer+regulation_refs+by_detection）
-        # 實測 1536 常在 categories 尚未收尾時被截斷，提高預設值降低截斷機率。
-        create_kwargs["max_tokens"] = int(os.getenv("LLM_MAX_TOKENS", "3072"))
+        # 完整 schema 現在要求逐條列出54條官方項次（categories）+ next_action/answer/
+        # regulation_refs/by_detection，實測輸出常需要 1500~2500 completion tokens，
+        # 3072 邊界太緊，提高到 4096 留一點餘裕。
+        create_kwargs["max_tokens"] = int(os.getenv("LLM_MAX_TOKENS", "4096"))
         if use_json_format:
             create_kwargs["response_format"] = {"type": "json_object"}
-        # Ollama 預設 context 僅 4096，提示詞（含法規片段＋圖片）易超出而回 400。
-        # 透過 num_ctx 加大 context 視窗（Gemma 4 支援至 128K）。
-        num_ctx = int(os.getenv("LLM_NUM_CTX", "8192"))
+        # Ollama 預設 context 僅 4096。實測發現：視覺模型的圖片編碼本身就可能吃掉
+        # 5000~7000 tokens（且不一定會反映在 OpenAI 相容層回報的 prompt_tokens 裡），
+        # 加上本系統的 54 條官方清單 prompt（近2000 tokens）與逐條 JSON 輸出，
+        # 8192 常常不夠、導致輸出被腰斬變成空字串（finish_reason="length" 但 content
+        # 是空的）。調高到 16384 給圖片＋長 prompt＋完整輸出足夠空間。
+        num_ctx = int(os.getenv("LLM_NUM_CTX", "16384"))
+        extra_body: dict[str, Any] = {}
         if num_ctx > 0:
             # Ollama 的 OpenAI 相容端點需把 num_ctx 包在 options 內才會生效
-            create_kwargs["extra_body"] = {"options": {"num_ctx": num_ctx}}
-        response = client.chat.completions.create(**create_kwargs)
-        return extract_json(response.choices[0].message.content)
+            extra_body["options"] = {"num_ctx": num_ctx}
+        # 部分 Ollama 模型（如 gemma4）預設會先輸出「思考」內容再給答案，
+        # 但思考內容算在 max_tokens 額度內、且不會出現在 content 欄位——
+        # 實測 max_tokens=3072 時思考直接吃光額度，content 變成空字串、
+        # finish_reason="length"，導致 extract_json 完全解析不到東西。
+        # 用 think:false 關閉思考模式，讓輸出額度全部留給實際要的 JSON。
+        disable_thinking = os.getenv("LLM_DISABLE_THINKING", "1").strip() != "0"
+        if disable_thinking:
+            extra_body["think"] = False
+        if extra_body:
+            create_kwargs["extra_body"] = extra_body
+
+        base_url = os.getenv("LLM_BASE_URL") or ""
+        if _is_ollama_backend(base_url):
+            content = _ollama_native_chat(
+                base_url, messages, model,
+                max_tokens=create_kwargs["max_tokens"],
+                num_ctx=num_ctx,
+                use_json_format=use_json_format,
+                disable_thinking=disable_thinking,
+            )
+        else:
+            response = client.chat.completions.create(**create_kwargs)
+            content = response.choices[0].message.content
+        return extract_json(content)
     except Exception as e:
         print(f"[LLM] 呼叫失敗 ({type(e).__name__}): {e}")
         return {"summary": f"LLM 呼叫失敗: {str(e)}", "risks": ["API 連線異常"]}

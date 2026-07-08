@@ -6,6 +6,8 @@ line-bot-sdk>=3.0
 ultralytics>=8.0
 opencv-python>=4.8
 openai>=1.0
+requests>=2.31
+# ↑ 直連 Ollama 原生 /api/chat（繞過部分版本 OpenAI 相容端點對 num_ctx/think 的支援缺陷）
 # 大圖切片（tiling）偵測，提升遠處小物件召回率；缺少時自動退回單次整張推論
 sahi>=0.11
 
