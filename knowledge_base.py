@@ -101,21 +101,18 @@ def retrieve_regulations_from_db(query: str, top_k: int = 4) -> list[KBSnippet]:
     try:
         from db import db_conn
 
-        # 查兩張表：regulations 是 LINE 知識庫上傳功能實際在寫入的表（新資料的來源）；
-        # regulations_kb 雖然沒有新資料寫入，但已有 625 筆真實法規條文（含條號，如
-        # 職業安全衛生法、營造安全衛生設施標準），內容遠比 regulations 目前的 8 筆
-        # 豐富且有條號可引用，不查它等於讓模型每次都只能憑印象猜法規。
+        # 只查 regulations 表：這是 LINE 知識庫上傳功能實際寫入的表，目前已有 131 筆
+        # 真實法規條文（職業安全衛生法、職業安全衛生設施規則、營造安全衛生設施標準三部
+        # 完整法規，條號 100% 覆蓋）。原本另外 UNION 的 regulations_kb 表在資料庫中並不
+        # 存在，每次查詢都會拋 relation does not exist 而讓整段落空，故移除。
         #
         # 不用 ILIKE 關鍵字前篩：_keywords() 沒有中文斷詞能力，一整句「請分析這張施工
         # 現場照片的職安合規性」會變成一個17字的完整字串，幾乎不可能在法規條文裡逐字
-        # 出現，導致原本的 ILIKE 前篩實測幾乎永遠篩掉所有真正相關的條文。改成把兩張表
-        # （合計約600多筆，量不大）整批撈出來，交給下面已有的 _score()（bigram 重疊比對，
-        # 不需要斷詞）在 Python 端排序，跟檔案版 retrieve_regulations_from_files 做法一致。
+        # 出現，導致原本的 ILIKE 前篩實測幾乎永遠篩掉所有真正相關的條文。改成整批撈出來
+        # （量不大），交給下面已有的 _score()（bigram 重疊比對，不需要斷詞）在 Python
+        # 端排序，跟檔案版 retrieve_regulations_from_files 做法一致。
         sql = """
             SELECT source, article, text FROM regulations
-            UNION ALL
-            SELECT source_file AS source, article_title AS article, content AS text
-            FROM regulations_kb
             LIMIT 2000
         """
         with db_conn() as conn:
