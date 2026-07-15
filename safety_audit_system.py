@@ -182,12 +182,41 @@ def enrich_detections_spatial(detections: list[dict], width: int, height: int) -
         }
 
 
+# 偵測數超過這個門檻時改用分類彙總格式，避免逐項列出把 prompt 撐爆 context window
+# （實測：SAHI 切片後 81 個框 + 54 條官方清單 = 18634 tokens，超過 16384 的 num_ctx
+# 直接被 Ollama 拒絕，整次分析失敗）。
+YOLO_DETECTION_LIST_CAP = int(os.getenv("YOLO_DETECTION_LIST_CAP", "30"))
+
+
+def _format_detections_summary(detections: list[dict]) -> str:
+    """偵測數量過多時的彙總格式：依類別分組統計數量、信心範圍、分布區域，
+    不逐一列出每個框的座標，讓 prompt 大小不會隨物件數量線性暴增。"""
+    groups: dict[str, list[dict]] = {}
+    for d in detections:
+        groups.setdefault(str(d.get("yolo_class") or ""), []).append(d)
+
+    lines = [f"（偵測物件共 {len(detections)} 個，數量較多，以下依類別彙總，不逐一列出座標）"]
+    for cls, items in sorted(groups.items(), key=lambda kv: -len(kv[1])):
+        confs = [float(d.get("confidence", 0)) for d in items]
+        regions = sorted({d.get("region_zh", "") for d in items if d.get("region_zh")})
+        low_conf_n = sum(1 for c in confs if c < YOLO_LOW_CONF_THRESHOLD)
+        low_flag = f"（其中 {low_conf_n} 個低信心⚠️，可能為誤判）" if low_conf_n else ""
+        lines.append(
+            f"  類別={cls} 數量={len(items)} 信心範圍={min(confs):.2f}~{max(confs):.2f} "
+            f"分布區域={'/'.join(regions) or '未知'}{low_flag}"
+        )
+    header = "[YOLO 偵測清單彙總 — 僅供輔助參考，請以你對原圖的實際觀察為準核實]"
+    return header + "\n" + "\n".join(lines)
+
+
 def format_detections_for_prompt(detections: list[dict]) -> str:
     """給 LLM 的結構化偵測段落（位置 + 類別）。信心過低的框會加註警告，
     提醒 LLM 這可能是誤判（如把雜物/木板誤認成人員），不能單獨當成鐵證。
     """
     if not detections:
         return "（無 YOLO 偵測框；請依原圖做一般職安觀察，並註明無偵測資料。）"
+    if len(detections) > YOLO_DETECTION_LIST_CAP:
+        return _format_detections_summary(detections)
     lines: list[str] = []
     low_conf_count = 0
     for d in detections:
