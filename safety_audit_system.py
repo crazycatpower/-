@@ -352,14 +352,18 @@ def _complete_checklist_1_to_6(obj: dict[str, Any]) -> dict[str, Any]:
        模型填什麼都會在這裡被改成正確值）。
     2. 模型漏掉沒列出的條目，補一筆 result="○"（沒被回報異常，視為未發現缺失）的預設項，
        確保最終呈現給使用者的一定是逐條列滿的完整清單，而不是模型自己選擇性列出的殘缺清單。
+    3. 重建整個 categories dict、依官方 1~6 類固定順序排列（「其他」殿後），不採用模型
+       原始輸出的 key 順序——小模型不會每次都照 prompt 範例順序輸出 JSON key，直接用
+       dict[key]=value 覆蓋並不會改變既有 key 的排列位置，導致使用者看到的類別順序
+       每次都不一樣、也對不上官方表格的 1~6 類順序。
     """
-    categories = obj.setdefault("categories", {})
-    if not isinstance(categories, dict):
-        categories = {}
-        obj["categories"] = categories
+    old_categories = obj.get("categories")
+    if not isinstance(old_categories, dict):
+        old_categories = {}
 
+    new_categories: dict[str, list] = {}
     for cat_name, checklist_items in CHECKLIST_1_TO_6.items():
-        existing = categories.get(cat_name)
+        existing = old_categories.get(cat_name)
         by_code: dict[str, dict] = {}
         if isinstance(existing, list):
             for it in existing:
@@ -379,8 +383,14 @@ def _complete_checklist_1_to_6(obj: dict[str, Any]) -> dict[str, Any]:
                 it.setdefault("description", "")
                 it.setdefault("location", "")
             rebuilt.append(it)
-        categories[cat_name] = rebuilt
+        new_categories[cat_name] = rebuilt
 
+    # 非 1~6 類的其餘 key（目前就是「其他」）依原順序接在後面，不遺漏模型輸出的其他分類
+    for cat_name, items in old_categories.items():
+        if cat_name not in new_categories:
+            new_categories[cat_name] = items
+
+    obj["categories"] = new_categories
     return obj
 
 
@@ -424,6 +434,24 @@ def _looks_like_checklist_code(ref: str) -> bool:
     return bool(m and m.group(1) in ALL_KNOWN_CODES)
 
 
+# 知識庫裡真實存在的法規名稱（對照 regulations 表的 source 欄位）＋marker 說明本身
+# 就引用的《勞動檢查法》。曾實測觀察到模型編出「《工安規定》第3條」「工廠、倉庫等場
+# 場所於術語中所涵義之『局限空間』相關防護標準」這類聽起來像法規、實際上不存在或
+# 語句破碎的假引用，只靠「開頭是不是稽核表代碼」濾不掉這種——改成要求至少要出現
+# 這些真實法規名稱其中之一才保留，不在白名單內的一律視為模型瞎編、直接捨棄。
+_KNOWN_STATUTE_NAMES = (
+    "職業安全衛生法",
+    "職業安全衛生設施規則",
+    "營造安全衛生設施標準",
+    "工程處工地安全衛生規定",
+    "勞動檢查法",
+)
+
+
+def _looks_like_real_statute(ref: str) -> bool:
+    return any(name in ref for name in _KNOWN_STATUTE_NAMES)
+
+
 def _ensure_required_fields(obj: dict[str, Any]) -> dict[str, Any]:
     """確保 next_action/answer/regulation_refs 一定有內容。
     LLM 偶爾會漏填這幾個欄位（非結構錯位，而是內容缺漏），導致 LINE 回覆
@@ -453,13 +481,17 @@ def _ensure_required_fields(obj: dict[str, Any]) -> dict[str, Any]:
     if not str(obj.get("answer") or "").strip():
         obj["answer"] = str(obj.get("summary") or "").strip() or "本次分析未提供詳細說明。"
 
-    # regulation_refs 只能是真正的外部法規；曾實測觀察到模型把自己的稽核表項次代碼
-    # （如「環保-3」「10.02」）當成法規來源填進來，這裡濾掉開頭是已知項次代碼的條目。
+    # regulation_refs 只能是真正的外部法規：
+    # 1. 濾掉把稽核表項次代碼（如「環保-3」「10.02」）誤當法規填進來的條目
+    # 2. 只保留有出現知識庫真實法規名稱的條目，濾掉聽起來像法規、實際上編造/語句
+    #    破碎的假引用（如「工安規定」「工廠倉庫等場場所…」）
     refs = obj.get("regulation_refs")
     if isinstance(refs, list):
         obj["regulation_refs"] = [
             r for r in refs
-            if not (isinstance(r, str) and _looks_like_checklist_code(r))
+            if isinstance(r, str)
+            and not _looks_like_checklist_code(r)
+            and (r.strip() == _NO_REGULATION_FALLBACK or _looks_like_real_statute(r))
         ]
 
     if not obj.get("regulation_refs"):
