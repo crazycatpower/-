@@ -1,0 +1,113 @@
+<title>職安稽核模型圖表</title>
+<meta name="description" content="v1/v5/v6 三版指標長條圖、控制變量對照、v5 vs v6 訓練損失曲線 — 簡報用單頁圖表">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<style>
+  :root {
+    --ground: #f7f5f0; --surface: #fffefb; --surface-2: #f0ece2;
+    --ink: #24211b; --muted: #6f695c; --line: #ded8ca; --line-strong: #c6bfad;
+    --accent: #a4611a; --accent-soft: #a4611a1a;
+    --chart-acc: #2a78d6; --chart-prec: #eb6834; --chart-rec: #1baf7a;
+    --chart-v5: #e87ba4; --chart-v6: #008300; --chart-surface: #fffefb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #17150f; --surface: #1f1d16; --surface-2: #26231a;
+      --ink: #ece7da; --muted: #9a927f; --line: #35311f; --line-strong: #494330;
+      --accent: #d99a4e; --accent-soft: #d99a4e1f;
+      --chart-acc: #3987e5; --chart-prec: #d95926; --chart-rec: #199e70;
+      --chart-v5: #d55181; --chart-v6: #008300; --chart-surface: #1f1d16;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #17150f; --surface: #1f1d16; --surface-2: #26231a;
+    --ink: #ece7da; --muted: #9a927f; --line: #35311f; --line-strong: #494330;
+    --accent: #d99a4e; --accent-soft: #d99a4e1f;
+    --chart-acc: #3987e5; --chart-prec: #d95926; --chart-rec: #199e70;
+    --chart-v5: #d55181; --chart-v6: #008300; --chart-surface: #1f1d16;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: "Noto Sans TC", system-ui, sans-serif; line-height: 1.6; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: clamp(1.2rem,4vw,2.6rem) clamp(1rem,4vw,2rem) 3rem; }
+  h1 { font-family: "Noto Serif TC", serif; font-size: clamp(1.5rem,3.4vw,2.1rem); font-weight: 700; margin: 0 0 .3rem; text-wrap: balance; }
+  .sub { color: var(--muted); font-size: .95rem; margin: 0 0 2rem; }
+  .slide { margin-top: 2.6rem; }
+  .slide h2 { font-family: "Noto Serif TC", serif; font-size: 1.3rem; font-weight: 700; margin: 0 0 .3rem; }
+  .slide .cap { color: var(--muted); font-size: .9rem; margin: 0 0 1rem; max-width: 68ch; }
+  .card { background: var(--chart-surface); border: 1px solid var(--line); border-radius: 4px; padding: 1.3rem 1.5rem 1.1rem; }
+  .legend { display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; margin-bottom: .8rem; }
+  .legend span { display: inline-flex; align-items: center; gap: .4rem; font-family: "Barlow Condensed","Noto Sans TC",sans-serif; font-size: .88rem; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+  .legend i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+  .chart { width: 100%; height: auto; display: block; overflow: visible; }
+  .chart .gl { stroke: var(--line); stroke-width: 1; }
+  .chart .gl-v { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 3; }
+  .chart .axis { stroke: var(--line-strong); stroke-width: 1; }
+  .chart .ax-x, .chart .ax-y { font-family: "IBM Plex Mono", monospace; font-size: 12px; fill: var(--muted); }
+  .chart .ax-x { text-anchor: middle; }
+  .chart .ax-x-emph { fill: var(--ink); font-weight: 600; }
+  .chart .bar { fill: var(--muted); }
+  .chart .bar-acc { fill: var(--chart-acc); }
+  .chart .bar-prec { fill: var(--chart-prec); }
+  .chart .bar-rec { fill: var(--chart-rec); }
+  .chart .bar-dim { opacity: .45; }
+  .chart .bar-val { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-weight: 600; fill: var(--ink); text-anchor: middle; }
+  .chart .bar-val-dim { fill: var(--muted); font-weight: 500; }
+  .chart .line { stroke-width: 2.2; }
+  .chart .s-v5 { stroke: var(--chart-v5); }
+  .chart .s-v6 { stroke: var(--chart-v6); }
+  .chart .dot { stroke: var(--chart-surface); stroke-width: 1.5; }
+  .chart .dot.s-v5 { fill: var(--chart-v5); }
+  .chart .dot.s-v6 { fill: var(--chart-v6); }
+  .chart .line-ext { stroke-width: 1.6; opacity: .7; }
+  .chart .line-ext.s-v5 { stroke: var(--chart-v5); }
+  .chart .line-ext.s-v6 { stroke: var(--chart-v6); }
+  .chart .dot-end { fill: var(--chart-surface); stroke-width: 2; }
+  .chart .dot-end.s-v5 { stroke: var(--chart-v5); }
+  .chart .dot-end.s-v6 { stroke: var(--chart-v6); }
+  .chart .line-end { font-family: "Barlow Condensed","Noto Sans TC",sans-serif; font-size: 13px; font-weight: 700; fill: var(--ink); dominant-baseline: middle; }
+  @media (max-width: 560px) { .card { padding: 1rem 1rem .9rem; } }
+</style>
+
+<div class="wrap">
+  <h1>職安稽核模型　圖表</h1>
+  <p class="sub">2026-09 · gemma-3n-E2B QLoRA 微調 · 100 張標註照片、YOLO 真實流程評測</p>
+
+  <div class="slide">
+    <h2>三版核心指標</h2>
+    <p class="cap">v6 召回率較初版 +22 個百分點，精確率沒有犧牲。</p>
+    <div class="card">
+      <div class="legend">
+        <span><i style="background:var(--chart-acc)"></i>準確率</span>
+        <span><i style="background:var(--chart-prec)"></i>精確率</span>
+        <span><i style="background:var(--chart-rec)"></i>召回率</span>
+      </div>
+      <svg class="chart chart-bar" viewBox="0 0 880 380" role="img"><line class="gl" x1="4" x2="876" y1="340.0" y2="340.0"/><text class="ax-y" x="0" y="336.0">0%</text><line class="gl" x1="4" x2="876" y1="268.9" y2="268.9"/><text class="ax-y" x="0" y="264.9">20%</text><line class="gl" x1="4" x2="876" y1="197.8" y2="197.8"/><text class="ax-y" x="0" y="193.8">40%</text><line class="gl" x1="4" x2="876" y1="126.7" y2="126.7"/><text class="ax-y" x="0" y="122.7">60%</text><line class="gl" x1="4" x2="876" y1="55.6" y2="55.6"/><text class="ax-y" x="0" y="51.6">80%</text><line class="axis" x1="4" x2="876" y1="340.0" y2="340.0"/><g class="bar-g"><rect class="bar bar-acc bar-dim" x="15.0" y="84.0" width="84.9" height="256.0" rx="3"><title>v1 初版 · 準確率 72.0%</title></rect><text class="bar-val bar-val-dim" x="57.4" y="77.0">72</text></g><g class="bar-g"><rect class="bar bar-prec bar-dim" x="106.9" y="52.0" width="84.9" height="288.0" rx="3"><title>v1 初版 · 精確率 81.0%</title></rect><text class="bar-val bar-val-dim" x="149.3" y="45.0">81</text></g><g class="bar-g"><rect class="bar bar-rec bar-dim" x="198.8" y="192.4" width="84.9" height="147.6" rx="3"><title>v1 初版 · 召回率 41.5%</title></rect><text class="bar-val bar-val-dim" x="241.2" y="185.4">42</text></g><text class="ax-x" x="149.3" y="366">v1 初版</text><g class="bar-g"><rect class="bar bar-acc bar-dim" x="305.7" y="70.5" width="84.9" height="269.5" rx="3"><title>v5 · 準確率 75.8%</title></rect><text class="bar-val bar-val-dim" x="348.1" y="63.5">76</text></g><g class="bar-g"><rect class="bar bar-prec bar-dim" x="397.6" y="55.6" width="84.9" height="284.4" rx="3"><title>v5 · 精確率 80.0%</title></rect><text class="bar-val bar-val-dim" x="440.0" y="48.6">80</text></g><g class="bar-g"><rect class="bar bar-rec bar-dim" x="489.4" y="153.0" width="84.9" height="187.0" rx="3"><title>v5 · 召回率 52.6%</title></rect><text class="bar-val bar-val-dim" x="531.9" y="146.0">53</text></g><text class="ax-x" x="440.0" y="366">v5</text><g class="bar-g"><rect class="bar bar-acc" x="596.3" y="61.2" width="84.9" height="278.8" rx="3"><title>v6 最終 · 準確率 78.4%</title></rect><text class="bar-val" x="638.8" y="54.2">78</text></g><g class="bar-g"><rect class="bar bar-prec" x="688.2" y="50.9" width="84.9" height="289.1" rx="3"><title>v6 最終 · 精確率 81.3%</title></rect><text class="bar-val" x="730.7" y="43.9">81</text></g><g class="bar-g"><rect class="bar bar-rec" x="780.1" y="114.6" width="84.9" height="225.4" rx="3"><title>v6 最終 · 召回率 63.4%</title></rect><text class="bar-val" x="822.6" y="107.6">63</text></g><text class="ax-x ax-x-emph" x="730.7" y="366">v6 最終</text></svg>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h2>控制變量對照</h2>
+    <p class="cap">以 v5 為基準，各改一個變量：拿掉 YOLO 清單、或單獨多訓一輪——兩者都比 v5 差，證實 v6 的進步來自過採樣本身。</p>
+    <div class="card">
+      <div class="legend">
+        <span><i style="background:var(--chart-acc)"></i>準確率</span>
+        <span><i style="background:var(--chart-prec)"></i>精確率</span>
+        <span><i style="background:var(--chart-rec)"></i>召回率</span>
+      </div>
+      <svg class="chart chart-bar" viewBox="0 0 880 380" role="img"><line class="gl" x1="4" x2="876" y1="340.0" y2="340.0"/><text class="ax-y" x="0" y="336.0">0%</text><line class="gl" x1="4" x2="876" y1="268.9" y2="268.9"/><text class="ax-y" x="0" y="264.9">20%</text><line class="gl" x1="4" x2="876" y1="197.8" y2="197.8"/><text class="ax-y" x="0" y="193.8">40%</text><line class="gl" x1="4" x2="876" y1="126.7" y2="126.7"/><text class="ax-y" x="0" y="122.7">60%</text><line class="gl" x1="4" x2="876" y1="55.6" y2="55.6"/><text class="ax-y" x="0" y="51.6">80%</text><line class="axis" x1="4" x2="876" y1="340.0" y2="340.0"/><g class="bar-g"><rect class="bar bar-acc" x="15.0" y="70.5" width="84.9" height="269.5" rx="3"><title>v5（基準） · 準確率 75.8%</title></rect><text class="bar-val" x="57.4" y="63.5">76</text></g><g class="bar-g"><rect class="bar bar-prec" x="106.9" y="55.6" width="84.9" height="284.4" rx="3"><title>v5（基準） · 精確率 80.0%</title></rect><text class="bar-val" x="149.3" y="48.6">80</text></g><g class="bar-g"><rect class="bar bar-rec" x="198.8" y="153.0" width="84.9" height="187.0" rx="3"><title>v5（基準） · 召回率 52.6%</title></rect><text class="bar-val" x="241.2" y="146.0">53</text></g><text class="ax-x ax-x-emph" x="149.3" y="366">v5（基準）</text><g class="bar-g"><rect class="bar bar-acc bar-dim" x="305.7" y="132.0" width="84.9" height="208.0" rx="3"><title>v5-noyolo（無YOLO） · 準確率 58.5%</title></rect><text class="bar-val bar-val-dim" x="348.1" y="125.0">58</text></g><g class="bar-g"><rect class="bar bar-prec bar-dim" x="397.6" y="165.8" width="84.9" height="174.2" rx="3"><title>v5-noyolo（無YOLO） · 精確率 49.0%</title></rect><text class="bar-val bar-val-dim" x="440.0" y="158.8">49</text></g><g class="bar-g"><rect class="bar bar-rec bar-dim" x="489.4" y="106.0" width="84.9" height="234.0" rx="3"><title>v5-noyolo（無YOLO） · 召回率 65.8%</title></rect><text class="bar-val bar-val-dim" x="531.9" y="99.0">66</text></g><text class="ax-x" x="440.0" y="366">v5-noyolo（無YOLO）</text><g class="bar-g"><rect class="bar bar-acc bar-dim" x="596.3" y="96.8" width="84.9" height="243.2" rx="3"><title>v5-e3（多訓一輪） · 準確率 68.4%</title></rect><text class="bar-val bar-val-dim" x="638.8" y="89.8">68</text></g><g class="bar-g"><rect class="bar bar-prec bar-dim" x="688.2" y="110.7" width="84.9" height="229.3" rx="3"><title>v5-e3（多訓一輪） · 精確率 64.5%</title></rect><text class="bar-val bar-val-dim" x="730.7" y="103.7">64</text></g><g class="bar-g"><rect class="bar bar-rec bar-dim" x="780.1" y="162.2" width="84.9" height="177.8" rx="3"><title>v5-e3（多訓一輪） · 召回率 50.0%</title></rect><text class="bar-val bar-val-dim" x="822.6" y="155.2">50</text></g><text class="ax-x" x="730.7" y="366">v5-e3（多訓一輪）</text></svg>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h2>訓練損失曲線　v5 vs v6</h2>
+    <p class="cap">橫軸訓練輪數，縱軸 loss（對數尺度）。實線是每 10 步記一次的 loss；虛線＋空心圓標出訓練實際的起訖（epoch 0 到 v5 滿 108 步／2 epoch、v6 滿 234 步／3 epoch）——log 頻率沒抓到頭尾兩端，不代表提前中斷或憑空開始。</p>
+    <div class="card">
+      <div class="legend">
+        <span><i style="background:var(--chart-v5)"></i>v5（2 epoch）</span>
+        <span><i style="background:var(--chart-v6)"></i>v6（3 epoch）</span>
+      </div>
+      <svg class="chart chart-line" viewBox="0 0 880 380" role="img"><line class="gl" x1="34" x2="830" y1="23.8" y2="23.8"/><text class="ax-y" x="26" y="26.8" text-anchor="end">4</text><line class="gl" x1="34" x2="830" y1="78.0" y2="78.0"/><text class="ax-y" x="26" y="81.0" text-anchor="end">2</text><line class="gl" x1="34" x2="830" y1="132.2" y2="132.2"/><text class="ax-y" x="26" y="135.2" text-anchor="end">1</text><line class="gl" x1="34" x2="830" y1="186.3" y2="186.3"/><text class="ax-y" x="26" y="189.3" text-anchor="end">0.5</text><line class="gl" x1="34" x2="830" y1="240.5" y2="240.5"/><text class="ax-y" x="26" y="243.5" text-anchor="end">0.25</text><line class="gl" x1="34" x2="830" y1="312.1" y2="312.1"/><text class="ax-y" x="26" y="315.1" text-anchor="end">0.1</text><line class="gl-v" x1="34.0" x2="34.0" y1="20" y2="340"/><text class="ax-x" x="34.0" y="366">epoch 0</text><line class="gl-v" x1="299.3" x2="299.3" y1="20" y2="340"/><text class="ax-x" x="299.3" y="366">epoch 1</text><line class="gl-v" x1="564.7" x2="564.7" y1="20" y2="340"/><text class="ax-x" x="564.7" y="366">epoch 2</text><line class="gl-v" x1="830.0" x2="830.0" y1="20" y2="340"/><text class="ax-x" x="830.0" y="366">epoch 3</text><path class="line s-v5" d="M 83.8 32.7 L 133.7 100.8 L 183.5 95.8 L 233.3 144.3 L 283.1 125.4 L 329.3 170.2 L 378.9 183.0 L 428.8 164.4 L 478.7 159.1 L 528.6 190.0" fill="none"/><circle class="dot s-v5" cx="83.8" cy="32.7" r="3.6"><title>v5 epoch 0.19 loss 3.571</title></circle><circle class="dot s-v5" cx="133.7" cy="100.8" r="3.6"><title>v5 epoch 0.38 loss 1.493</title></circle><circle class="dot s-v5" cx="183.5" cy="95.8" r="3.6"><title>v5 epoch 0.56 loss 1.592</title></circle><circle class="dot s-v5" cx="233.3" cy="144.3" r="3.6"><title>v5 epoch 0.75 loss 0.856</title></circle><circle class="dot s-v5" cx="283.1" cy="125.4" r="3.6"><title>v5 epoch 0.94 loss 1.090</title></circle><circle class="dot s-v5" cx="329.3" cy="170.2" r="3.6"><title>v5 epoch 1.11 loss 0.615</title></circle><circle class="dot s-v5" cx="378.9" cy="183.0" r="3.6"><title>v5 epoch 1.30 loss 0.522</title></circle><circle class="dot s-v5" cx="428.8" cy="164.4" r="3.6"><title>v5 epoch 1.49 loss 0.662</title></circle><circle class="dot s-v5" cx="478.7" cy="159.1" r="3.6"><title>v5 epoch 1.68 loss 0.709</title></circle><circle class="dot s-v5" cx="528.6" cy="190.0" r="3.6"><title>v5 epoch 1.86 loss 0.477</title></circle><line class="line-ext s-v5" x1="34.0" y1="32.7" x2="83.8" y2="32.7" stroke-dasharray="2 3"/><circle class="dot-end s-v5" cx="34.0" cy="32.7" r="4.2"><title>v5 訓練起點：epoch 0</title></circle><line class="line-ext s-v5" x1="1.9" y1="190.0" x2="564.7" y2="190.0" stroke-dasharray="2 3"/><circle class="dot-end s-v5" cx="564.7" cy="190.0" r="4.2"><title>v5 實際訓練終點：共 108 步 / epoch 2</title></circle><text class="line-end" x="573.7" y="194.0">v5</text><path class="line s-v6" d="M 68.2 28.3 L 102.5 93.6 L 136.7 120.3 L 170.9 105.0 L 205.2 126.3 L 239.4 147.1 L 273.6 169.2 L 306.2 173.7 L 340.5 225.2 L 374.7 204.1 L 408.9 183.0 L 443.1 250.5 L 477.4 228.2 L 511.6 242.8 L 545.8 269.7 L 578.5 256.2 L 612.7 289.2 L 646.9 325.2 L 681.1 307.5 L 715.4 331.0 L 749.6 305.0 L 783.8 299.5 L 818.1 319.3" fill="none"/><circle class="dot s-v6" cx="68.2" cy="28.3" r="3.6"><title>v6 epoch 0.13 loss 3.775</title></circle><circle class="dot s-v6" cx="102.5" cy="93.6" r="3.6"><title>v6 epoch 0.26 loss 1.638</title></circle><circle class="dot s-v6" cx="136.7" cy="120.3" r="3.6"><title>v6 epoch 0.39 loss 1.164</title></circle><circle class="dot s-v6" cx="170.9" cy="105.0" r="3.6"><title>v6 epoch 0.52 loss 1.416</title></circle><circle class="dot s-v6" cx="205.2" cy="126.3" r="3.6"><title>v6 epoch 0.65 loss 1.078</title></circle><circle class="dot s-v6" cx="239.4" cy="147.1" r="3.6"><title>v6 epoch 0.77 loss 0.826</title></circle><circle class="dot s-v6" cx="273.6" cy="169.2" r="3.6"><title>v6 epoch 0.90 loss 0.623</title></circle><circle class="dot s-v6" cx="306.2" cy="173.7" r="3.6"><title>v6 epoch 1.03 loss 0.588</title></circle><circle class="dot s-v6" cx="340.5" cy="225.2" r="3.6"><title>v6 epoch 1.16 loss 0.304</title></circle><circle class="dot s-v6" cx="374.7" cy="204.1" r="3.6"><title>v6 epoch 1.28 loss 0.399</title></circle><circle class="dot s-v6" cx="408.9" cy="183.0" r="3.6"><title>v6 epoch 1.41 loss 0.522</title></circle><circle class="dot s-v6" cx="443.1" cy="250.5" r="3.6"><title>v6 epoch 1.54 loss 0.220</title></circle><circle class="dot s-v6" cx="477.4" cy="228.2" r="3.6"><title>v6 epoch 1.67 loss 0.293</title></circle><circle class="dot s-v6" cx="511.6" cy="242.8" r="3.6"><title>v6 epoch 1.80 loss 0.243</title></circle><circle class="dot s-v6" cx="545.8" cy="269.7" r="3.6"><title>v6 epoch 1.93 loss 0.172</title></circle><circle class="dot s-v6" cx="578.5" cy="256.2" r="3.6"><title>v6 epoch 2.05 loss 0.204</title></circle><circle class="dot s-v6" cx="612.7" cy="289.2" r="3.6"><title>v6 epoch 2.18 loss 0.134</title></circle><circle class="dot s-v6" cx="646.9" cy="325.2" r="3.6"><title>v6 epoch 2.31 loss 0.085</title></circle><circle class="dot s-v6" cx="681.1" cy="307.5" r="3.6"><title>v6 epoch 2.44 loss 0.106</title></circle><circle class="dot s-v6" cx="715.4" cy="331.0" r="3.6"><title>v6 epoch 2.57 loss 0.079</title></circle><circle class="dot s-v6" cx="749.6" cy="305.0" r="3.6"><title>v6 epoch 2.70 loss 0.110</title></circle><circle class="dot s-v6" cx="783.8" cy="299.5" r="3.6"><title>v6 epoch 2.83 loss 0.118</title></circle><circle class="dot s-v6" cx="818.1" cy="319.3" r="3.6"><title>v6 epoch 2.96 loss 0.091</title></circle><line class="line-ext s-v6" x1="34.0" y1="28.3" x2="68.2" y2="28.3" stroke-dasharray="2 3"/><circle class="dot-end s-v6" cx="34.0" cy="28.3" r="4.2"><title>v6 訓練起點：epoch 0</title></circle><line class="line-ext s-v6" x1="3.0" y1="319.3" x2="830.0" y2="319.3" stroke-dasharray="2 3"/><circle class="dot-end s-v6" cx="830.0" cy="319.3" r="4.2"><title>v6 實際訓練終點：共 234 步 / epoch 3</title></circle><text class="line-end" x="839.0" y="323.3">v6</text></svg>
+    </div>
+  </div>
+</div>

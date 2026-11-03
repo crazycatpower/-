@@ -1,0 +1,19 @@
+[aug] 50/426
+[aug] 100/426
+[aug] 150/426
+[aug] 200/426
+[aug] 250/426
+[aug] 300/426
+[aug] 350/426
+[aug] 400/426
+[cs10k] 找不到 C:\Users\q1q2q\Downloads\0603-20260629T233729Z-3-001\0603\external_data\constructionsite 的 parquet，略過（需先 hf auth login 並在網頁同意條款）
+  ...YOLO 已跑 900 張
+  ...YOLO 已跑 1000 張
+[web] 312 筆
+train_total  rows= 1784 圖= 1482 合規=  792 缺失=  992
+val          rows=   57 圖=   57 合規=   33 缺失=   24
+train_real   rows=  620 圖=  426 合規=  232 缺失=  388
+train_aug    rows=  852 圖=  852 合規=  464 缺失=  388
+train_cs10k  rows=    0 圖=    0 合規=    0 缺失=    0
+train_web    rows=  312 圖=  204 合規=   96 缺失=  216
+train_ext    rows=    0 圖=    0 合規=    0 缺失=    0

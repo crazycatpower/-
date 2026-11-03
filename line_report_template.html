@@ -1,0 +1,212 @@
+<title>LINE 實際回覆預覽 — AI 職安稽核</title>
+<style>
+  :root {
+    --page-bg: #e9e4d8;
+    --chat-bg: #ededed;
+    --line-green: #06c755;
+    --line-green-dark: #05a648;
+    --bubble-bot: #ffffff;
+    --bubble-user: #ffffff;
+    --ink: #1c1c1c;
+    --ink-soft: #8a8a8a;
+    --divider: #b8b8b8;
+    --shadow: 0 1px 0 rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-bg: #14120e;
+      --chat-bg: #0b141a;
+      --bubble-bot: #1f2c34;
+      --bubble-user: #1f2c34;
+      --ink: #e9edef;
+      --ink-soft: #8696a0;
+      --divider: #34434c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #14120e; --chat-bg: #0b141a; --bubble-bot: #1f2c34; --bubble-user: #1f2c34;
+    --ink: #e9edef; --ink-soft: #8696a0; --divider: #34434c;
+  }
+  :root[data-theme="light"] {
+    --page-bg: #e9e4d8; --chat-bg: #ededed; --bubble-bot: #ffffff; --bubble-user: #ffffff;
+    --ink: #1c1c1c; --ink-soft: #8a8a8a; --divider: #b8b8b8;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page-bg);
+    font-family: -apple-system, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    color: var(--ink);
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px 64px;
+  }
+
+  .lead {
+    max-width: 420px;
+    margin: 0 auto 20px;
+    text-align: center;
+  }
+  .lead .eyebrow {
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #8a8168;
+    font-weight: 700;
+  }
+  .lead h1 {
+    font-size: 19px;
+    margin: 6px 0 4px;
+  }
+  .lead p {
+    font-size: 13px;
+    color: #8a8168;
+    margin: 0;
+  }
+  @media (prefers-color-scheme: dark) { .lead .eyebrow, .lead p { color: #a99f83; } }
+  :root[data-theme="dark"] .lead .eyebrow, :root[data-theme="dark"] .lead p { color: #a99f83; }
+  :root[data-theme="light"] .lead .eyebrow, :root[data-theme="light"] .lead p { color: #8a8168; }
+
+  .phone {
+    width: 100%;
+    max-width: 420px;
+    background: var(--chat-bg);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -20px rgba(0,0,0,.35), 0 0 0 8px rgba(0,0,0,.06);
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    max-height: 900px;
+  }
+
+  .status-bar {
+    background: var(--line-green);
+    height: 22px;
+  }
+
+  .chat-header {
+    background: var(--line-green);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px 14px;
+    flex-shrink: 0;
+  }
+  .chat-header .back { font-size: 22px; opacity: .95; line-height: 1; }
+  .chat-header .avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #fff; color: var(--line-green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+  }
+  .chat-header .who { flex: 1; min-width: 0; }
+  .chat-header .name { font-size: 15.5px; font-weight: 700; }
+  .chat-header .sub { font-size: 11px; opacity: .85; }
+  .chat-header .icons { display: flex; gap: 14px; font-size: 16px; opacity: .95; }
+
+  .chat-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px 12px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .divider {
+    align-self: center;
+    background: rgba(0,0,0,.06);
+    color: var(--ink-soft);
+    font-size: 11.5px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin: 16px 0 10px;
+  }
+  @media (prefers-color-scheme: dark) { .divider { background: rgba(255,255,255,.08); } }
+  :root[data-theme="dark"] .divider { background: rgba(255,255,255,.08); }
+  :root[data-theme="light"] .divider { background: rgba(0,0,0,.06); }
+
+  .row { display: flex; align-items: flex-end; gap: 6px; max-width: 100%; }
+  .row.user { align-self: flex-end; flex-direction: row-reverse; margin-top: 8px; }
+  .row.bot { align-self: flex-start; margin-top: 2px; }
+
+  .bot-avatar {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--line-green);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+  .bot-avatar.spacer { visibility: hidden; }
+
+  .meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; font-size: 10.5px; color: var(--ink-soft); flex-shrink: 0; white-space: nowrap; }
+  .row.bot .meta { align-items: flex-start; }
+  .meta .read { font-size: 10px; }
+
+  .bubble {
+    border-radius: 16px;
+    padding: 9px 12px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-width: 258px;
+    box-shadow: var(--shadow);
+  }
+  .row.bot .bubble { background: var(--bubble-bot); border-top-left-radius: 4px; }
+  .row.user .bubble { background: var(--line-green); color: #fff; border-top-right-radius: 4px; }
+
+  .bubble.notice { color: var(--ink-soft); font-style: normal; }
+
+  .img-bubble {
+    max-width: 258px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .img-bubble img { display: block; width: 100%; }
+
+  .item-code { font-family: ui-monospace, "SF Mono", Consolas, monospace; }
+
+  footer {
+    max-width: 420px;
+    margin: 22px auto 0;
+    text-align: center;
+    font-size: 11.5px;
+    color: #8a8168;
+  }
+  @media (prefers-color-scheme: dark) { footer { color: #a99f83; } }
+  :root[data-theme="dark"] footer { color: #a99f83; }
+  :root[data-theme="light"] footer { color: #8a8168; }
+</style>
+
+<div class="lead">
+  <div class="eyebrow">實機畫面重現</div>
+  <h1>使用者在 LINE 裡實際看到的樣子</h1>
+  <p>下方逐字重現 <code>build_line_analysis_reply()</code> 產生的純文字回覆，emoji／換行／格式與正式環境完全一致。</p>
+</div>
+
+<div class="phone">
+  <div class="status-bar"></div>
+  <div class="chat-header">
+    <span class="back">‹</span>
+    <div class="avatar">🦺</div>
+    <div class="who">
+      <div class="name">AI 職安稽核</div>
+      <div class="sub">官方帳號</div>
+    </div>
+    <div class="icons">
+      <span>☰</span>
+    </div>
+  </div>
+  <div class="chat-body">
+    __MESSAGES__
+  </div>
+</div>
+
+<footer>模型：gemma4:12b（Ollama 本機執行）・測試圖片來源：Pexels 免費授權</footer>

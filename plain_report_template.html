@@ -1,0 +1,147 @@
+<title>AI 職安稽核系統 — 六大類別測試（原始回覆內容）</title>
+<style>
+  :root {
+    --bg: #f2ede2;
+    --surface: #fffdf8;
+    --surface-2: #faf5e9;
+    --ink: #221d15;
+    --ink-soft: #6b6252;
+    --line: #ddd2b8;
+    --accent: #2c5f6f;
+    --accent-soft: #e2edee;
+    --risk-high: #b3402f;
+    --risk-high-bg: #f9e6e1;
+    --risk-med: #a86a12;
+    --risk-med-bg: #f7ecd6;
+    --risk-low: #4c7a34;
+    --risk-low-bg: #e6efdd;
+    --shadow: 0 1px 2px rgba(34,29,21,.06), 0 8px 24px -12px rgba(34,29,21,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #191510; --surface: #221d16; --surface-2: #2a231a; --ink: #ece5d6; --ink-soft: #b3a891;
+      --line: #3c3323; --accent: #83b7c4; --accent-soft: #23343a;
+      --risk-high: #e17564; --risk-high-bg: #3a231e; --risk-med: #e0ab52; --risk-med-bg: #3a2f18;
+      --risk-low: #93c26e; --risk-low-bg: #23301a;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #191510; --surface: #221d16; --surface-2: #2a231a; --ink: #ece5d6; --ink-soft: #b3a891;
+    --line: #3c3323; --accent: #83b7c4; --accent-soft: #23343a;
+    --risk-high: #e17564; --risk-high-bg: #3a231e; --risk-med: #e0ab52; --risk-med-bg: #3a2f18;
+    --risk-low: #93c26e; --risk-low-bg: #23301a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+  :root[data-theme="light"] {
+    --bg: #f2ede2; --surface: #fffdf8; --surface-2: #faf5e9; --ink: #221d15; --ink-soft: #6b6252;
+    --line: #ddd2b8; --accent: #2c5f6f; --accent-soft: #e2edee;
+    --risk-high: #b3402f; --risk-high-bg: #f9e6e1; --risk-med: #a86a12; --risk-med-bg: #f7ecd6;
+    --risk-low: #4c7a34; --risk-low-bg: #e6efdd;
+    --shadow: 0 1px 2px rgba(34,29,21,.06), 0 8px 24px -12px rgba(34,29,21,.18);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace; font-variant-numeric: tabular-nums; }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  .masthead { border-bottom: 1px solid var(--line); padding: 44px 0 26px; }
+  .masthead .eyebrow {
+    font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  .masthead h1 { font-size: clamp(24px, 3.6vw, 32px); font-weight: 800; margin: 0 0 10px; text-wrap: balance; }
+  .masthead p { color: var(--ink-soft); max-width: 66ch; font-size: 14.5px; margin: 0; }
+
+  .record {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 26px;
+    padding: 34px 0;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 760px) { .record { grid-template-columns: 1fr; } }
+
+  .record-media img { width: 100%; border-radius: 10px; display: block; box-shadow: var(--shadow); }
+  .media-caption { margin-top: 8px; font-size: 12.5px; color: var(--ink-soft); }
+
+  .record-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .num-badge {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-weight: 800; font-size: 20px;
+    width: 38px; height: 38px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .num-badge.risk-high { background: var(--risk-high-bg); color: var(--risk-high); }
+  .num-badge.risk-med { background: var(--risk-med-bg); color: var(--risk-med); }
+  .num-badge.risk-low { background: var(--risk-low-bg); color: var(--risk-low); }
+  .record-title .eyebrow { font-size: 12px; color: var(--ink-soft); margin-bottom: 3px; }
+  .record-title .name { font-size: 16.5px; font-weight: 700; }
+
+  .raw-reply {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+  }
+  .raw-reply .item-code { font-family: ui-monospace, "SF Mono", Consolas, monospace; }
+
+  .source-label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 2px 7px;
+    margin-bottom: 8px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 26px 0 56px;
+    color: var(--ink-soft);
+    font-size: 12.5px;
+  }
+  footer p { max-width: 70ch; margin: 0 0 8px; }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">AI 職安稽核系統 · 測試報告</div>
+    <h1>六大高風險類別・原始回覆內容</h1>
+    <p>
+      每一類的內容為 <code class="mono">build_line_analysis_reply()</code> 產生的完整原始文字，
+      逐字未經改寫，與正式環境使用者在 LINE 收到的內容完全一致；這裡只是拿掉了手機聊天介面的外殼，
+      改成一般文件版面方便逐條閱讀比對。
+    </p>
+  </header>
+
+  <main>
+    __SECTIONS__
+  </main>
+
+  <footer>
+    <p>模型：gemma4:12b（Ollama 本機執行）・偵測：YOLO + SAHI 切片・圖片來源：Pexels 免費授權</p>
+    <p>已知限制：小型本地模型每次分析結果可能略有差異，本報告呈現單次測試結果；「中毒缺氧」類別因免費圖庫難以找到
+    「工地現場＋侷限空間進入」兼具的素材，改用深坑內作業照片近似。</p>
+  </footer>
+</div>

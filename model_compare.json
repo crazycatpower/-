@@ -1,0 +1,1472 @@
+{
+  "gemma4:e2b": {
+    "elapsed": 32.1,
+    "result": {
+      "summary": "現場主要顯示有大量人員在施工區域內活動，部分人員佩戴安全帽、背心及手套等個人防護裝備。現場環境呈現出物料堆放以及可能存在的作業設施（如模板支撐等）。由於圖片內容缺乏明顯的「高處」構造、明確的墜落風險證據或危險物質洩漏跡象，因此在主要的墜落防止類別上判定為符合規定。但仍需對其他類別進行細緻審查。",
+      "categories": {
+        "墜落防止": [
+          {
+            "item": "1.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.05",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.06",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.07",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.08",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "倒塌崩塌防止": [
+          {
+            "item": "2.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.05",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.06",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.07",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.08",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.09",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.10",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.11",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.12",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.13",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "感電防止": [
+          {
+            "item": "3.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.05",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.06",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.07",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.08",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.09",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.10",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "火災爆炸": [
+          {
+            "item": "4.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.05",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.06",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "中毒缺氧": [
+          {
+            "item": "5.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "5.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "5.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "5.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "5.05",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "交通維持": [
+          {
+            "item": "6.01",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.02",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.03",
+            "result": "五日內改善",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "6.04",
+            "result": "五日內改善",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "6.05",
+            "result": "※",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.06",
+            "result": "※",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.07",
+            "result": "※",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.08",
+            "result": "※",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.09",
+            "result": "※",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.10",
+            "result": "※",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.11",
+            "result": "※",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.12",
+            "result": "※",
+            "marker": "※",
+            "deadline": "即日改善"
+          }
+        ],
+        "其他": [
+          {
+            "item": "7.01",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "7.02",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "8.01",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "8.02",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "8.03",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "8.04",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "8.05",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "9.01",
+            "result": "※",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "9.02",
+            "result": "※",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "9.03",
+            "result": "※",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "10.01",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "10.02",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "10.03",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "10.04",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "10.05",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          },
+          {
+            "item": "10.06",
+            "result": "○",
+            "marker": "",
+            "deadline": ""
+          }
+        ]
+      },
+      "next_action": "現場未發現明確缺失，建議持續落實例行工地安全巡檢。",
+      "answer": "現場主要顯示有大量人員在施工區域內活動，部分人員佩戴安全帽、背心及手套等個人防護裝備。現場環境呈現出物料堆放以及可能存在的作業設施（如模板支撐等）。由於圖片內容缺乏明顯的「高處」構造、明確的墜落風險證據或危險物質洩漏跡象，因此在主要的墜落防止類別上判定為符合規定。但仍需對其他類別進行細緻審查。",
+      "regulation_refs": [
+        "無明確對應法規，建議由專業技師依現場實際狀況評估"
+      ]
+    }
+  },
+  "gemma4:e4b": {
+    "elapsed": 98.2,
+    "result": {
+      "summary": "本次稽核地點為一個正在進行多層次（至少超過兩層樓以上）營造結構施工的工地現場，現場工序涉及結構體作業、材料堆置及人員活動。整體觀感是具有一定規模和複雜性的施工場域，但觀察到多處安全設施的缺失，特別是在高空作業周邊的墜落防護、物料管理及個人防護裝備使用方面存在明顯問題。",
+      "categories": {
+        "墜落防止": [
+          {
+            "item": "1.01",
+            "result": "×",
+            "description": "現場於結構體邊緣處作業，高差顯著達 2 公尺以上，但未設置符合規定之護欄、護蓋或安全網進行墜落防護。部分區域明顯可見人員在缺乏足夠物理阻擋措施的邊緣活動。",
+            "location": "現場多個樓層結構體周邊開口處與外牆邊緣",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "1.02",
+            "result": "×",
+            "description": "現場進行高空作業，缺乏使用高空工作車或架設足夠安全作業平台的佐證。且觀察到人員在未具備有效墜落阻擋設施的情況下在高處移動。",
+            "location": "結構體上層樓層作業區域",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "1.03",
+            "result": "×",
+            "description": "現場作業環境複雜，若存在屋頂或臨時工作平台（如瓦片、板材等材料堆置區），缺乏足夠的踏板設置與完善的安全網保護設施以防人員誤踩穿導致墜落。",
+            "location": "高處結構體及臨時物料積放區域周邊",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "1.04",
+            "result": "△",
+            "description": "現場多數工作場所作業的高度明顯超過 1.5 公尺，但無法確認各個高處作業區均已設置符合規定之安全上下設備（如臨時樓梯、登階點等）。",
+            "location": "整體高層結構體部分區域",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "1.05",
+            "result": "×",
+            "description": "由於工期和作業層數的複雜性，無法判斷所有達到高差超過兩層樓或 7.5 公尺以上結構體的邊緣是否均已張設安全網，缺乏系統性的整體保護措施。",
+            "location": "整個建築體周邊外牆",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "1.06",
+            "result": "△",
+            "description": "現場作業範圍內可能涉及起重機或高空吊掛設備的運作，若人員需進入高度 2 公尺以上平台進行物料轉移、機械操作時，觀察不到人員佩戴安全帶並連接至合格的安全母索等墜落防護設施。",
+            "location": "疑似作業區周邊的高處平台或結構體上方空間",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "1.07",
+            "result": "△",
+            "description": "雖然部分人員似乎在高處移動，但缺乏明確證據證明所有進入、拆除或維修高處設備（如垂直梯、臨時構件）的人員均有使用及掛接背負式安全帶與捲揚式防墜器。",
+            "location": "疑似施工架/高點作業路徑上",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "1.08",
+            "result": "△",
+            "description": "雖然現場有周邊圍籬（用於一般區域區隔），但無法確認其護欄結構（如欄杆的高度、中間欄杆的數量與尺寸）是否完全符合規定標準，特別是在人流動線交界處。",
+            "location": "工區外圍臨時圍籬周邊",
+            "marker": "※",
+            "deadline": "即日改善"
+          }
+        ],
+        "倒塌崩塌防止": [
+          {
+            "item": "2.01",
+            "result": "×",
+            "description": "無法從圖片單一視角判斷施工架組的整體連接性與穩定性，但基於多層結構體作業的複雜度，高度懷疑部分假設工程的橫向或立向連剛接點未達預期規範強度。",
+            "location": "工地內部結構支撐系統周邊 (推測)",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "2.02",
+            "result": "×",
+            "description": "現場進場區域與工區內可見較大的開挖痕跡或基坑（雖未明確看到深度的擋土支撐），若深度超過 1.5 公尺，應設置完整的擋土支撐、防護網等措施進行崩塌預防。",
+            "location": "工地底部或周邊疑似開挖區",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "2.03",
+            "result": "無法判斷（圖片中未提供隧道或坑道作業畫面）",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "2.04",
+            "result": "△",
+            "description": "現場營建工區及支撐構件周邊，若有發生雨水沖刷或施工廢水堆積的潛力點，其基礎周邊地盤可能受潮影響，導致支撐基礎承載力減弱。",
+            "location": "地面層與假設工程下方區域",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "2.05",
+            "result": "△",
+            "description": "工地整體工區周邊管理相對混亂，若有涉及邊坡或大規模臨時結構的作業，需更明確化土方開挖及臨時斜坡（如材料堆積處後側）的穩定性評估與防止坍塌措施。",
+            "location": "現場物料場地與工區交界處",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "2.06",
+            "result": "無法判斷（未提供足夠資訊進行判定）",
+            "description": "",
+            "location": "",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "2.07",
+            "result": "無資料可供判斷或證明。",
+            "description": "",
+            "location": "",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "2.08",
+            "result": "無法判斷（未觀察到模板支撐的現場放樣或施工過程）。",
+            "description": "",
+            "location": "",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "2.09",
+            "result": "無法判斷（未觀察到模板支撐의基礎佈設情況）。",
+            "description": "",
+            "location": "",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "2.10",
+            "result": "無法判斷（缺乏整體施工架結構的設計圖說與實際對照場景）。",
+            "description": "",
+            "location": "",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "2.11",
+            "result": "×",
+            "description": "現場作業區域複雜，高度懷疑存在地下管線（電力、電信等）的埋設或潛在路徑。施工計畫中未見具體證據證明已確認管線位置及範圍。",
+            "location": "工地全區地表下空間",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "2.12",
+            "result": "×",
+            "description": "現場地面物料堆放和通道區域混雜，若用於支撐或作業區域的臨時構台基礎，其平整度和夯實緊密性成疑；且未明顯區隔出不得與模板支撐連結等區域。",
+            "location": "工區內地表各處",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "2.13",
+            "result": "無法判斷（缺少對基礎材料的近距離、細節化觀察）。",
+            "description": "",
+            "location": "",
+            "marker": "",
+            "deadline": "五日內改善"
+          }
+        ],
+        "感電防止": [
+          {
+            "item": "3.01",
+            "result": "×",
+            "description": "現場可見多處施工設備（如延長線、臨時接點）的電纜線管路或機具周邊，未設置符合規定之護圍保護，增加意外接觸感電的風險。",
+            "location": "工區內散佈的電力與配線區域",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "3.02",
+            "result": "△",
+            "description": "若現場使用移動式電動機具於潮濕或鋼結構等導電性場所，無法確認其連接電路是否已配置符合規格、高敏感度的漏電斷路器進行保護。",
+            "location": "疑似機械作業及臨時用電區域",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "3.03",
+            "result": "無法判斷（未觀察到電焊或類似需使用交流電焊機具的特定工作情境）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "3.04",
+            "result": "△",
+            "description": "工地內作業涉及電力設備接近，但無法確定作業人員在穿越或靠近架空電線或臨時配電系統時，是否已確保距離、護圍或採取絕緣保護措施。",
+            "location": "電氣設備佈設的周邊區域",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "3.05",
+            "result": "無法判斷（現場未觀察到明顯正在進行活線檢查或修理作業）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "3.06",
+            "result": "△",
+            "description": "工地內有疑似臨時的架空電纜線或管線佈設，但該區域缺乏專人監督指揮、明顯的危險管制區標示及適當警告標誌。",
+            "location": "電力與管線行進路徑周邊",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "3.07",
+            "result": "×",
+            "description": "現場臨時用電設備的接點、延長電纜線的架高及保護措施有待加強。未確認所有關鍵配電箱均已上鎖管理，且缺乏明顯、合適的漏電斷路器和接地體保護紀錄。",
+            "location": "暫設電力區/配電箱周邊",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "3.08",
+            "result": "×",
+            "description": "臨時配電設備的管理、標示及內部斷路器配置的安全性無法從現場整體判斷，風險較高。",
+            "location": "中央或顯眼處的電力箱體周邊",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "3.09",
+            "result": "×",
+            "description": "工區內電線佈設（若有橫跨主通道）未能看出持續性、完善的架高保護，存在裸露或破損電纜的風險。",
+            "location": "人流動線與臨時電源路徑交界處",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "3.10",
+            "result": "×",
+            "description": "現場機具作業（若有使用）外殼絕緣接地、電焊機的使用規範、電纜的裸露處包覆，及工人的 PPE 使用，均無法從整體畫面判斷其是否符合最高標準。",
+            "location": "疑似機械操作區域或臨時電源接點",
+            "marker": "",
+            "deadline": "五日內改善"
+          }
+        ],
+        "火災爆炸": [
+          {
+            "item": "4.01",
+            "result": "△",
+            "description": "現場可見大量建材及油類物料（如電線、液體儲存區周邊），若在進行切割或焊接作業，必須嚴格確認所有易燃物已被清除且無點火源存在。需要加強事前風險排除的程序。",
+            "location": "材料堆置場與結構體交界處",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "4.02",
+            "result": "無法判斷（未觀察到有易燃氣體或蒸汽滯留的工作情境）",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "4.03",
+            "result": "無法判斷（未觀察到有積塵、揮發性化學品工序，難以判定通風需求）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "4.04",
+            "result": "無法判斷（未觀察到結構設備進行拆卸或修理的具體作業情境）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "4.05",
+            "result": "無法判斷（現場主要為結構體施工，無明顯高熱物處理設施）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "4.06",
+            "result": "無法判斷（未觀察到在密閉空間作業的必要性）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          }
+        ],
+        "中毒缺氧": [
+          {
+            "item": "5.01",
+            "result": "無法判斷（現場無明顯可判定為「局限空間」或「缺乏自然通風的地下坑道」的工作情境）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "5.02",
+            "result": "無法判斷（現場無明顯的大型儲槽、密閉空間的作業發生。若後續有，必須要求使用輸氣管面罩）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "5.03",
+            "result": "無法判斷（未觀察到涉及特定化學物質的製造或處置作業）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "5.04",
+            "result": "無法判斷（未觀察到使用特定化學物質之管理設備的相關工序）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "5.05",
+            "result": "無法判斷（未觀察到處置或使用需警報和除卻藥劑機具的化學物質）。",
+            "description": "",
+            "location": "",
+            "marker": "☆",
+            "deadline": "立即停工"
+          }
+        ],
+        "交通維持": [
+          {
+            "item": "6.01",
+            "result": "×",
+            "description": "工地周邊臨近道路的施工作業，其警示設施、交通誘導人員配置以及對外觀形的警告（如限速標誌）明顯不夠完整或未加強，存在引發外部交通事故之虞。",
+            "location": "工地與外部道路的交界處路面",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.02",
+            "result": "無法判斷（圖片中主要聚焦於工區內部，未觀察到車輛是否擅自封閉或佔用公眾交通道）。",
+            "description": "",
+            "location": "",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.03",
+            "result": "無法判斷（需核對文件紀錄，無法從現場直接判定交通維持計畫的報准與執行狀況）。",
+            "description": "",
+            "location": "",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "6.04",
+            "result": "×",
+            "description": "工區內外可見臨時告示牌或警示標誌，但其設置的完整性、是否符合當日作業內容、以及是否有適當的維護（如未破壞處修復）方面有待加強。",
+            "location": "工區周邊的任何指示標語區域",
+            "marker": "",
+            "deadline": "五日內改善"
+          },
+          {
+            "item": "6.05",
+            "result": "×",
+            "description": "施工路段（進入或離開工區的臨時通道）前後，缺少了清晰、標準化且持續不斷的警告設施（如交替錐筒、警示牌組件），使得外部來車容易被誤導或忽略風險。",
+            "location": "進出工地入口處的所有動線路徑",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.06",
+            "result": "△",
+            "description": "周邊臨時通道和工區的障礙設施（如電纜、材料堆積）未得到清晰分界或適當警示燈號配合，視覺上較為混亂與不確定。",
+            "location": "所有人員動線路徑周圍",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.07",
+            "result": "△",
+            "description": "工作場所的內部人行道和主要車輛通道（如物料運轉區）地面可能存在積水、泥濘或不平整處，且周邊未設置足夠的安全警示設施以提醒行人與車輛注意路面狀況。",
+            "location": "工區內主要的行走與搬運區域",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "6.08",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.09",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.10",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.11",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.12",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ]
+      },
+      "next_action": "依現場缺失（1.01，立即停工）安排改善，並落實工地安全巡檢與人員教育訓練。",
+      "answer": "本次稽核地點為一個正在進行多層次（至少超過兩層樓以上）營造結構施工的工地現場，現場工序涉及結構體作業、材料堆置及人員活動。整體觀感是具有一定規模和複雜性的施工場域，但觀察到多處安全設施的缺失，特別是在高空作業周邊的墜落防護、物料管理及個人防護裝備使用方面存在明顯問題。",
+      "regulation_refs": [
+        "無明確對應法規，建議由專業技師依現場實際狀況評估"
+      ]
+    }
+  },
+  "gemma4:12b": {
+    "elapsed": 52.5,
+    "result": {
+      "summary": "本工地為高空施工架工程，現場有四名人員在多層式施工架上進行作業。從影像觀察，施工架結構看似穩固且設有橫向支撐，但針對個人防護具與工作場所安全設施，存在明顯的違規風險。",
+      "categories": {
+        "墜落防止": [
+          {
+            "item": "1.01",
+            "result": "×",
+            "description": "於高處施工（超過2公尺）時，現場人員未配戴或未正確繫掛安全帶。上層兩名及下層一名勞工明顯未佩戴安全帶或僅有肩帶，不符合防墜規範。",
+            "location": "全場範圍",
+            "marker": "☆",
+            "deadline": "立即停工"
+          },
+          {
+            "item": "1.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.05",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.06",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "1.07",
+            "result": "×",
+            "description": "高處作業時，勞工未採用符合規定之安全帶及相關防護裝置。",
+            "location": "上層與下層工作區域",
+            "marker": "※",
+            "deadline": "即日改善"
+          },
+          {
+            "item": "1.08",
+            "result": "×",
+            "description": "施工架外側缺乏完整的安全護欄（如側向擋護或高度充足的ガード）。",
+            "location": "鋼管結構邊緣",
+            "marker": "※",
+            "deadline": "即日改善"
+          }
+        ],
+        "倒塌崩塌防止": [
+          {
+            "item": "2.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.05",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.06",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.07",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.08",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.09",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.10",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.11",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.12",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "2.13",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "感電防止": [
+          {
+            "item": "3.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.05",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.06",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.07",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.08",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.09",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "3.10",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "火災爆炸": [
+          {
+            "item": "4.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.05",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "4.06",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "中毒缺氧": [
+          {
+            "item": "5.01",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "5.02",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "5.03",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "5.04",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "5.05",
+            "result": "○",
+            "marker": "☆",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "交通維持": [
+          {
+            "item": "6.01",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.02",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.03",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.04",
+            "result": "○",
+            "marker": "",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.05",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.06",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.07",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.08",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.09",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.10",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.11",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          },
+          {
+            "item": "6.12",
+            "result": "○",
+            "marker": "※",
+            "deadline": "",
+            "description": "",
+            "location": ""
+          }
+        ],
+        "其他": [
+          {
+            "item": "9.03",
+            "result": "×",
+            "description": "高處作業人員未配戴符合規範的防墜安全帶。",
+            "location": "施工架上所有作業區",
+            "marker": "",
+            "deadline": "五日內改善"
+          }
+        ]
+      },
+      "next_action": "1. 立即要求現場所有勞工穿戴並正確繫掛安全帶，且必須與適當繩索連接；2. 在鋼管與外部邊緣加設合規之護欄以防止墜落或物品掉落。",
+      "answer": "根據《工程施工場所安全衛生規定》第19條（一），工作場所有高處作業時應配戴並繫掛安全帶，且必須符合相關法規規範；另依據該項下述規定，除非有防範措施，否則未備妥的護欄與個人防護設備屬於嚴重違約事項。",
+      "regulation_refs": [
+        "無明確對應法規，建議由專業技師依現場實際狀況評估"
+      ],
+      "by_detection": [
+        {
+          "detection_index": 36,
+          "note": "確認該處勞工明顯未佩戴或未繫掛安全帶，存在墜落風險。"
+        },
+        {
+          "detection_index": 45,
+          "note": "判定為高處作業且無適當護欄。"
+        }
+      ],
+      "warning": "⚠️ 現場人員在高度超過2公尺之施工架上工作，卻未確實配戴及系掛安全帶（防墜裝置），此情狀屬於極高風險項目。"
+    }
+  }
+}

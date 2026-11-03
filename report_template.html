@@ -1,0 +1,371 @@
+<title>AI 職安稽核系統 — 六大類別現場測試</title>
+<style>
+  :root {
+    --bg: #f2ede2;
+    --surface: #fffdf8;
+    --surface-2: #faf5e9;
+    --ink: #221d15;
+    --ink-soft: #6b6252;
+    --line: #ddd2b8;
+    --accent: #2c5f6f;
+    --accent-soft: #e2edee;
+    --risk-high: #b3402f;
+    --risk-high-bg: #f9e6e1;
+    --risk-med: #a86a12;
+    --risk-med-bg: #f7ecd6;
+    --risk-low: #4c7a34;
+    --risk-low-bg: #e6efdd;
+    --shadow: 0 1px 2px rgba(34,29,21,.06), 0 8px 24px -12px rgba(34,29,21,.18);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #191510;
+      --surface: #221d16;
+      --surface-2: #2a231a;
+      --ink: #ece5d6;
+      --ink-soft: #b3a891;
+      --line: #3c3323;
+      --accent: #83b7c4;
+      --accent-soft: #23343a;
+      --risk-high: #e17564;
+      --risk-high-bg: #3a231e;
+      --risk-med: #e0ab52;
+      --risk-med-bg: #3a2f18;
+      --risk-low: #93c26e;
+      --risk-low-bg: #23301a;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #191510; --surface: #221d16; --surface-2: #2a231a; --ink: #ece5d6; --ink-soft: #b3a891;
+    --line: #3c3323; --accent: #83b7c4; --accent-soft: #23343a;
+    --risk-high: #e17564; --risk-high-bg: #3a231e; --risk-med: #e0ab52; --risk-med-bg: #3a2f18;
+    --risk-low: #93c26e; --risk-low-bg: #23301a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+  :root[data-theme="light"] {
+    --bg: #f2ede2; --surface: #fffdf8; --surface-2: #faf5e9; --ink: #221d15; --ink-soft: #6b6252;
+    --line: #ddd2b8; --accent: #2c5f6f; --accent-soft: #e2edee;
+    --risk-high: #b3402f; --risk-high-bg: #f9e6e1; --risk-med: #a86a12; --risk-med-bg: #f7ecd6;
+    --risk-low: #4c7a34; --risk-low-bg: #e6efdd;
+    --shadow: 0 1px 2px rgba(34,29,21,.06), 0 8px 24px -12px rgba(34,29,21,.18);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  a { color: inherit; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0 28px;
+  }
+  .masthead .eyebrow {
+    font-size: 12.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .masthead h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 800;
+    margin: 0 0 12px;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+  }
+  .masthead .desc {
+    color: var(--ink-soft);
+    max-width: 62ch;
+    font-size: 15px;
+    margin: 0 0 20px;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .meta-row span b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Summary dashboard ---------- */
+  .summary-strip {
+    padding: 28px 0 8px;
+  }
+  .summary-strip h2 {
+    font-size: 13px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 700;
+    margin: 0 0 14px;
+  }
+  .totals {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .totals .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    padding: 10px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .totals .stat .n { font-size: 22px; font-weight: 800; }
+  .totals .stat .l { font-size: 12.5px; color: var(--ink-soft); }
+  .totals .stat.high .n { color: var(--risk-high); }
+  .totals .stat.med .n { color: var(--risk-med); }
+  .totals .stat.low .n { color: var(--risk-low); }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  @media (max-width: 720px) { .summary-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .sum-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .sum-card:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+  .sum-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sum-num {
+    grid-row: 1 / 3;
+    align-self: center;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-weight: 800;
+    font-size: 22px;
+    width: 30px;
+    text-align: center;
+  }
+  .sum-name { font-weight: 700; font-size: 14px; align-self: end; }
+  .sum-risk { font-size: 12px; font-weight: 700; }
+  .sum-defects { font-size: 12px; color: var(--ink-soft); grid-column: 2; }
+  .sum-card.risk-high { border-left-color: var(--risk-high); }
+  .sum-card.risk-med { border-left-color: var(--risk-med); }
+  .sum-card.risk-low { border-left-color: var(--risk-low); }
+  .sum-card.risk-high .sum-num, .sum-card.risk-high .sum-risk { color: var(--risk-high); }
+  .sum-card.risk-med .sum-num, .sum-card.risk-med .sum-risk { color: var(--risk-med); }
+  .sum-card.risk-low .sum-num, .sum-card.risk-low .sum-risk { color: var(--risk-low); }
+
+  /* ---------- Detail sections ---------- */
+  .record {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 28px;
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 16px;
+  }
+  @media (max-width: 760px) { .record { grid-template-columns: 1fr; } }
+
+  .record-media img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    box-shadow: var(--shadow);
+  }
+  .media-caption {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .record-head {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .num-badge {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-weight: 800;
+    font-size: 26px;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .num-badge.risk-high { background: var(--risk-high-bg); color: var(--risk-high); }
+  .num-badge.risk-med { background: var(--risk-med-bg); color: var(--risk-med); }
+  .num-badge.risk-low { background: var(--risk-low-bg); color: var(--risk-low); }
+
+  .eyebrow-title {
+    font-size: 12.5px;
+    letter-spacing: .06em;
+    color: var(--ink-soft);
+  }
+  .record-title .eyebrow {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .risk-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .risk-pill {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .risk-pill.risk-high { background: var(--risk-high-bg); color: var(--risk-high); }
+  .risk-pill.risk-med { background: var(--risk-med-bg); color: var(--risk-med); }
+  .risk-pill.risk-low { background: var(--risk-low-bg); color: var(--risk-low); }
+  .det-count, .defect-count {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .summary {
+    font-size: 14.5px;
+    margin: 0 0 18px;
+  }
+
+  .defect-list { list-style: none; margin: 0 0 18px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .defect {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .defect-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .item-code {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-weight: 800;
+    font-size: 13.5px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 1px 7px;
+    border-radius: 5px;
+  }
+  .marker { font-size: 13px; }
+  .deadline {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .rule-quote {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin: 0 0 6px;
+    padding-left: 10px;
+    border-left: 2px solid var(--line);
+  }
+  .observation { font-size: 13.5px; margin: 0 0 4px; }
+  .loc { font-size: 12.5px; color: var(--ink-soft); margin: 0; }
+  .clear {
+    font-size: 13.5px;
+    color: var(--risk-low);
+    background: var(--risk-low-bg);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 0 0 18px;
+  }
+
+  .next-action {
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+  .next-action .label {
+    font-size: 11.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .next-action p { margin: 0; font-size: 13.5px; }
+
+  .refs { font-size: 12px; color: var(--ink-soft); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0 56px;
+    color: var(--ink-soft);
+    font-size: 12.5px;
+  }
+  footer p { max-width: 68ch; margin: 0 0 8px; }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">AI 職安稽核系統 · 測試報告</div>
+    <h1>六大高風險類別・現場照片測試</h1>
+    <p class="desc">
+      依交通部公路總局「交通、安衛、環保稽核表」第 1～6 類（墜落防止、倒塌崩塌防止、感電防止、火災爆炸、
+      中毒缺氧、交通維持），每類挑選一張真實工地照片，逐條核對官方 54 項清單，驗證系統的判斷是否與畫面內容相符。
+    </p>
+    <div class="meta-row">
+      <span>模型：<b class="mono">gemma4:12b</b>（Ollama 本機執行）</span>
+      <span>偵測：<b class="mono">YOLO + SAHI 切片</b></span>
+      <span>圖片來源：<b>Pexels 免費授權</b></span>
+    </div>
+  </header>
+
+  <section class="summary-strip">
+    <h2>總覽</h2>
+    <div class="totals">
+      <div class="stat high"><span class="n mono">__HIGH_N__</span><span class="l">張為高風險</span></div>
+      <div class="stat med"><span class="n mono">__MED_N__</span><span class="l">張為中風險</span></div>
+      <div class="stat low"><span class="n mono">__LOW_N__</span><span class="l">張為低風險</span></div>
+      <div class="stat"><span class="n mono">__TOTAL_DEFECTS__</span><span class="l">項缺失（六張合計）</span></div>
+    </div>
+    <div class="summary-grid">
+      __SUMMARY_CARDS__
+    </div>
+  </section>
+
+  <main>
+    __SECTIONS__
+  </main>
+
+  <footer>
+    <p>測試方法：每張照片皆先經 YOLO（大圖自動切片偵測）取得物件清單，再交由視覺語言模型對照官方 54 條清單逐條判斷，
+    符合規定的項目不展開細節，只有 result 為「缺失」或「待改善」的項目才列出官方條文原文與模型觀察描述。</p>
+    <p>已知限制：小型本地模型（12B、Q4 量化）每次分析結果可能略有差異，本報告呈現的是單次測試結果，非統計意義上的穩定表現；
+    「中毒缺氧」類別因免費圖庫難以找到「工地現場＋侷限空間進入」兼具的素材，改用「深坑內作業」照片近似。</p>
+  </footer>
+</div>

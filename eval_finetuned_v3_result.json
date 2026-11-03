@@ -1,0 +1,415 @@
+{
+  "summary": {
+    "n": 57,
+    "errors": 7,
+    "tp": 17,
+    "tn": 0,
+    "fp": 33,
+    "fn": 0,
+    "accuracy": 0.34,
+    "precision": 0.34,
+    "recall": 1.0,
+    "simplified_suspect_count": 1
+  },
+  "rows": [
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65989d_sn2556309000805-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"照片中工人在施工現場未配戴安全帽。\",\n  \"findings\": [\n    \"工人未配戴合格之安全帽\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68018d_sn265530110212-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": null,
+      "status": "PARSE_ERROR",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地存在多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"護目鏡未配戴\",\n    \"防塵マスク未配戴（部分作業員）\",\n    ]\"\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68961d_sn2695059001152-3.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未採取足夠措施，可能構成人員受傷之風險。\",\n  \"findings\": [\n    \"護欄、扶手及側欄杆設置不符合規範或未完整設置\",\n    \"路面邊緣設有護欄、腳踏及側欄桿，但未以適當高度 설치\",\n    \"(部分)护栏、扶手 及侧栏杆 颜色与周围环境不协调且难以辨认)\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68961d_sn2695069001156-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": null,
+      "status": "PARSE_ERROR",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場存在多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"道路未設置防滑設施\",\n    \"車輛行駛道路未設置警示標誌及號誌裝置\",\n    ]\"\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67458d_sn26240278751-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地安全衛生管理制度未詳述或不完整；作業計畫書及安全措施表未備妥。\",\n  \"findings\": [\n    \"勞工教育與訓練未依規定辦理\",\n    \"作業計畫書 及安全措施表 未備妥\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68646d_sn2683179001364-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"在施工現場發現一名作業人員未配戴安全帽。\",\n  \"findings\": [\n    \"項目：作業人員未配置安全帽\",\n    \"說明：該作業人員未佩戴合格之安全帽\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67703d_sn26352060291-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未配置足夠的安全標誌及警示設施以保障作業人員安全。\",\n  \"findings\": [\n    \"安全標誌及警告設施不足以保障作業人身安全\",\n    \"交通指揮員或警示員未配置足以確保交通安全之設施、裝備及人員\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67808d_sn264012110182-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未設置輪胎墊以防止車輛移動。\",\n  \"findings\": [\n    \"輪胎墊：未設置於車輪下以防機車移位\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67710d_sn263540112247-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地未發現明顯缺失，但仍需關注。\",\n  \"findings\": [\n    \"車輛停放未適當之處、妨礙交通或施工之安全區域\",\n    \"警示標誌及護欄等設施未設置或設置不周妥\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68228d_sn2666229000728-2.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場發現液化石油氣罐未妥善存放之缺失。\",\n  \"findings\": [\n    \"液化石油 khí罐未妥 sanitation 存放\",\n    \"易燃氣體儲存容器暴露於室外或陽光直射下\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn69763d_sn2728199000658-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未設置足夠的安全設施以防止未經許可的人員進入。\",\n  \"findings\": [\n    \"安全設施未設置足以阻止未經許可人員進入施工區域\",\n    \"警示標誌及護欄等安全設施未配置足夠數量或位置以確保施工區域安全\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65974d_sn2555949001368-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未採取足夠措施確保車輛慢行或停止。\",\n  \"findings\": [\n    \"車輛慢행或停止設施不足以確保作業人員及用路人安全\",\n    \"標誌不明確指示機動車應如何行動（例如：彎道左轉、靠右側邊等）\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn66708d_sn25882971212-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未採取足夠措施以防止碎石及其他散落物飛向道路或行人。\",\n  \"findings\": [\n    \"碎石及 سایر 散落物皆未妥善收集並清理\",\n    \"作業人員未採取必要之防護措施以避免碎石等雜物飛向車輛、行人或其他結構物\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68202d_sn26640877098-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"照片中施工現場未發現明顯缺失，但仍需關注。\",\n  \"findings\": [\n    \"作業人員未配戴安全帽\",\n    \" 作業人員未穿著反光背心\" \n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65243d_sn2516529001156-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未配置足夠且穩固的安全護欄、扶手及安全網。\",\n  \"findings\": [\n    \"項目：安全護欄、手扶桿及安全網未配置足額且穩固之設施。\",\n    \"詳細描述：在高差較大的區域內（如樓板邊緣），均未配置足稱之安全護欄或扶手並配設安全網。\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68018d_sn265559110216-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": null,
+      "status": "PARSE_ERROR",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地存在多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"起重作業未配備吊索防墜裝置、吊輪反向裝置及其他輔助裝置\",\n    \"工人操作起重機或吊索時未佩戴安全帽\",\n    ]\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65974d_sn2555969001366-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場發現多個液態氣體容器未經妥善防護置放。\",\n  \"findings\": [\n    \"液態氣體的容器未經適當防護置於平坦、堅固之地面上\",\n    \"各液態氣体的容器均已旋開並連接至安全裝置\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67439d_sn2622949001558-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地發現未加裝鋼筋保護套的狀況。\",\n  \"findings\": [\n    \"鋼筋保護衣未加裝或未正確穿戴\",\n    \"護目鏡、防塵マスク等個人防護器具未配戴\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67728d_sn263578112248-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地辦公室環境未顯現完善之安全衛生管理措施。\",\n  \"findings\": [\n    \"辦公室內照明不足\",\n    \"防塵設施不完善或未使用\",\n    \"(疑似)電器設備線材外露、移位\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67713d_sn263546112245-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"於隧道內工區內發現多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"工程區內未設置足夠的路障、警示標誌以供機車、汽車行車時通行之用\",\n    \"在工程區內及道路上均置放大量交通錐類物資，構成危險\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65327d_sn2520249001155-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地未發現明顯缺失，但仍需關注。\",\n  \"findings\": [\n    \"作業人員未配戴安全帽\",\n    \" 作業人員未穿著反光背心或安全背心\" \n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67612d_sn2632249000808-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"在車廂內發現未配戴安全帽之作業人員。\",\n  \"findings\": [\n    \"在車廂内發現未配帶安全帽之 作業人員：\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn69737d_sn2727114368-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地安全衛生狀況不符規定，發現多項缺失。\",\n  \"findings\": [\n    \"工人未配戴安全帽\",\n    \"作業人員手部接觸不明物質並未立即洗淨\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68200d_sn26640077099-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未發現明顯缺失，但仍需關注。\",\n  \"findings\": [\n    \"作業人員未配戴安全帽\",\n    \"吊具及懸掛裝置未經檢驗合格\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn69501d_sn2717759000652-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地內置放大量飲用水及其他食品。\",\n  \"findings\": [\n    \"工地內放置大量飲用水\",\n    \"工地內放置大量其他食品\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68919d_sn269401110066-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未採取足夠措施以確保作業人員及用工人的安全。\",\n  \"findings\": [\n    \"交通指揮人未配置足夠數量並適切部署之警示標誌、號誌及護欄\",\n    \"車輛行駛道路未設置防撞桿或護欄\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68637d_sn2682979001369-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"在施工現場發現部分作業人員未配戴或調整妥當個人保護裝備。\",\n  \"findings\": [\n    \"作業人員未配置或調整妥然個人保護裝备\",\n    \" 作業人員未佩戴安全帽、反光背心等個人保護裝具\" \n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65982d_sn2556129001366-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"在施工現場發現一人未配戴安全帽。\",\n  \"findings\": [\n    \"作業人員未配戴合格之安全帽\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67374d_sn2620964137-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": null,
+      "status": "PARSE_ERROR",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地存在多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"護欄、扶手及護坡未設置於結構上適當高度之位置\",\n    \"作業區域內未設置足夠且適宜使用的照明設備\",\n    \"(2) 作業區域內散落雜物未清理乾淨\",\n    “(3) 鋼筋等異物堆積未妥善置放”\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67125d_sn2603609001002-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工區環境未清理妥當，存在堆置雜物等違規行為。\",\n  \"findings\": [\n    \"工區環境末清理妥當\",\n    \"堆置雜物件\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67625d_sn2632579000804-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地安全衛生狀況不符規定，發現多項缺失。\",\n  \"findings\": [\n    \"作業人員未配戴安全帽\",\n    \" 作業人員未穿著反光背心\" \n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68853d_sn26919871213-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工車輛及標誌未經妥善固定或設置於適當位置。\",\n  \"findings\": [\n    \"施工車輛未經妥實固定\",\n    \"施工作輛並標誌未置於適當之位置\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67152d_sn26057371211-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地未採取足夠措施確保作業人員在起重作業中保持安全。\",\n  \"findings\": [\n    \"工程機械作業人員未配戴安全帽\",\n    \"勞工於高處作業時未配戴防墜安全帶及安全繩裝置\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67736d_sn26359560293-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"照片中施工現場未發現明顯缺失，但仍存在部分不符規定之情節。\",\n  \"findings\": [\n    \"作業人員未配戴安全帽\",\n    \" 作業人員未穿著反光背心或安全背心\" \n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67142d_sn2604449000653-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地未設置足夠的安全警示設施。\",\n  \"findings\": [\n    \"安全警示設施不足：地面及道路上未設置明確之警告標誌、護欄等設施以提醒作業人注意安全。\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68202d_sn26640477098-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未採取足夠措施確保作業人員在施工區域內的人身安全。\",\n  \"findings\": [\n    \"施工區域內未設置足夠的路面警示設施（如：交通錐、交通標誌）以提醒機車、汽車及行人注意施工動向\",\n    \"道路兩側設置路肩護欄並加強防護網之措施不周全或已破壞\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67455d_sn2623959000138-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地環境未採取適當措施，可能構成墜落、滑倒等意外事故之風險。\",\n  \"findings\": [\n    \"工地環境未採取adequate措施，可能構建墜落、Slip或滑倒等accident事故之風險。\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65764d_sn25432459787-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": null,
+      "status": "PARSE_ERROR",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地存在多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"液化氣體儲存容器未置於防爆容器內\",\n    \"易燃易爆物品（如液化氣）暴露於室外環境中\",\n    ]\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67730d_sn263580112244-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地職安未符合規定，發現多項缺失。\",\n  \"findings\": [\n    \"作業人員未配戴安全帽\",\n    \" 作業人員未穿著反光背心\" \n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn66058d_sn255797729-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場地面防滑設施未設置。\",\n  \"findings\": [\n    \"項目：防滑墊、防滑地毯等 antider slip 材料未設置\",\n    \"問題：工人在高處作業時，因地面濕滑或油污而發生滑倒之風險\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65246d_sn25166177091-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工人在高處作業時未配戴安全帽。\",\n  \"findings\": [\n    \"工人：未配戴 안전帽\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67551d_sn2627449000722-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": null,
+      "status": "PARSE_ERROR",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地存在多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"高處作業未設置足夠的安全護欄、扶手及安全網\",\n    \" 作業人員在高處作業時未配戴安全帶並連接安全繩於固定物上\",\n    \n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67918d_sn26474678127-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場標示並未詳列工程名稱、地點及負責單位等重要資訊。\",\n  \"findings\": [\n    \"工程名稱、地點及負責單位：未詳列於標示牌上\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn66830d_sn25928059951-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"照片中工地環境並未顯然顯示職業安全衛生規定不符格之情形。\",\n  \"findings\": [\n    \"工程區域未設置明確之安全警示標誌及燈光設施\",\n    \"車輛行駛於施工區域可能構成危險之情形\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65342d_sn2520529000657-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"照片中施工現場未發現明顯缺失，但仍存在潛在風險。\",\n  \"findings\": [\n    \"作業人員未配戴安全帽\",\n    \" 作業人員未穿著反光背心（部分人員）\" \n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67459d_sn26240378756-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未配置足夠的路面警示設施。\",\n  \"findings\": [\n    \"路面警示設備不足：缺乏足夠的路肩及中央線警示標誌、護欄等設施以供機動車輛通行之使用。\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67918d_sn26474578126-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未設置足夠或適切的路面警示標誌及護欄。\",\n  \"findings\": [\n    \"路面警示誌不足或不適切\",\n    \"道路施工處設有交通指揮人及交通指揮人裝備不足、不當\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68656d_sn2683379001363-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"在施工現場發現了一名作業人員未配戴安全帽。\",\n  \"findings\": [\n    \"作業人員未配置安全帽\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68018d_sn265540110218-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場存在多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"地面濕滑、泥濘，易滑倒\",\n    \"散落物多，易絆倒\",\n\t\"電線及其他資材雜亂堆放，妨礙通行且易觸電\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67552d_sn2627569000728-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地環境未採取適當措施，未有效控制散落物及廢棄物。\",\n  \"findings\": [\n    \"散落物與廢棄物過多\",\n    \"地面、平台及坡道上有大量散落物或廢棄物\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68366d_sn26714959789-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地內置物未妥善收納，可能造成人員受傷之風險。\",\n  \"findings\": [\n    \"工地內置物並未妥善 收納\",\n    \"可疑物品：散落之物（如：安全帽、工作服等）\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn67199d_sn2611399001158-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地未設置足夠的安全標誌及警示設施。\",\n  \"findings\": [\n    \"交通標誌及警告標誌未設置足稱\",\n    \"警示標誌及反光條等安全設施不足以提醒機動車輛注意施工區域\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68796d_sn2689449000653-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場存在多項職業安全缺失。\",\n  \"findings\": [\n    \"作業區域未設置足夠的安全護欄、扶手及安全網\",\n    \"挖掘坑洞或斜坡邊緣未設置圍欄及安全網以防止人員墜落\",\n    \"'禁止從高處作業'等標誌未顯眼地設置並張貼於易見之處（日語標示）\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn69016d_sn26990278793-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\"compliant\": false, \"summary\": \"工地發現一罐氣體。\", \"findings\": [\"氣體容器未妥善置放\"]}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn65842d_sn25467860602-1.jpg",
+      "gt_compliant": true,
+      "pred_compliant": false,
+      "status": "FP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場未配置足夠的安全標誌及警示設施以保障作業人員及用路人安全。\",\n  \"findings\": [\n    \"交通指揮員：未配置足額之交通指揮員或指示牌\",\n    \"警告標誌及警戒帶：未配置適當數量之警告標誌與警戒帶以供機動車輛通行之指示\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68869d_sn2692239001557-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": false,
+      "status": "TP",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"工地未採取措施確保施工人員進入施工區域時的安全。\",\n  \"findings\": [\n    \"未採取措施確保施工人員進入施工作區時的安全。\"\n  ]\n}\n```"
+    },
+    {
+      "image": "C:\\Users\\q1q2q\\Downloads\\0603-20260629T233729Z-3-001\\0603\\uploads\\UploadImg\\a_sn68285d_sn266757113153-1.jpg",
+      "gt_compliant": false,
+      "pred_compliant": null,
+      "status": "PARSE_ERROR",
+      "raw_output": "```json\n{\n  \"compliant\": false,\n  \"summary\": \"施工現場存在多項職業安全衛生缺失。\",\n  \"findings\": [\n    \"護欄未設置在結構高度以上1.5公尺以上之位置\",\n    \"防護網未正確安裝於護欄之上端及側邊\",\n    ]\"\n}\n```"
+    }
+  ]
+}

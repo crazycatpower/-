@@ -1,7 +1,28 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(ping -n 3 8.8.8.8)",
+      "Bash(ping -n 3 google.com)",
+      "Bash(curl -s -o /dev/null -w \"HTTP_CODE:%{http_code} TIME:%{time_total}s\\\\n\" https://www.google.com --max-time 8)",
+      "Bash(cd \"c:/Users/q1q2q/Downloads/0603-20260629T233729Z-3-001/0603\" && cp -r finetune_data finetune_data_v4_backup && ls finetune_data_v4_backup)",
+      "Bash(grep -v -E \"warn|Warn|FutureWarning|^\\\\s*$\")",
+      "Bash(curl -sS -o /dev/null -w \"connect=%{time_connect}s ttfb=%{time_starttransfer}s http=%{http_code}\\\\n\" https://api.anthropic.com/v1/models -H \"anthropic-version: 2023-06-01\" --max-time 20)",
+      "Bash(ping -n 20 api.anthropic.com)",
+      "Bash(xargs du -ch)",
+      "Bash(reg query *)",
+      "Bash(powershell -NoProfile -Command 'Get-ChildItem Cert:\\\\LocalMachine\\\\Root | Where-Object { $_.Issuer -eq $_.Subject } | Where-Object { $_.Subject -notmatch '\\\\''Microsoft|DigiCert|Baltimore|VeriSign|GlobalSign|Sectigo|USERTrust|Go Daddy|Entrust|COMODO|AddTrust|Certum|Starfield|DST|ISRG|Amazon|Google Trust|GTS|thawte|GeoTrust|QuoVadis|IdenTrust|SecureTrust|Hongkong|Chunghwa|TWCA|Actalis|Buypass|D-TRUST|SwissSign|T-TeleSec|Network Solutions|Trustwave'\\\\'' } | Select-Object Subject | Format-Table -AutoSize | Out-String')",
+      "Bash(find 'C:\\\\Users\\\\q1q2q/.cache/huggingface' -maxdepth 2 -iname *token*)",
+      "Bash(grep -rEo \"hf_[A-Za-z0-9]{20,}\" --include=\"*.py\" --include=\"*.env*\" --include=\"*.txt\" --include=\"*.md\" --include=\"*.json\" .)",
+      "Bash(nohup python -u finetune_gemma3n.py)",
+      "Bash(echo \"training restarted pid $!\")",
+      "Bash(grep -aE \"trainable|resume|warm|Error|Traceback|loss|epoch|it/s\\\\]$|%\\\\|\")",
+      "Bash(nvidia-smi --query-gpu=memory.used,memory.total --format=csv)",
+      "Bash(cp train_v5.log train_v5_oom_attempt1.log)",
+      "Bash(echo \"restarted pid $!\")",
+      "Bash(python -m py_compile finetune_gemma3n.py)",
+      "Bash(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader)",
+      "Bash(nvidia-smi --query-gpu=memory.used --format=csv,noheader)"
     ]
   }
 }
