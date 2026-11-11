@@ -1,0 +1,1155 @@
+{
+ "summary": {
+  "adapter": "gemma4-e2b-audit-lora-v6/final",
+  "set": "ext113",
+  "item_hint": false,
+  "merged": false,
+  "n": 113,
+  "errors": 2,
+  "tp": 40,
+  "tn": 28,
+  "fp": 40,
+  "fn": 3,
+  "accuracy": 0.6126,
+  "accuracy_strict": 0.6018,
+  "accuracy_strict_ci95": [
+   0.51,
+   0.687
+  ],
+  "precision": 0.5,
+  "recall": 0.9302,
+  "f1": 0.6504
+ },
+ "rows": [
+  {
+   "image": "ntpc_fall_p003_082.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0534,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "ntpc_fall_p005_102.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.3208,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "ntpc_fall_p006_122.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.5312,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"高空作業區域\",\"result\":\"未設置足夠的 안전망 或 안전대\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p006_124.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9149,
+   "item": "於石綿板、鐵皮板、瓦、木板、茅草、塑膠等易踏穿材料構築之屋頂從事作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"屋頂結構\",\"result\":\"屋頂結構未設置防墜網，作業人員作業區域懸空，存在墜落風險。\"}, {\"item\":\"作業區域\",\"result\":\"作業區域懸空，作業人員作業區域懸空，存在墜落風險。\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p007_140.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.4073,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "ntpc_fall_p007_141.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.7982,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"圍欄\",\"result\":\"圍欄未設置，或圍欄未設置高度不足以防止人員誤入施工範圍。\"}, {\"item\":\"警示標誌\",\"result\":\"未設置足夠的警示標誌，以提醒人員注意施工區域。\"}, {\"item\":\"作業區域\",\"result\":\"作業區域未設置明確的界線。\"}, {\"item\":\"地面\",\"result\":\"地面濕滑，可能增加人員滑倒的風險。\"}, {\"item\":\"照明\",\"result\":\"現場照明不足，可能增加人員發生意外的風險。\"}, {\"item\":\"其他\",\"result\":\"現場散落有建築物或施工材料，可能增加人員受傷的風險。\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p008_145.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9954,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"木板、木條、木塊等木材\",\"result\":\"散落於地面、堆積於高處，易發生绊倒、碰撞等事故。\"}, {\"item\":\"水泥、砂石、沙子等建材\",\"result\":\"堆積於地面、堆積於高處，易发生绊倒、碰撞等事故。\"}, {\"item\":\"其他廢棄物\",\"result\":\"堆積於地面，易发生绊倒、碰撞等事故。\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p008_146.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.7549,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業區域地面\",\"result\":\"未採取措施防止人員跌落\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p009_150.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9954,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓梯踏板\",\"result\":\"踏板表面有碎屑、裂縫或凹陷，且有鬆動現象\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p009_151.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.7982,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓梯扶手\",\"result\":\"扶手未牢固連接樓梯踏板，或扶手高度不符合規定\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p010_157.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9914,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓梯踏板\",\"result\":\"踏板表面有污漬、碎屑及雜物，且有裂縫或破損，易滑倒、跌落\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p011_164.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.8355,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋模板組件\",\"result\":\"模板組件未適時拆卸，可能影響結構穩定性\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p011_165.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.977,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋\",\"result\":\"散落或堆積在地面上\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p012_181.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.982,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者，\", \"result\": \"未採取彎 曲尖端或加裝護套等防護措施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋\",\"result\":\"部分鋼筋未綁紮牢固，可能發生滑落之虞\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p013_188.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.7549,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者\", \"result\": \"未加裝護套等防護設施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋未綁紮牢固\",\"result\":\"鋼筋綁紮鬆動，無法承受自身重量及外力\"},{\"item\":\"鋼筋未紮入混凝土規定深度\",\"result\":\"鋼筋未紮入混凝土規定深度，可能影響混凝土強度\"},{\"item\":\"鋼筋間距過大\",\"result\":\"鋼筋間距過大，可能影響混凝土強度\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p013_189.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.4073,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "ntpc_fall_p014_204.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.4073,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "ntpc_fall_p015_222.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9149,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者\", \"result\": \"未加裝護套等防護設施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋\",\"result\":\"散落於地面上\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p016_229.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.7058,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"工區內\",\"result\":\"未設置或未維持良好状態的圍栏、警示標誌及照明設備，構成跌落、誤入工區等危険事象\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p016_230.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.5927,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"腳踏板\",\"result\":\"腳踏板與立柱之間未設扶手，作業人員容易跌落。\"}, {\"item\":\"腳踏板\",\"result\":\"腳踏板與立柱之間未設扶手，作業人員容易跌落。\"}, {\"item\":\"腳踏板\",\"result\":\"腳踏板與立柱之間未設扶手，作業人員容易跌落。\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p019_254.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9707,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"自行輸入\", \"result\": \"施工架與構造物間隙大於20公分的開口區域，未設置補助板料或安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓梯踏板\",\"result\":\"踏板有破損或鬆動\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p019_255.jpg",
+   "gt_violation": false,
+   "pred_violation": null,
+   "status": "PARSE_ERROR",
+   "p_violation": 0.8355,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業平台\",\"result\":\"作業平台側板與立柱間未設安全網或扶手，作業人員容易墜落。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台頂部未設安全網，作業人員容易墜落。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台高度超過2.05公尺以上，未設安全網或扶手。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台扶手未連接立柱，無法提供穩定支撐。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台支撐結構未符合規定，可能導致作業平台傾覆。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台頂部未設安全網，作業人員容易墜落。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台側板未連接立柱，無法提供穩定支撐。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台高度超過2.05公尺以上，未設安全網或扶手。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台扶手未連接立柱，無法提供穩定支撐。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台支撐結構未符合規定，可能導致作業平台傾覆。\"}, {\"item\":\"作業平台\",\"result\":\"作業平台頂部未設"
+  },
+  {
+   "image": "ntpc_fall_p022_281.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0421,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "ntpc_fall_p022_282.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9992,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"高架作業\", \"result\": \"未配帶安全帶(需使用輔助繩移動之安全帶應具備補助掛鉤)\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"缺失\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p027_322.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9047,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"高架作業\", \"result\": \"未配帶安全帶(需使用輔助繩移動之安全帶應具備補助掛鉤)\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"個人保護裝備（PPE）\",\"result\":\"未佩戴安全帽（照片中有人佩戴安全帽，但另一個人未佩戴安全帽）\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p028_330.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9903,
+   "item": "施工場所對於置放於高處之物件有飛落之虞者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"施工場所對於置放於高處之物件有飛落之虞者\", \"result\": \"未予以固定之\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未穿戴安全帽\",\"result\":\"作業人員未穿戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p028_333.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.1192,
+   "item": "施工場所對於置放於高處之物件有飛落之虞者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "ntpc_fall_p030_342.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9627,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓板開口及樓板下部\",\"result\":\"未設置護欄、扶手及安全網，作業人員可能從高處墜落\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p030_343.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.989,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴反光背心\",\"result\":\"未配戴反光背心\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p031_347.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9797,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業面\",\"result\":\"作業面未設置安全護欄、安全網及安全扶手\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p031_348.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9841,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"安全標誌\",\"result\":\"標誌模糊不清，難以辨識內容\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p032_352.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9968,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業區域地面\",\"result\":\"地面雜物過多，易滑倒\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p032_353.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9707,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"開口處護欄及護梯\",\"result\":\"缺失描述：開口處護欄未設置或護梯未設置\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p033_357.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9983,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"地面\",\"result\":\"地面雜物多，易滑倒\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p033_358.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.148,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "ntpc_fall_p034_362.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.977,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"自行輸入\", \"result\": \"掉落於安全網上之垃圾雜物未清除，將造成人員墜落時受傷\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"高空作業區域\",\"result\":\"未設置安全網或護欄，作業人員可能發生墜落事故\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p036_376.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9959,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未配掛安全帶之防墜設施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p042_417.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9968,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"高架作業\", \"result\": \"未配帶安全帶(需使用輔助繩移動之安全帶應具備補助掛鉤)\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p043_422.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9325,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差超過1.5公尺以上之場所作業\", \"result\": \"未設置符合規定之安全上下設備\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業區域地面\",\"result\":\"地面未平整，有碎石及雜物堆積，易滑倒、跌傷\"}]}\n```"
+  },
+  {
+   "image": "ntpc_fall_p043_423.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9047,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業區域高度超過1.5公尺以上之平台或結構物邊緣\",\"result\":\"未設置符合規定之護欄、護梯及安全網，存在墜落風險\"}]}\n```"
+  },
+  {
+   "image": "kcg_trench_p011_018.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9954,
+   "item": "露天開挖場所開挖深度在1.5公尺以上，或有地面崩塌、土石飛落之虞時，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"挖掘、開挖及土方作業\",\"result\":\"挖掘、開挖及土方作業未設置足夠的護欄、圍網及警示標誌，以防止人員或物體墜入坑洞。\"}, {\"item\":\"挖掘、開挖及土方作業\",\"result\":\"挖掘、開挖及土方作業未設置足夠的支撐結構，以防止坑洞塌陷。\"}, {\"item\":\"起重作業\",\"result\":\"起重作業未設置安全帶，以防止吊物墜落。\"}, {\"item\":\"高空作業\",\"result\":\"高空作業未設置足夠的護欄、圍網及安全網，以防止作業人員墜落。\"}, {\"item\":\"機械作業\",\"result\":\"挖掘機作業未設置安全網，以防止作業人員或物體飛濺至作業人員\"}, {\"item\":\"作業環境\",\"result\":\"作業地面濕滑，作業人員容易滑倒。\"}, {\"item\":\"個人保護裝備\",\"result\":\"作業人員未配戴安全帽、安全鞋、護目鏡等個人保護裝備。\"}]}\n```"
+  },
+  {
+   "image": "kcg_trench_p011_019.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0851,
+   "item": "交通警告或阻隔設施",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_trench_p012_021.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.8933,
+   "item": "施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"施工區域劃分\",\"result\":\"未明確劃分施工區域，未設置安全警示設施（如：警示牌、護欄、圍網）以區隔施工區域與非施工區域。\"}, {\"item\":\"交通管制\",\"result\":\"未設置有效的交通管制措施，以保障施工區域周邊人員及機車騎士的安全。\"}, {\"item\":\"施工人員elfare\",\"result\":\"施工人員作業場所未設置足夠的休息場所。\"}, {\"item\":\"作業環境\",\"result\":\"現場地面濕滑，可能增加人員滑倒的風險。\"}, {\"item\":\"高空作業\",\"result\":\"未見高空作業人員配戴安全帽、安全帶及安全網等個人保護裝備。\"}, {\"item\":\"機械設備\",\"result\":\"起重機作業時，未見作業人員佩戴安全帽、安全帶及安全帽護鏡等個人保護裝備。\"}, {\"item\":\"個人保護裝備\",\"result\":\"部分施工人員未配戴或未正確使用個人保護裝備（如：安全帽、安全鞋等）。\"}]}\n```"
+  },
+  {
+   "image": "kcg_trench_p012_022.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.1192,
+   "item": "工作場所出入口",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_trench_p013_024.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0293,
+   "item": "施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_trench_p013_023.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0601,
+   "item": "施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_trench_p014_025.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.4073,
+   "item": "車輛機械",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_trench_p014_026.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0851,
+   "item": "交通警告或阻隔設施",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_trench_p016_029.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.8808,
+   "item": "於搬運機械作業或開挖作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業範圍內人員未穿戴反光背心\",\"result\":\"未穿戴反光背心\"}]}\n```"
+  },
+  {
+   "image": "kcg_trench_p017_031.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9983,
+   "item": "構造物及邊坡開挖",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"護欄、扶手及安全網\",\"result\":\"護欄、扶手及安全網未設置或設置不符合規定\"}]}\n```"
+  },
+  {
+   "image": "kcg_trench_p019_036.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.6514,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "{\"compliant\": false, \"findings\": [{\"item\":\"施工現場設置安全上下設備、護欄、扶手及梯子等支援設備\",\"result\":\"未設置安全上下設備、護欄、扶手及梯子等支援設備\"}]}"
+  },
+  {
+   "image": "kcg_trench_p019_037.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9707,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"護欄\",\"result\":\"護欄固定鬆動，有脫落或鬆動之情形\"}]}\n```"
+  },
+  {
+   "image": "kcg_trench_p020_038.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0076,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p004_6819.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.5,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p005_6822.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9627,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"腳部保護具\",\"result\":\"未穿戴足部保護具\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p008_6853.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9325,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓板或平台邊緣及開口處\",\"result\":\"未設置扶手、護欄及安全網\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p009_6854.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.982,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未穿著安全鞋\",\"result\":\"作業人員未穿著安全鞋\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p011_6859.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.6792,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p012_6862.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9241,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業區域周圍\",\"result\":\"未設置足夠的圍欄、警示標誌及警告燈，以防止未經授權人員進入作業區域。\"}, {\"item\":\"高空作業\",\"result\":\"作業人員未佩戴安全帽。\"}, {\"item\":\"高空作業護欄\",\"result\":\"高空作業護欄未設置足夠的護欄、扶手及安全網。\"}, {\"item\":\"地面狀況\",\"result\":\"地面濕滑，作業人員行走風險高。\"}, {\"item\":\"機械作業\",\"result\":\"挖掘機作業人員未佩戴安全帽。\"}, {\"item\":\"物料堆放\",\"result\":\"物料堆放未保持整齊，可能造成倒塌或滑落的風險。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p014_6871.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9526,
+   "item": "護欄高度未符合安全規定(具有高度90公分以上之上欄杆、高度在35公分以上，55公分以下之中間欄杆、腳趾板)",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p015_6874.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.867,
+   "item": "於2公尺以上",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於2公尺以上\", \"result\": \"局限空間、屋頂或施工架組拆、工作台組拆、管線維修作業等高處或傾斜面移動，未採用背負式安全帶及捲揚式防墜器\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員配戴安全帽\",\"result\":\"部分作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p018_6896.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.852,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"梯子\",\"result\":\"梯子未綁緊，可能發生墜落事故\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p021_6909.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9968,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓梯踏板\",\"result\":\"踏板表面未採取防滑措施\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p022_6910.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.989,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓梯扶手\",\"result\":\"扶手未牢固固定，或扶手高度不符合規定\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p023_6911.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.8808,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"工區圍欄\",\"result\":\"圍欄未設置，或圍欄未設置高度超過1.2公尺，或圍欄未設有安全망\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p024_6914.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9948,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業區域地面\",\"result\":\"散落雜物多，易滑倒\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p025_6915.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.982,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"電梯機房開口\",\"result\":\"電梯機房開口未設置防跌護欄及防跌安全網，作業人員誤入危險區域的風險大。\"}, {\"item\":\"電梯機房開口\",\"result\":\"電梯機房開口未設置警示標誌，提醒作業人員勿擅自進入。\"}, {\"item\":\"電梯機房開口\",\"result\":\"電梯機房開口未設置緊急停止裝置，以防電梯異常運行。\"}, {\"item\":\"電梯機房開口\",\"result\":\"電梯機房開口未設置緊急呼叫裝置，以便作業人員在緊急情況下求助。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p028_6923.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9975,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"建築物結構物（如牆壁、樓板、柱子等）\",\"result\":\"有碎石、水泥等建築物材料散落於地面、平台及結構物表面，可能造成人員受傷。\"}, {\"item\":\"建築物結構物（如牆壁、樓板、柱子等）\",\"result\":\"有未固定或鬆動的建築物材料，可能傾倒造成人員受傷。\"}, {\"item\":\"地面\",\"result\":\"地面積有碎石、水泥等建築物材料，可能造成人員滑倒、跌倒。\"}, {\"item\":\"其他\",\"result\":\"有廢棄物（如塑料袋、紙張等）散落於地面，可能造成人員觸碰、誤食等危害。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p029_6925.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.5927,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"施工區域明顯標示\",\"result\":\"未明顯標示\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p031_6928.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0601,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p033_6929.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9988,
+   "item": "臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線\", \"result\": \"未予以架高等措施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"電線\",\"result\":\"電線未妥善收納，散落於地面，可能觸電或纏繞於機械或物體上。\"}, {\"item\":\"木材、板材、瓦片等散落物\",\"result\":\"木材、板材、瓦片等散落於地面，可能造成跌倒或绊倒。\"}, {\"item\":\"其他雜物\",\"result\":\"其他雜物散落於地面，可能造成跌倒或绊倒。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p034_6932.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.2451,
+   "item": "臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p039_6958.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.3775,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"自行輸入\", \"result\": \"板料堆置高度超過1.8公尺，未採取防止崩塌或掉落之措施\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p041_6960.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.7311,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之處所進行作業時\", \"result\": \"未以架設施工架等方法設置工作臺（工作臺應低於施工架立柱頂點1公尺以上）\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員配戴安全帽\",\"result\":\"有配戴安全帽，但位置可能不正確\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p042_6961.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.133,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p045_6967.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.0331,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之處所進行作業時\", \"result\": \"未以架設施工架等方法設置工作臺\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p046_6968.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0953,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p049_6976.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.974,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差超過1.5公尺以上之場所作業\", \"result\": \"未設置符合規定之安全上下設備\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"支撐結構\",\"result\":\"支撐結構（如木質模板、鋼筋模板、鋼筋支撐等）未設置或設置不當，可能導致結構變形或倒塌。\"}, {\"item\":\"模板及筋材\",\"result\":\"模板未固定牢固，筋材未綁紮牢固，可能導致模板鬆動或筋材脫落。\"}, {\"item\":\"鋼筋\",\"result\":\"鋼筋未綁紮牢固，可能導致鋼筋脫落。\"}, {\"item\":\"混凝土作業\",\"result\":\"混凝土尚未澆注，存在坍塌風險。\"}, {\"item\":\"作業環境\",\"result\":\"作業環境潮濕，可能增加滑倒、跌落等意外風險。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p050_6978.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9903,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"梯子\",\"result\":\"梯子未設扶手，且梯子高度過高，未設置安全腳踏\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p052_6994.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9954,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓梯或電梯等垂直移動設備\",\"result\":\"梯子或腳踏板鬆動、斷裂或磨損\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p054_7009.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.8808,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"高空作業平台護欄及扶手\",\"result\":\"護欄高度不足規定，扶手未連接護欄，或扶手未連接平台踏板\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p055_7010.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9627,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之處所進行作業時\", \"result\": \"未採取張掛安全網或配掛安全帶之設施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓板\",\"result\":\"樓板尚未完成，暴露木材可能對工人造成傷害\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p061_7040.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.7773,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"模板\",\"result\":\"模板未固定牢固，可能導致模板鬆動或變形，影響混凝土強度及穩定性。\"}, {\"item\":\"鋼筋\",\"result\":\"鋼筋未綁紮牢固，可能導致鋼筋間距變大，影響混凝土強度及穩定性。\"}, {\"item\":\"混凝土\",\"result\":\"尚未澆注混凝土，可能存在鋼筋間距過大、綁紮鬆動等問題，影響混凝土強度及穩定性。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p062_7045.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.6792,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之處所進行作業時\", \"result\": \"未採取張掛安全網或配掛安全帶之設施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋混凝土結構構件\",\"result\":\"未見適當的固定措施，以防止其在施工過程中發生變形或脫落。\"}, {\"item\":\"木結構構件\",\"result\":\"未見適當的固定措施，以防止其在施工過程中發生變形或脫落。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p063_7046.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.6514,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋\",\"result\":\"鋼筋未綁紮牢固，且未設置鋼筋鬆動防止裝置。\"}, {\"item\":\"鋼筋\",\"result\":\"鋼筋未設置混凝土外側保護層。\"}, {\"item\":\"模板\",\"result\":\"模板未固定牢固，或模板有破損、鬆動情況。\"}, {\"item\":\"木材\",\"result\":\"木材未覆蓋防潮材料。\"}, {\"item\":\"地基及基礎\",\"result\":\"地基及基礎尚未完成澆注混凝土。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p068_7054.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9941,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"進入工區\", \"result\": \"未佩戴安全帽\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"安全帽\",\"result\":\"未佩戴遮光帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p069_7057.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9876,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"未佩戴安全帽\",\"result\":\"未佩戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p072_7070.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.982,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"手部保護具\",\"result\":\"未佩戴手套\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p076_7086.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.997,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之處所進行作業時\", \"result\": \"未以架設施工架等方法設置工作臺（工作臺應低於施工架立柱頂點1公尺以上）\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"未佩戴安全帽\",\"result\":\"未佩戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p077_7094.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0953,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p078_7099.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9959,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"樓梯扶手\",\"result\":\"缺失描述：樓梯扶手未安裝或損壞，無法提供使用者穩定性。\"}, {\"item\":\"樓梯踏板\",\"result\":\"缺失描述：樓梯踏板表面未採取防滑措施。\"}, {\"item\":\"樓梯\",\"result\":\"缺失描述：樓梯踏板與扶手間距過大，使用者行走時可能發生滑倒現象。\"}, {\"item\":\"作業平台\",\"result\":\"缺失描述：作業平台边缘未设置防护栏或防护网，存在坠落风险。\"}, {\"item\":\"作業平台\",\"result\":\"缺失描述：作業平台高度与地面之间未设置安全网或防护措施，存在坠落风险。\"}, {\"item\":\"作業平台\",\"result\":\"缺失描述：作業平台立柱未设置防护网或防护栏，存在坠落风险。\"}, {\"item\":\"其他\",\"result\":\"作業平台及樓梯周围地面未清理干净，散落有杂物，可能绊倒人员。\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p082_7109.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9466,
+   "item": "施工場所對於置放於高處之物件有飛落之虞者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"施工場所對於置放於高處之物件有飛落之虞者\", \"result\": \"未予以固定之\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋\",\"result\":\"散落於地面上\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p083_7110.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.7773,
+   "item": "施工場所對於置放於高處之物件有飛落之虞者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業區域圍欄\",\"result\":\"未設置或設置不完善，無法有效防止人員進入施工區域及堆積物堆放區域\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p085_7115.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.5,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_hazard_p086_7116.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9914,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_hazard_p087_7117.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.977,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業平台\",\"result\":\"作業平台護欄未設置安全網\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p027_003.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.3775,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_manual_p027_004.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.2689,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_manual_p031_016.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9841,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差超過1.5公尺以上之場所作業\", \"result\": \"未設置符合規定之安全上下設備\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p031_017.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9797,
+   "item": "施工架及施工構台基礎地面",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"腳踏板\",\"result\":\"腳踏板與立柱間有空隙，未加墊塊或物體填補，可能導致腳踏板移位或滑落。\"}, {\"item\":\"腳踏板\",\"result\":\"腳踏板表面未塗刷防滑塗料，可能增加滑倒風險。\"}, {\"item\":\"腳踏板\",\"result\":\"腳踏板與立柱間有空隙，未加墊塊或物體填補，可能導致腳踏板移位或滑落。\"}, {\"item\":\"腳踏板\",\"result\":\"腳踏板與立柱間有空隙，未加墊塊或物體填補，可能導致腳踏板移位或滑落。\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p032_019.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.6792,
+   "item": "於2公尺以上",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於2公尺以上\", \"result\": \"局限空間、屋頂或施工架組拆、工作台組拆、管線維修作業等高處或傾斜面移動，未採用背負式安全帶及捲揚式防墜器\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員配戴安全帽\",\"result\":\"已配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p380_105.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0953,
+   "item": "臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_manual_p381_111.jpg",
+   "gt_violation": false,
+   "pred_violation": null,
+   "status": "PARSE_ERROR",
+   "p_violation": 0.9707,
+   "item": "臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":\"電線\",\"result\":\"電線未妥善收納，容易纏繞或滑落，存在觸電風險。\"}, {\"item\":"
+  },
+  {
+   "image": "kcg_manual_p383_117.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0293,
+   "item": "於良導體機器設備內之狹小空間，或於鋼架等有觸及高導電性接地物之虞之場所，作業時所使用之交流電焊機 (不含自動式焊接者)",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_manual_p387_132.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.7549,
+   "item": "臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業區域圍欄\",\"result\":\"圍欄未設置，且有開口，未有效區隔施工區域及非施工區域。\"}, {\"item\":\"作業區域警示標誌\",\"result\":\"未設置或標誌不清。\"}, {\"item\":\"高空作業安全措施\",\"result\":\"未見高空作業安全措施，如安全網、安全帶等。\"}, {\"item\":\"護身帽\",\"result\":\"未見作業人員配戴護身帽。\"}, {\"item\":\"安全鞋\",\"result\":\"未見作業人員配戴安全鞋。\"}, {\"item\":\"防塵口罩\",\"result\":\"未見作業人員配戴防塵口罩。\"}, {\"item\":\"作業場所照明\",\"result\":\"照明不足。\"}, {\"item\":\"作業場所通風\",\"result\":\"通風不良。\"}, {\"item\":\"作業場所清潔\",\"result\":\"地面積水，作業場所未保持清潔。\"}, {\"item\":\"物料堆放\",\"result\":\"物料堆放未保持整齊，可能造成倒塌或滑落。\"}, {\"item\":\"移動物料\",\"result\":\"未見使用滑輪或斜坡等設備移動重物。\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p388_134.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0851,
+   "item": "臨時配電箱應上鎖管理",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_manual_p389_136.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.1192,
+   "item": "臨時配電箱應上鎖管理",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_manual_p392_141.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.4073,
+   "item": "於架空電線或電氣機具電路之接近場所從事工作物之裝設、解體、檢查、修理、油漆等作業，或使用車輛系營建機械、移動式起重機、高空工作車及其他有關作業時，有因接觸或接近該電路引起感電之虞者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "kcg_manual_p393_142.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.6514,
+   "item": "於架空電線或電氣機具電路之接近場所從事工作物之裝設、解體、檢查、修理、油漆等作業，或使用車輛系營建機械、移動式起重機、高空工作車及其他有關作業時，有因接觸或接近該電路引起感電之虞者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員作業高度\",\"result\":\"作業人員作業高度超過1.5公尺，未採取適當的保護措施。\"}, {\"item\":\"作業人員作業姿勢\",\"result\":\"作業人員作業姿勢不正確，可能導致身體不適或失衡。\"}, {\"item\":\"作業人員穿著及配戴個人保護裝備\",\"result\":\"作業人員未穿著或配戴符合規定之個人保護裝備，包括安全帽、安全帶、安全帽帶、護目鏡、手套等。\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p393_143.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.7982,
+   "item": "於架空電線或電氣機具電路之接近場所從事工作物之裝設、解體、檢查、修理、油漆等作業，或使用車輛系營建機械、移動式起重機、高空工作車及其他有關作業時，有因接觸或接近該電路引起感電之虞者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"電氣設備\",\"result\":\"電氣設備未採取防觸電措施（如絕緣套管、絕緣罩等）\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p394_144.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9954,
+   "item": "於架空電線或電氣機具電路之接近場所從事工作物之裝設、解體、檢查、修理、油漆等作業，或使用車輛系營建機械、移動式起重機、高空工作車及其他有關作業時，有因接觸或接近該電路引起感電之虞者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"個人保護裝備（PPE）\",\"result\":\"未佩戴反光背心\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p394_145.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.7549,
+   "item": "於架空電線或電氣機具電路之接近場所從事工作物之裝設、解體、檢查、修理、油漆等作業，或使用車輛系營建機械、移動式起重機、高空工作車及其他有關作業時，有因接觸或接近該電路引起感電之虞者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"高空作業\",\"result\":\"作業區域未設置足夠高度的護欄、安全網及安全帶等高空作業安全設備。\"}, {\"item\":\"機械設備\",\"result\":\"起重機作業時，作業員未佩戴安全帽。\"}, {\"item\":\"作業環境\",\"result\":\"現場堆放雜物未清理，可能造成人員跌倒或绊倒。\"}, {\"item\":\"護目鏡\",\"result\":\"作業員未佩戴護目鏡。\"}, {\"item\":\"個人防護用品\",\"result\":\"作業員未佩戴安全帽、安全帶等個人防護用品。\"}]}\n```"
+  },
+  {
+   "image": "kcg_manual_p396_150.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.999,
+   "item": "從事電路之檢查、修理等活線作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"手部保護具\",\"result\":\"未佩戴手套\"}]}\n```"
+  }
+ ]
+}

@@ -1,0 +1,595 @@
+{
+ "summary": {
+  "adapter": "gemma4-e2b-audit-lora-v6/final",
+  "set": "val57",
+  "item_hint": false,
+  "merged": false,
+  "n": 57,
+  "errors": 3,
+  "tp": 16,
+  "tn": 25,
+  "fp": 7,
+  "fn": 6,
+  "accuracy": 0.7593,
+  "accuracy_strict": 0.7193,
+  "accuracy_strict_ci95": [
+   0.592,
+   0.819
+  ],
+  "precision": 0.6957,
+  "recall": 0.7273,
+  "f1": 0.7111
+ },
+ "rows": [
+  {
+   "image": "a_sn65989d_sn2556309000805-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0421,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68018d_sn265530110212-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9797,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差超過1.5公尺以上之場所作業\", \"result\": \"未設置符合規定之安全上下設備\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "a_sn68961d_sn2695059001152-3.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9466,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "{\"compliant\": false, \"findings\": [{\"item\":\"護目鏡\",\"result\":\"未佩戴\"}]}"
+  },
+  {
+   "image": "a_sn68961d_sn2695069001156-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.7773,
+   "item": "提供大眾通行之道路",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"提供大眾通行之道路\", \"result\": \"髒污\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"施工現場明顯區域\",\"result\":\"設置了警示標誌（安全錐）\"}]}\n```"
+  },
+  {
+   "image": "a_sn67458d_sn26240278751-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.1192,
+   "item": "各分項作業施工危害因素告知單",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68646d_sn2683179001364-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.6792,
+   "item": "電焊機外殼",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "a_sn67703d_sn26352060291-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.023,
+   "item": "交通維持計畫",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn67808d_sn264012110182-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0331,
+   "item": "營建機械停放",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn67710d_sn263540112247-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9876,
+   "item": "勞工安全衛生工作守則",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴手套\",\"result\":\"未配戴手套\"}]}\n```"
+  },
+  {
+   "image": "a_sn68228d_sn2666229000728-2.jpg",
+   "gt_violation": true,
+   "pred_violation": null,
+   "status": "PARSE_ERROR",
+   "p_violation": 0.974,
+   "item": "氧氣乙炔鋼瓶",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"氧氣乙炔鋼瓶\", \"result\": \"未依規定儲存、搬運、使用\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"氣體罐\",\"result\":\"氣體罐未放置於人員 접근区域，且未放置於平坦穩固的表面上。\"}], [{\"item\":\"氣體罐管線\",\"result\":\"氣體罐管線未帶有洩漏指示裝置。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\"氣體罐未帶有洩漏指示裝置。\"}], [{\"item\":\"氣體罐\",\"result\":\""
+  },
+  {
+   "image": "a_sn69763d_sn2728199000658-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0601,
+   "item": "工作場所出入口",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn65974d_sn2555949001368-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0851,
+   "item": "於道路或鄰接道路從事作業，未採取安衛措施，致有立即發生交通事故之虞。",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn66708d_sn25882971212-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9859,
+   "item": "未指定",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"\", \"result\": \"有明顯噪音\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "a_sn68202d_sn26640877098-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0086,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn65243d_sn2516529001156-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0759,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68018d_sn265559110216-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9149,
+   "item": "營建機械",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"營建機械\", \"result\": \"未實施定期檢查及作業前檢點\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "a_sn65974d_sn2555969001366-1.jpg",
+   "gt_violation": false,
+   "pred_violation": null,
+   "status": "PARSE_ERROR",
+   "p_violation": 0.982,
+   "item": "氧氣乙炔鋼瓶",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"氣體罐\",\"result\":\"氣體罐未放置平坦穩固之容器內，且未置於乾燥、通風良好之處。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐表面有嚴重鏽蝕之跡象。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐上未標示氣體種類及壓力。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐上未標示製造日期及有效期限。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐洩漏之情形不明。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐與裝置之接頭未旋緊。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐周圍地面有雜物堆放。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐周圍地面有碎石或泥土。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐周圍地面未清理乾淨。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐周圍地面有其他不明雜物。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐周圍地面有水漬或濕氣。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐周圍地面有腐爛植物。\"}, {\"item\":\"氣體罐\",\"result\":\"氣體罐周圍地面有其他可能造成火災或"
+  },
+  {
+   "image": "a_sn67439d_sn2622949001558-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9954,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者\", \"result\": \"未加裝護套等防護設施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"鋼筋籠\",\"result\":\"未加蓋鋼筋保護衣\"}]}\n```"
+  },
+  {
+   "image": "a_sn67728d_sn263578112248-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9466,
+   "item": "本工程今日施工勞工人數      人，是否皆為合法勞工且均已投保勞工保險",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "a_sn67713d_sn263546112245-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.3775,
+   "item": "勞工安全衛生工作守則",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn65327d_sn2520249001155-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.1824,
+   "item": "職業安全衛生人員",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn67612d_sn2632249000808-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.852,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"手套\",\"result\":\"未配戴手套\"}]}\n```"
+  },
+  {
+   "image": "a_sn69737d_sn2727114368-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.148,
+   "item": "銲接作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"銲接作業\", \"result\": \"未使用適當防護（手套）\"}, {\"item\": \"銲接作業\", \"result\": \"未使用適當防護（護目鏡）\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68200d_sn26640077099-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.2018,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn69501d_sn2717759000652-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0759,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68919d_sn269401110066-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0953,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68637d_sn2682979001369-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.1067,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "{\"compliant\": true, \"findings\": []}"
+  },
+  {
+   "image": "a_sn65982d_sn2556129001366-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0141,
+   "item": "起重機其外伸撐座伸至最大極限位置，外伸時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn67374d_sn2620964137-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9579,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者\", \"result\": \"未加裝護套等防護設施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"施工區域內\",\"result\":\"未設置足夠的圍欄、警示標誌及安全網以防止人員誤入危險區域\"}]}\n```"
+  },
+  {
+   "image": "a_sn67125d_sn2603609001002-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9859,
+   "item": "工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工區：\", \"result\": \"垃圾未清理\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"工區環境未清理\",\"result\":\"工區環境未清理\"}]}\n```"
+  },
+  {
+   "image": "a_sn67625d_sn2632579000804-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0331,
+   "item": "車輛機械",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68853d_sn26919871213-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.0421,
+   "item": "交通警告或阻隔設施",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"交通警告或阻隔設施：\", \"result\": \"不清晰\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn67152d_sn26057371211-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.8355,
+   "item": "起重機其外伸撐座伸至最大極限位置，外伸時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"作業人員未配戴安全帽\",\"result\":\"作業人員未配戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "a_sn67736d_sn26359560293-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9047,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "{\"compliant\": false, \"findings\": [{\"item\": \"未佩戴防護帽\", \"result\": \"未佩戴防護帽\"}]}"
+  },
+  {
+   "image": "a_sn67142d_sn2604449000653-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.148,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68202d_sn26640477098-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0373,
+   "item": "交通警告或阻隔設施",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn67455d_sn2623959000138-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9933,
+   "item": "工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工區：\", \"result\": \"垃圾未清理\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"地面\",\"result\":\"地面雜物多，包括飲料罐、紙屑等，易滑倒、跌傷之風險大。\"}, {\"item\":\"地面\",\"result\":\"地面裸露泥土或碎石，未覆蓋防滑材料。\"}, {\"item\":\"地面\",\"result\":\"地面潮濕，易滑倒、跌傷之風險大。\"}, {\"item\":\"作業區域\",\"result\":\"作業區域散落雜物多，影響作業安全。\"}]}\n```"
+  },
+  {
+   "image": "a_sn65764d_sn25432459787-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.7549,
+   "item": "氧氣乙炔鋼瓶",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"氧氣乙炔鋼瓶\", \"result\": \"未加設遮陽設施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"安全錐\",\"result\":\"數量不足\"}]}\n```"
+  },
+  {
+   "image": "a_sn67730d_sn263580112244-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0373,
+   "item": "本工程今日施工勞工人數      人，是否皆為合法勞工且均已投保勞工保險",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn66058d_sn255797729-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9707,
+   "item": "施工場所對於置放於高處之物件有飛落之虞者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"施工場所對於置放於高處之物件有飛落之虞者\", \"result\": \"未予以固定之\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"平台邊緣及扶手\",\"result\":\"平台邊緣未設護欄及扶手，或護欄及扶手未符合規定\"}]}\n```"
+  },
+  {
+   "image": "a_sn65246d_sn25166177091-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0067,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn67551d_sn2627449000722-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9399,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之處所進行作業時\", \"result\": \"未以架設施工架等方法設置工作臺（工作臺應低於施工架立柱頂點1公尺以上）\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"高處作業\",\"result\":\"作業人員未設置或未檢查高處作業安全網及安全帶\"}]}\n```"
+  },
+  {
+   "image": "a_sn67918d_sn26474678127-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.0331,
+   "item": "工程告示牌",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工程告示牌：\", \"result\": \"尺寸或內容不符規定\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn66830d_sn25928059951-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.0421,
+   "item": "臨時改道路線並無足夠警告設施",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"臨時改道路線並無足夠警告設施：\", \"result\": \"阻礙交通\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn65342d_sn2520529000657-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "status": "FP",
+   "p_violation": 0.9948,
+   "item": "工作場所出入口",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"佩戴安全帽\",\"result\":\"未佩戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "a_sn67459d_sn26240378756-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0331,
+   "item": "工程告示牌",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn67918d_sn26474578126-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.0851,
+   "item": "施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定：\", \"result\": \"拒馬、交通錐\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68656d_sn2683379001363-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0373,
+   "item": "營建機械停放",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68018d_sn265540110218-1.jpg",
+   "gt_violation": true,
+   "pred_violation": null,
+   "status": "PARSE_ERROR",
+   "p_violation": 0.9241,
+   "item": "臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線\", \"result\": \"未予以架高等措施\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"地面鬆軟\",\"result\":\"地面鬆軟，容易發生滑倒、跌落事故。\"},{\"item\":\"雜物堆積\",\"result\":\"現場散落雜物多，容易成為踩踏或絆倒的危險。\"},{\"item\":\"電線暴露\",\"result\":\"電線暴露，可能觸電或造成纏繞、絆倒的危險。\"},{\"item\":\"護欄缺失或損壞\",\"result\":\"橋樑護欄部分缺失或損壞，可能導致跌落的危險。\"},{\"item\":\"支撐結構鬆動\",\"result\":\"橋樑支撐結構有鬆動之嫌，可能造成結構安全問題。\"},{\"item\":\"施工材料堆放\",\"result\":\"施工材料堆放未設置圍欄及標誌，可能造成滾落的危險。\"},{\"item\":\"作業區域未設置安全警示標誌\",\"result\":\"作業區域未設置明確的安全警示標誌，可能造成誤入危險區域的事故。\"},{\"item\":\"缺乏足夠的照明\",\"result\":\"現場照明不足，可能影響作業安全。\"},{\"item\":\"作業人員未穿戴個人保護裝備\",\"result\":\"作業人員未穿戴個人保護裝備，如安全帽、安全鞋等。\"},{\"item\":\"作業人員未接受職安教育訓練\",\"result\":\"作業人員未接受必要的職安教育訓練，可能無法應對突發狀況。\"},{\"item\":\"挖掘或開"
+  },
+  {
+   "image": "a_sn67552d_sn2627569000728-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9954,
+   "item": "工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工區：\", \"result\": \"垃圾未清理\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"散落物\",\"result\":\"有散落的木材、鋼材、鐵筋等散落物，容易觸及並造成人員受傷。\"}, {\"item\":\"廢棄物\",\"result\":\"有未分類或未妥善處理的廢棄物堆放於現場。\"}, {\"item\":\"消防設備\",\"result\":\"滅火器未放置於易達位置，且可能已失效。\"}, {\"item\":\"個人防護用品\",\"result\":\"未見作業人員配戴個人防護用品，如安全帽、安全鞋、護目鏡等。\"}]}\n```"
+  },
+  {
+   "image": "a_sn68366d_sn26714959789-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9914,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"進入工區\", \"result\": \"未穿反光背心\"}, {\"item\": \"進入工區\", \"result\": \"未佩戴安全帽\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"個人保護裝備：手套\",\"result\":\"未佩戴\"}]}\n```"
+  },
+  {
+   "image": "a_sn67199d_sn2611399001158-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0421,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68796d_sn2689449000653-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.3775,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn69016d_sn26990278793-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9975,
+   "item": "氧氣乙炔鋼瓶",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"氧氣乙炔鋼瓶\", \"result\": \"未依規定儲存、搬運、使用\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"氣體罐\",\"result\":\"散落在地面上，未妥善存放\"}]}\n```"
+  },
+  {
+   "image": "a_sn65842d_sn25467860602-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "status": "TN",
+   "p_violation": 0.0601,
+   "item": "車輛機械",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  },
+  {
+   "image": "a_sn68869d_sn2692239001557-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "status": "TP",
+   "p_violation": 0.9859,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"進入工區\", \"result\": \"未佩戴安全帽\"}]}",
+   "output": "```json\n{\"compliant\": false, \"findings\": [{\"item\":\"進入工區未戴安全帽\",\"result\":\"進入工區未戴安全帽\"}]}\n```"
+  },
+  {
+   "image": "a_sn68285d_sn266757113153-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "status": "FN",
+   "p_violation": 0.2018,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "output": "```json\n{\"compliant\": true, \"findings\": []}\n```"
+  }
+ ]
+}

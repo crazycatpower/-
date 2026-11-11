@@ -10,8 +10,17 @@ outputs/
 uploads/
 certs/
 
+# 外部下載的圖片（上千張、1GB 以上，授權各自不同）；標註與來源清單 web_labels.tsv、web_attribution.csv 有進版控
+external_data/ppe_detection/
+external_data/web_*/*.jpg
+external_data/web_*/*.png
+
+# 訓練中斷續跑用的狀態（optimizer 等），只有 best/ 需要進版控
+gemma3n-e2b-audit-lora-v*/last/
+
 # 編輯器/系統
 .DS_Store
 
 # Claude Code 個人本機設定（僅本機權限允許清單，非團隊共用設定）
 .claude/settings.local.json
+gemma3n-e2b-audit-lora-v*/step*/
