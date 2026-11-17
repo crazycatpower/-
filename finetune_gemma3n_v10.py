@@ -49,6 +49,9 @@ LORA = dict(
 )
 
 
+OVERSAMPLE = [VIOLATION_OVERSAMPLE]  # 可由 --oversample 覆寫
+
+
 def read_jsonl(path):
     with open(path, encoding="utf-8") as f:
         return [json.loads(line) for line in f]
@@ -59,7 +62,7 @@ def epoch_rows(groups, epoch):
     VIOLATION_OVERSAMPLE 次，而且每次是不同版本。"""
     rows = []
     for versions in groups:
-        repeats = 1 if json.loads(versions[0]["response"])["compliant"] else VIOLATION_OVERSAMPLE
+        repeats = 1 if json.loads(versions[0]["response"])["compliant"] else OVERSAMPLE[0]
         rows += [versions[(epoch + k) % len(versions)] for k in range(repeats)]
     random.Random(SEED + epoch).shuffle(rows)
     return rows
@@ -77,8 +80,10 @@ def main():
     ap.add_argument("--item", action="store_true", help="prompt 最後多給「本張照片的稽核項目」")
     ap.add_argument("--out", help="輸出資料夾名稱")
     ap.add_argument("--epochs", type=int, default=EPOCHS)
+    ap.add_argument("--oversample", type=int, default=VIOLATION_OVERSAMPLE, help="缺失樣本每個 epoch 出現幾次")
     ap.add_argument("--max-steps", type=int, help="只跑這麼多次權重更新（試跑用）")
     args = ap.parse_args()
+    OVERSAMPLE[0] = args.oversample
     out_dir = C.BASE_DIR / (args.out or "gemma3n-e2b-audit-lora-v10" + ("-item" if args.item else ""))
     best_dir, last_dir = out_dir / "best", out_dir / "last"
 
