@@ -57,6 +57,11 @@ HOST = os.getenv("LORA_HOST", "127.0.0.1")
 PORT = int(os.getenv("LORA_PORT", "8001"))
 MODEL_NAME = os.getenv("LORA_MODEL_NAME", "gemma3n-e2b-audit-lora")
 DEFAULT_MAX_TOKENS = 4096
+# 稽核模式（給 v10 以後的 adapter 用）：收到附圖的 JSON 請求時，不用主程式的長 prompt，改用訓練時的
+# 短 prompt（YOLO 偵測清單）判定，再由 audit_adapter.to_scene_json 轉成主程式要的 categories 格式。
+# 例：LORA_AUDIT_MODE=1 LORA_ADAPTER_DIR=gemma3n-e2b-audit-lora-v10/best python llm_server.py
+AUDIT_MODE = os.getenv("LORA_AUDIT_MODE", "0").strip() == "1"
+AUDIT_THRESHOLD = float(os.getenv("LORA_AUDIT_THRESHOLD", "0.64"))  # 缺失機率門檻，見 FINETUNE.md
 
 
 # ── 模型載入 ─────────────────────────────────────────────────────────────
@@ -204,7 +209,7 @@ def _strip_json_fence(text: str) -> str:
 
 # ── 推論 ─────────────────────────────────────────────────────────────────
 
-MODEL = PROCESSOR = DEVICE = None
+MODEL = PROCESSOR = DEVICE = YOLO = None
 GPU_LOCK = threading.Lock()  # 單張 GPU，一次只跑一個請求
 
 
@@ -239,8 +244,49 @@ def _completion_id() -> str:
     return f"chatcmpl-{uuid.uuid4().hex[:24]}"
 
 
+def _first_image(body: dict[str, Any]) -> Image.Image | None:
+    for m in body.get("messages") or []:
+        content = m.get("content")
+        if isinstance(content, list):
+            for p in content:
+                if p.get("type") == "image_url":
+                    return _load_image((p.get("image_url") or {}).get("url", ""))
+    return None
+
+
+def generate_audit(image: Image.Image) -> dict[str, Any]:
+    """稽核模式：原圖 → YOLO 偵測清單 → v10 判定（門檻 AUDIT_THRESHOLD）→ 主程式的場景分析 JSON。"""
+    import tempfile
+
+    import audit_vlm_common as C
+    from audit_adapter import to_scene_json
+
+    with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as f:
+        image.save(f, "JPEG", quality=95)
+        tmp = Path(f.name)
+    try:
+        with GPU_LOCK:
+            t0 = time.perf_counter()
+            text, p_violation = C.generate_answer(MODEL, PROCESSOR, image, C.user_prompt(YOLO.block(tmp)),
+                                                  threshold=AUDIT_THRESHOLD)
+            elapsed = time.perf_counter() - t0
+    finally:
+        tmp.unlink(missing_ok=True)
+    print(f"[LoRA] 稽核模式 p_violation={p_violation} 耗時 {elapsed:.1f}s")
+    content = json.dumps(to_scene_json(text, p_violation), ensure_ascii=False)
+    return {
+        "id": _completion_id(), "object": "chat.completion", "created": int(time.time()), "model": MODEL_NAME,
+        "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}],
+        "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+    }
+
+
 def generate(body: dict[str, Any]) -> dict[str, Any]:
     json_mode = (body.get("response_format") or {}).get("type") == "json_object"
+    if AUDIT_MODE and json_mode:
+        image = _first_image(body)
+        if image is not None:
+            return generate_audit(image)
     with GPU_LOCK:
         inputs, gen_kwargs = _prepare(body)
         prompt_len = inputs["input_ids"].shape[-1]
@@ -352,8 +398,17 @@ async def chat_completions(request: Request):
 
 
 def main():
-    global MODEL, PROCESSOR, DEVICE
-    MODEL, PROCESSOR, DEVICE = load_model()
+    global MODEL, PROCESSOR, DEVICE, YOLO
+    if AUDIT_MODE:
+        import audit_vlm_common as C
+
+        # 與 test_val57.py --merge 相同的載入方式（PLE 留 CPU、音訊編碼器移除），評測數字可直接對照
+        MODEL, PROCESSOR = C.load_model(ADAPTER_DIR, merge=True)
+        DEVICE = torch.device("cuda:0")
+        YOLO = C.Yolo()
+        print(f"[LoRA] 稽核模式：adapter={ADAPTER_DIR} 門檻={AUDIT_THRESHOLD}")
+    else:
+        MODEL, PROCESSOR, DEVICE = load_model()
     print(f"[LoRA] 服務啟動：http://{HOST}:{PORT}/v1  (model={MODEL_NAME})")
     uvicorn.run(app, host=HOST, port=PORT)
 

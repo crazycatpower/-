@@ -120,5 +120,17 @@ python compare_fall.py results/ext113_*.json   # 只看墜落照片（答案表�
 
 - 答案表的標註是「這張照片在某個稽核項目上是否合規」，不是「整張圖有沒有任何缺失」。只憑稽核項目、不看圖去猜，val57 就有 0.789。v10 沒有把稽核項目給模型；`finetune_gemma3n_v10.py --item`、`test_val57.py --item` 可以做這個實驗，還沒跑。
 - 測試集只有 57 與 113 張，差距在 10 個百分點以內都可能是抽樣誤差。
-- `llm_server.py` 預設仍載入 `gemma3n-e2b-audit-lora/final`（v1），而且實際稽核用的 prompt 和訓練 prompt 不同；換成 v10 之前要先在實際流程上驗證。設 `LORA_ADAPTER_DIR` 可切換。
+- 主程式（`safety_audit_system.py`）要的是完整稽核表 JSON（54 條逐條 ○/×/△、summary、next_action…），prompt 含整份清單與法規；
+  v10 只會輸出 `{"compliant","findings"}`，直接接上會變成整份空白。`.env` 目前指向 Ollama 的 `gemma4:12b`，但本機 Ollama 沒有這個模型。
+- `llm_server.py` 加了**稽核模式**（預設關閉）：收到附圖的 JSON 請求時改用訓練時的短 prompt 判定（門檻 0.64），
+  再由 `audit_adapter.py` 把缺失文字對到稽核表代碼（答案表 234 筆缺失文字全部對得到），轉成主程式的格式。
+
+  ```powershell
+  $env:LORA_AUDIT_MODE="1"; $env:LORA_ADAPTER_DIR="gemma3n-e2b-audit-lora-v10/best"; $env:LORA_PORT="8002"; python llm_server.py
+  python test_audit_mode.py 20    # 經主程式 ask_llm_scene_analysis 端到端檢查
+  ```
+
+  val57 前 20 張：與 `test_val57.py --threshold 0.64` 判定一致 19/20（照片經主程式重新編碼，有一張落在門檻邊緣），
+  對答案 18/20，格式完整（54 條＋必要欄位）20/20。要正式切換，把 `.env` 的 `LLM_BASE_URL` 指到這個服務即可。
+  稽核模式只填有缺失的項次；說明文字較簡短，`next_action` 與 `regulation_refs` 由主程式的補齊邏輯產生。
 - 訓練時 prompt 超過 2000 token 的樣本（YOLO 清單特別長，約 3%）會略過：顯存不足時 Windows 會溢到共享記憶體，不報錯但一步要一小時以上。
