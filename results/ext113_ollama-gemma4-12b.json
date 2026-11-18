@@ -1,0 +1,913 @@
+{
+ "summary": {
+  "model": "gemma4:12b",
+  "set": "ext113",
+  "n": 46,
+  "tp": 19,
+  "tn": 16,
+  "fp": 8,
+  "fn": 2,
+  "parse_error": 1,
+  "accuracy_strict": 0.7609,
+  "accuracy_strict_ci95": [
+   0.621,
+   0.861
+  ],
+  "accuracy_x_only": 0.7391
+ },
+ "rows": [
+  {
+   "image": "ntpc_fall_p003_082.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "此現場照片顯示高處作業區域已設置安全網作為墜落防止措施。從影像觀察，安全網張設於建築結構上方，旨在防止人員或物體墜落。目前畫面中無明顯的防護設施缺失，且無明顯的危險源或違規項目。",
+   "seconds": 33.1
+  },
+  {
+   "image": "ntpc_fall_p005_102.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ]
+   ],
+   "summary": "現場呈現施工牆面或結構內部，牆面上張貼有一塊明顯的黃色警示標誌，內容標示為「開口危險」。從影像中觀察，該處存在結構性開口，且目前僅以警示標誌作為防護提示，並未見到實體護欄、護蓋或安全網等符合法規的防墜設施。",
+   "seconds": 35.8
+  },
+  {
+   "image": "ntpc_fall_p006_122.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場呈現屋頂或高處施工區域，已設置黃色安全網作為墜落防止措施。從照片觀察，安全網覆蓋範圍廣泛，支撐結構與邊緣區域有初步防護。現場未見明顯人員在進行高處作業，且未發現明顯的危險因素。",
+   "seconds": 24.8
+  },
+  {
+   "image": "ntpc_fall_p006_124.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於石綿板、鐵皮板、瓦、木板、茅草、塑膠等易踏穿材料構築之屋頂從事作業時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場為鋼架結構頂部施工區域，展示鋼架橫樑與支撐結構。從影像中觀察，目前未發現人員於高處作業，亦未發現明顯的墜落預防設施（如安全網、護欄）或明顯的開口處，但由於為頂部結構，需注意結構邊緣安全。",
+   "seconds": 67.2
+  },
+  {
+   "image": "ntpc_fall_p007_140.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "FN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [],
+   "summary": "施工現場現況分析：畫面顯示一個大型建築工程的基礎施工區域。現場已架設大量鋼結構支撐架與模板，上方有部分已完成的混凝土或墊層。畫面中有一輛藍色貨車停放在施工區域內。工地周邊設有紅色圍籬，且現場有明顯的高處作業構造（如鋼架支撐與邊緣）。",
+   "seconds": 33.9
+  },
+  {
+   "image": "ntpc_fall_p007_141.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場為建築施工區域，目前呈現支設與鷹架基礎架設狀態，並有大型工程車進場，周邊設有紅色圍籬隔離。",
+   "seconds": 33.7
+  },
+  {
+   "image": "ntpc_fall_p008_145.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "2.02",
+     "×"
+    ],
+    [
+     "2.05",
+     "×"
+    ],
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "施工現場內部開挖區域，現場堆放大量木板、鋼材及建築材料。觀察到開挖坑洞邊緣缺乏有效防護，且堆放物料雜亂，存在墜落與物體飛落風險。",
+   "seconds": 47.5
+  },
+  {
+   "image": "ntpc_fall_p008_146.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "1.04",
+     "×"
+    ],
+    [
+     "1.07",
+     "×"
+    ],
+    [
+     "1.08",
+     "×"
+    ],
+    [
+     "10.06",
+     "×"
+    ]
+   ],
+   "summary": "工地現場進行鋼筋與模板支撐施工。現場已架設部分施工架與鋼筋籠。觀察到高處作業環境存在明顯的防墜設施缺失，且模板支撐的穩定性與安全防護有待改善。",
+   "seconds": 50.0
+  },
+  {
+   "image": "ntpc_fall_p009_150.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "本照片顯示施工現場之混凝土樓梯構造，目前處於初步施工階段。觀察到樓梯邊緣及踏面處有明顯碎屑與未平整之施工痕跡，且現場目前無明顯之護欄或防墜設施，亦無明顯之高處作業人員。由於現場構造尚不完整，需注意落屑風險及人員移動安全。",
+   "seconds": 36.8
+  },
+  {
+   "image": "ntpc_fall_p009_151.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場展示一處建築工程中的室內樓梯與下方支撐結構。樓梯配有不鏽鋼扶手，下方為支撐架結構。目前畫面中未見人員作業，亦未見明顯的墜落高處（如樓層開口或高處作業平台）或危險源。由於無 YOLO 偵測資料，依據視覺觀察進行稽核。",
+   "seconds": 34.2
+  },
+  {
+   "image": "ntpc_fall_p010_157.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "3.07",
+     "×"
+    ],
+    [
+     "3.09",
+     "×"
+    ],
+    [
+     "環保-2",
+     "×"
+    ],
+    [
+     "環保-3",
+     "△"
+    ]
+   ],
+   "summary": "現場為建築工程中的混凝土結構施工場域，畫面中包含一處明顯的混凝土樓梯結構。整體環境呈現施工中狀態，地面有散亂的電纜線與建材殘餘，且在樓梯下方區域可見積水與雜物堆放。",
+   "seconds": 28.0
+  },
+  {
+   "image": "ntpc_fall_p011_164.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ]
+   ],
+   "summary": "現場展示一個結構架設中，底座部分有明顯的開口或凹陷結構，周圍配有簡易的木製或金屬支撐，但明顯缺乏標準的防墜設施（如護欄、護蓋或安全網）。",
+   "seconds": 33.8
+  },
+  {
+   "image": "ntpc_fall_p011_165.jpg",
+   "gt_violation": false,
+   "pred_violation": null,
+   "pred_violation_x_only": null,
+   "status": "PARSE_ERROR",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "",
+   "seconds": 38.6
+  },
+  {
+   "image": "ntpc_fall_p012_181.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者，\", \"result\": \"未採取彎 曲尖端或加裝護套等防護措施\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "2.02",
+     "×"
+    ],
+    [
+     "2.05",
+     "×"
+    ],
+    [
+     "10.06",
+     "×"
+    ]
+   ],
+   "summary": "現場為基礎工程開挖區域，畫面中可見深達數公尺的開挖坑洞，坑內有大量支撐鋼筋與支撐結構。現場存在明顯的高低落差，且坑洞邊緣未見任何防護設施。",
+   "seconds": 46.2
+  },
+  {
+   "image": "ntpc_fall_p013_188.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者\", \"result\": \"未加裝護套等防護設施\"}]}",
+   "flagged": [
+    [
+     "10.06",
+     "×"
+    ]
+   ],
+   "summary": "現場為鋼筋綁紮施工區域，畫面顯示大量水平與垂直鋼筋排列，具備明顯的結構施工特徵。從視覺觀察，此處為建築基礎或樓板鋼筋工程，現場未見人員在場，亦未見高處作業設備（如鷹架、高空工作車）或明顯的高空落差構造。",
+   "seconds": 36.3
+  },
+  {
+   "image": "ntpc_fall_p013_189.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.06",
+     "×"
+    ],
+    [
+     "10.02",
+     "×"
+    ]
+   ],
+   "summary": "本現場為基礎建設或建築工程之鋼筋綁紮與底板施工區域。畫面顯示大量垂直鋼筋已架設完成，現場雜亂且存在明顯的安全隱患。",
+   "seconds": 48.6
+  },
+  {
+   "image": "ntpc_fall_p014_204.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.06",
+     "×"
+    ]
+   ],
+   "summary": "現場為建築基礎工程施工中，主要呈現鋼筋綁紮與柱頭鋼筋預埋狀態，並可見部分模板支撐架與施工區域周界。",
+   "seconds": 32.2
+  },
+  {
+   "image": "ntpc_fall_p015_222.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者\", \"result\": \"未加裝護套等防護設施\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "△"
+    ],
+    [
+     "10.06",
+     "×"
+    ]
+   ],
+   "summary": "施工現場位於高處建築結構層，現場堆放大量鋼筋。觀察到鋼筋未採取防護措施，且地面雜物堆放無序，存在尖銳物刺傷風險。",
+   "seconds": 34.5
+  },
+  {
+   "image": "ntpc_fall_p016_229.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "FN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [],
+   "summary": "現場為高層建築施工中，已架設大型鋼架施工架。觀察施工架結構完整，且設有綠色防墜安全網與腳趾板。目前現場無人員作業，結構穩定，未見明顯違規或墜落/倒塌風險。",
+   "seconds": 31.4
+  },
+  {
+   "image": "ntpc_fall_p016_230.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場展示施工架結構，包含立柱、水平橫樑及斜撐。觀察到施工架設有安全護欄（上欄杆、中間欄杆及腳趾板），並設有明顯的警示標誌。",
+   "seconds": 31.7
+  },
+  {
+   "image": "ntpc_fall_p019_254.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"自行輸入\", \"result\": \"施工架與構造物間隙大於20公分的開口區域，未設置補助板料或安全網\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "1.08",
+     "×"
+    ]
+   ],
+   "summary": "現場呈現高處施工架與建築結構施工畫面，包含大量鋼管支撐與藍色防護網。初步觀察到施工架結構複雜，且在特定高度處存在護欄或防護設施缺失風險。",
+   "seconds": 56.9
+  },
+  {
+   "image": "ntpc_fall_p019_255.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "FP",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "1.08",
+     "△"
+    ]
+   ],
+   "summary": "本照片呈現工地高處作業區域，包含鋼構架設及施工架（鷹架）等設施。觀察到現場已設置部分護欄與安全網，但護欄高度、標準及與主要構造物的連接穩定性仍有待檢核，且高處作業區域的墜落防止設施完整度不一。",
+   "seconds": 47.4
+  },
+  {
+   "image": "ntpc_fall_p022_281.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "工地現場施工架作業稽核。畫面中兩名勞工正在進行高處施工架作業，其中一名勞工位於前端，另一名位於後方。兩名勞工皆配戴安全帽，並穿著反光背心。現場已設置施工架，且畫面中顯示有相關防墜設施（如護欄）。",
+   "seconds": 38.5
+  },
+  {
+   "image": "ntpc_fall_p022_282.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"高架作業\", \"result\": \"未配帶安全帶(需使用輔助繩移動之安全帶應具備補助掛鉤)\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "1.02",
+     "×"
+    ],
+    [
+     "1.07",
+     "×"
+    ],
+    [
+     "1.08",
+     "×"
+    ],
+    [
+     "9.03",
+     "×"
+    ]
+   ],
+   "summary": "現場稽核發現一名作業人員於高度約2公尺處之施工架上進行作業，且未配戴安全帶，嚴重違反高處作業安全規定。",
+   "seconds": 63.0
+  },
+  {
+   "image": "ntpc_fall_p027_322.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"高架作業\", \"result\": \"未配帶安全帶(需使用輔助繩移動之安全帶應具備補助掛鉤)\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "1.02",
+     "×"
+    ],
+    [
+     "1.04",
+     "×"
+    ],
+    [
+     "1.05",
+     "×"
+    ],
+    [
+     "1.07",
+     "×"
+    ],
+    [
+     "1.08",
+     "×"
+    ],
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "現場為高空鋼構建築施工場域，兩名作業人員正於高空鋼樑上進行作業。觀察到人員雖配戴安全帽，但其中一名作業人員明顯未穿著反光背心，且高空作業區域邊緣明顯缺乏防墜設施（護欄或安全網），存在高度墜落風險。",
+   "seconds": 63.8
+  },
+  {
+   "image": "ntpc_fall_p028_330.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "TP",
+   "p_violation": null,
+   "item": "施工場所對於置放於高處之物件有飛落之虞者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"施工場所對於置放於高處之物件有飛落之虞者\", \"result\": \"未予以固定之\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "現場展示為施工架搭建區域，包含金屬支撐柱、橫樑以及部分覆蓋的白色防塵布或保護材料。整體架構呈現複雜的網狀結構，並有大量構材堆放。",
+   "seconds": 46.5
+  },
+  {
+   "image": "ntpc_fall_p028_333.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "FP",
+   "p_violation": null,
+   "item": "施工場所對於置放於高處之物件有飛落之虞者",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "現場為高層建築施工區域，已架設具備綠色防護網之施工架。畫面中可見施工架結構完整，並有一定高度之防護設施。地面積於施工架下方堆放有木材等建材。",
+   "seconds": 29.9
+  },
+  {
+   "image": "ntpc_fall_p030_342.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "1.04",
+     "×"
+    ],
+    [
+     "2.02",
+     "×"
+    ],
+    [
+     "2.05",
+     "×"
+    ],
+    [
+     "5.01",
+     "×"
+    ],
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "現場為建築工程施工中，觀察到明顯的構造開口及高低落差區域。照片中顯示一個巨大的矩形深坑，且坑內設有明顯的深色開口（疑似人孔或較深之基礎開口），該處邊緣完全無任何防護設施（如護欄、蓋板或安全網）。此外，周邊地坪參差不齊，且存在明顯的高處作業風險。",
+   "seconds": 39.1
+  },
+  {
+   "image": "ntpc_fall_p030_343.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "1.08",
+     "△"
+    ],
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "現場為高處施工區域，設有金屬防護欄桿與黃色安全網，並有人員在場作業。",
+   "seconds": 36.7
+  },
+  {
+   "image": "ntpc_fall_p031_347.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "現場呈現施工區域地面，堆放有木製模板或棧板，並有工具與雜物散落。從影像判斷，此處目前並非高處作業區域，亦無明顯的開挖坑洞或架設高度施工架之構造。",
+   "seconds": 33.7
+  },
+  {
+   "image": "ntpc_fall_p031_348.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場畫面顯示一塊放置於地面上的黃色警示標誌板，標誌上印有紅色文字「禁止進入」。標誌板周邊環境看似為施工區域或封閉區域，地面有白色粉塵或碎屑。此處並非高處作業、開挖或機械作業區。",
+   "seconds": 33.3
+  },
+  {
+   "image": "ntpc_fall_p032_352.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "×"
+    ],
+    [
+     "環保-2",
+     "×"
+    ]
+   ],
+   "summary": "此現場為室內建築施工區域，地面堆放大量散亂的木板、鋼筋及廢棄物，且地面泥土鬆散，存在明顯的動線阻礙與雜物堆放不整齊之情形。",
+   "seconds": 48.1
+  },
+  {
+   "image": "ntpc_fall_p032_353.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場展示一個設有黃色警告告示牌的排水溝/涵洞區域。地表積水明顯，且圍繞在設施周邊設有黃色警示告示牌，告示牌上印有泰文與中文「小心注意」。現場無人員在位，無明顯的高處作業構造或施工架設。整體環境整潔，但地面有積水狀況。",
+   "seconds": 50.8
+  },
+  {
+   "image": "ntpc_fall_p033_357.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "10.02",
+     "×"
+    ],
+    [
+     "環保-2",
+     "×"
+    ]
+   ],
+   "summary": "此現場照片顯示為一處建築內部施工區域，地面佈滿碎屑與建材廢棄物（如石膏板斷片、木材殘頭、鐵絲等），且存在明顯的孔洞（與下方樓層或管線通道連接），現場雜亂，未見任何安全設施。此外，場內隨意堆放廢棄包裝與碎屑，嚴重影響動線安全與環境整潔。",
+   "seconds": 61.9
+  },
+  {
+   "image": "ntpc_fall_p033_358.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場呈現高處施工區域，設有黃色安全防護網作為墜落防止設施。目前觀察範圍內僅見防護設施，未見人員、機械或明顯的構造缺失。",
+   "seconds": 42.5
+  },
+  {
+   "image": "ntpc_fall_p034_362.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "TP",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"自行輸入\", \"result\": \"掉落於安全網上之垃圾雜物未清除，將造成人員墜落時受傷\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "現場為高處施工區域，畫面中可見大量鋼筋與支撐結構，並設有金屬編織的安全網進行防墜與防落物保護。現場存在管線與散落物料，整體結構複雜，需注意高處作業的防墜與防落物設備完備性。",
+   "seconds": 33.8
+  },
+  {
+   "image": "ntpc_fall_p036_376.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未配掛安全帶之防墜設施\"}]}",
+   "flagged": [
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "現場為室內或半封閉式空間施工，一名作業人員正操作吊掛之紅桶進行裝卸或移動作業。現場有明顯的電力線路與高處結構。",
+   "seconds": 40.8
+  },
+  {
+   "image": "ntpc_fall_p042_417.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"高架作業\", \"result\": \"未配帶安全帶(需使用輔助繩移動之安全帶應具備補助掛鉤)\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "1.02",
+     "×"
+    ]
+   ],
+   "summary": "現場顯示一處高空外牆施工區域，一名作業人員正站在施工架上進行作業。從影像觀察，該人員明顯未穿著反光背心，且無法確認是否佩戴安全帽（模型偵測信心度低且畫面模糊）。現場使用了施工架與移動式平台設備，但對於高處作業的墜落防止設施（如護欄、安全網）及作業人員的個人防護裝備（PPE）仍有明顯缺失。",
+   "seconds": 46.8
+  },
+  {
+   "image": "ntpc_fall_p043_422.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差超過1.5公尺以上之場所作業\", \"result\": \"未設置符合規定之安全上下設備\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "×"
+    ]
+   ],
+   "summary": "本現場為鋼構建築施工現場，照片顯示大量鋼材與軌道系統正在組裝中。觀察到現場已有架設簡易式水平軌道與支撐結構，但目前畫面中未見明顯的高處作業平台（如鷹架或高層平台），亦未發現人員在進行高空作業。現場鋼材與軌道雜亂堆放，且缺乏明顯的墜落防止設施（如安全網或標準護欄），且地面構造複雜，存在物體飛落或人員絆倒之風險。",
+   "seconds": 36.9
+  },
+  {
+   "image": "ntpc_fall_p043_423.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "此現場為高處作業區域，畫面顯示有架設於建築結構上的施工架與圍欄系統。從照片觀察，施工架上已設置有金屬護欄，包含上欄、中欄及腳趾板，且架設相對穩固。目前畫面中無明顯的墜落風險點、感電風險或重大倒塌危機，但需注意施工架與主結構的連接點強度及地基穩定性。",
+   "seconds": 33.2
+  },
+  {
+   "image": "kcg_trench_p011_018.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "露天開挖場所開挖深度在1.5公尺以上，或有地面崩塌、土石飛落之虞時，",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "2.02",
+     "△"
+    ],
+    [
+     "7.01",
+     "×"
+    ],
+    [
+     "環保-3",
+     "×"
+    ]
+   ],
+   "summary": "現場為道路邊緣之開挖工程，使用大型挖掘機進行土方作業。現場已設置綠色安全網作為初步隔離，並有安全錐設置於作業區域，但現場存在明顯的墜落風險與交通安全隱患。",
+   "seconds": 47.6
+  },
+  {
+   "image": "kcg_trench_p011_019.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "交通警告或阻隔設施",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場為道路施工區域，設有黃色護欄與交通錐，並有移動式起重機作業。從影像觀察，工地周邊設有明顯的警示標誌與交通錐作為阻隔，並有施工人員於現場。",
+   "seconds": 35.5
+  },
+  {
+   "image": "kcg_trench_p012_021.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "此為道路工程施工現場，畫面中包含移動式起重機、交通號誌及圍籬。從照片觀察，現場已設置交通控制設施（如「慢行」號誌及紅白防撞柱）以劃分車道與施工區。現場無明顯的高處作業構造（如高空鷹架、預埋坑洞或高層樓梯邊緣），故墜落防止相關項目判定為無異常。",
+   "seconds": 32.9
+  },
+  {
+   "image": "kcg_trench_p012_022.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "工作場所出入口",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "工地現場設有明顯的交通告示牌與警示設施，包含「進入禁止」、「車輛進出」及「施工中」等文字標示。現場配置有黃色反光護欄與交通標誌（如禁止進入標誌），並有警車停放。現場環境整潔，無明顯的物料堆放阻塞動線之現象。",
+   "seconds": 33.6
+  },
+  {
+   "image": "kcg_trench_p013_024.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "此為道路維護或施工現場之交通管制畫面。現場已設置交通錐與紅白欄杆進行區域隔離，並有明顯的警示標誌與導引標示，整體交通維持措施具備基礎防護。",
+   "seconds": 46.4
+  },
+  {
+   "image": "kcg_trench_p013_023.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "本現場為道路施工區域，設有交通管制設施與警示燈號。現場有一名穿著反光背心之勞工於路面作業，周邊配置有交通錐、警示牌及紅色警示欄。現場規劃明確，具備基本的交通安全設施。",
+   "seconds": 49.3
+  }
+ ]
+}

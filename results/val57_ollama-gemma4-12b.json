@@ -1,0 +1,1061 @@
+{
+ "summary": {
+  "model": "gemma4:12b",
+  "set": "val57",
+  "n": 57,
+  "tp": 18,
+  "tn": 14,
+  "fp": 18,
+  "fn": 5,
+  "parse_error": 2,
+  "accuracy_strict": 0.5614,
+  "accuracy_strict_ci95": [
+   0.433,
+   0.682
+  ],
+  "accuracy_x_only": 0.6316
+ },
+ "rows": [
+  {
+   "image": "a_sn65989d_sn2556309000805-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "施工現場人員現場拍照紀錄，人員佩戴安全帽且有身分證，但未穿著反光背心，且現場有工程車輛停放。",
+   "seconds": 129.7
+  },
+  {
+   "image": "a_sn68018d_sn265530110212-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差超過1.5公尺以上之場所作業\", \"result\": \"未設置符合規定之安全上下設備\"}]}",
+   "flagged": [
+    [
+     "2.02",
+     "×"
+    ],
+    [
+     "2.05",
+     "×"
+    ],
+    [
+     "7.01",
+     "×"
+    ],
+    [
+     "10.02",
+     "×"
+    ]
+   ],
+   "summary": "本現場為濱海地區之高架道路或橋樑基礎工程，現場包含土方開挖、樁基礎施工及地質處理作業。現場有數名勞工正在坑道/開挖區域內作業，並有大型工程機械在運作。從照片觀察，現場土方堆積較多，且有明顯的軌轍痕跡。",
+   "seconds": 80.6
+  },
+  {
+   "image": "a_sn68961d_sn2695059001152-3.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "FN",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [],
+   "summary": "本現場為山區道路或護坡工程，包含土方開挖、支撐安裝及路基施工。現場有數名勞工正在作業，且有小型營建機械在場。從影像觀察，現場已有部分護欄設施與安全圍籬，勞工普遍配戴安全帽與反光背心，但仍有細節需注意。",
+   "seconds": 40.2
+  },
+  {
+   "image": "a_sn68961d_sn2695069001156-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "TP",
+   "p_violation": null,
+   "item": "提供大眾通行之道路",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"提供大眾通行之道路\", \"result\": \"髒污\"}]}",
+   "flagged": [
+    [
+     "環保-4",
+     "△"
+    ]
+   ],
+   "summary": "本工地為山區道路或邊坡工程，現場可見大量土石與泥濘，目前正在進行邊坡工程或基礎工程。現場已設置黃黑相間之防護護欄與交通錐，並有大型工程機械（如挖掘機、推土機）在作業中。",
+   "seconds": 42.3
+  },
+  {
+   "image": "a_sn67458d_sn26240278751-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "各分項作業施工危害因素告知單",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "本案件為工地安全衛生設施暨作業計畫書之公告公告。照片顯示為工地公告欄，內容包含工地工程名稱、施工期間、施工單位、施工人員名單、施工內容、安全衛生計畫以及施工內容之施工計畫書公告。此為行政性之公告資訊，現場並無實際施工活動或設備。由於照片僅為公告欄內容，未出現任何高處作業、機械操作、電氣設備或環境污染等實際施工情境，故針對「墜落防止」等六大類別之實體風險項目均判定為符合規定或未發現異常。",
+   "seconds": 31.8
+  },
+  {
+   "image": "a_sn68646d_sn2683179001364-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "電焊機外殼",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.02",
+     "×"
+    ],
+    [
+     "環保-2",
+     "×"
+    ]
+   ],
+   "summary": "現場為營建工地，一名作業人員站在一輛貨車旁進行作業。現場堆放有建築材料與工具，且車斗內物品雜亂。",
+   "seconds": 34.1
+  },
+  {
+   "image": "a_sn67703d_sn26352060291-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "交通維持計畫",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "施工現場於隧道入口處設置交通管制設備，包含移動式警示板、號誌燈及交通錐，並設有警戒線以隔離作業區域。",
+   "seconds": 32.4
+  },
+  {
+   "image": "a_sn67808d_sn264012110182-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "營建機械停放",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場檢查顯示，一輛黃色工程車停放於平整地面上，輪胎處已放置木製輪擋以防止車輛滑動。照片中未發現高處作業或明顯的墜落、崩塌、感電、火災、中毒缺氧或交通維持方面的違規風險。YOLO 偵測到的人員與鞋子標籤為低信心度框，經核實原圖，該區域僅為輪胎與輪擋構造，並無人員在場，故不判定為違規。",
+   "seconds": 39.7
+  },
+  {
+   "image": "a_sn67710d_sn263540112247-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "勞工安全衛生工作守則",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "此現場為隧道內的道路工程施工，畫面中包含一名穿著安全裝備的作業人員、一輛移動中的工程車輛，以及用於道路隔離的交通錐。現場設有明顯的導引標示與緊急避難設施。",
+   "seconds": 33.4
+  },
+  {
+   "image": "a_sn68228d_sn2666229000728-2.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "氧氣乙炔鋼瓶",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"氧氣乙炔鋼瓶\", \"result\": \"未依規定儲存、搬運、使用\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "×"
+    ],
+    [
+     "10.03",
+     "×"
+    ]
+   ],
+   "summary": "現場觀察到多個鋼瓶（含氧氣及乙炔瓶）散亂放置於地面，未採取任何防護措施。",
+   "seconds": 23.3
+  },
+  {
+   "image": "a_sn69763d_sn2728199000658-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "FP",
+   "p_violation": null,
+   "item": "工作場所出入口",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "環保-9",
+     "△"
+    ]
+   ],
+   "summary": "現場為工地入口區域，設置有藍色伸縮式圍籬進行周界隔離。現場地面為碎石與泥土，背景為樹林與建築物。照片顯示現場目前無明顯高處作業或大型機械運行，主要為圍籬與周界安全防護設施。",
+   "seconds": 26.7
+  },
+  {
+   "image": "a_sn65974d_sn2555949001368-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "於道路或鄰接道路從事作業，未採取安衛措施，致有立即發生交通事故之虞。",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "施工現場交通維持與人員安全檢查。現場設有明顯的「車輛慢行」與「車輛改道」告示牌，並配置交通錐、護欄與反光標誌。有一名穿著反光背心、戴著安全帽與口罩之作業人員在現場。",
+   "seconds": 38.4
+  },
+  {
+   "image": "a_sn66708d_sn25882971212-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "未指定",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"\", \"result\": \"有明顯噪音\"}]}",
+   "flagged": [
+    [
+     "6.01",
+     "×"
+    ],
+    [
+     "6.05",
+     "×"
+    ],
+    [
+     "6.06",
+     "×"
+    ],
+    [
+     "6.12",
+     "×"
+    ],
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "此現場為道路維護施工，現場有挖掘機正在進行路面開挖與破碎作業。經稽核發現，作業人員未確實配戴安全帽及反光背心等基本個人防護具，且施工區域與車道邊界僅以少量交通錐隔離，缺乏明確的交通管制與人員防護，存在碰撞與墜落風險。",
+   "seconds": 44.9
+  },
+  {
+   "image": "a_sn68202d_sn26640877098-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場於高架下進行高空作業，使用高空作業車（懸臂式）進行施工。作業人員位於高空工作車作業平台上，並配戴安全帽與反光背心。",
+   "seconds": 22.1
+  },
+  {
+   "image": "a_sn65243d_sn2516529001156-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "FP",
+   "p_violation": null,
+   "item": "於高差超過1.5公尺以上之場所作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "環保-4",
+     "△"
+    ]
+   ],
+   "summary": "此處為山區道路維護或擋土工程現場，畫面顯示已設置大規模鋼管與鷹架支撐結構進行擋土或邊坡保護作業。現場設有交通錐與警示設施，整體結構穩定，但部分支撐區域與周邊動線仍有改善空間。",
+   "seconds": 30.5
+  },
+  {
+   "image": "a_sn68018d_sn265559110216-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "營建機械",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"營建機械\", \"result\": \"未實施定期檢查及作業前檢點\"}]}",
+   "flagged": [
+    [
+     "7.01",
+     "×"
+    ],
+    [
+     "10.02",
+     "×"
+    ],
+    [
+     "環保-4",
+     "×"
+    ]
+   ],
+   "summary": "現場正在進行大型基礎設施（疑似橋樑或大型結構）的營建作業。現場包含移動式起重機、大型平板車及多名作業人員。觀察到人員配戴安全帽與反光背心，但部分作業人員在動態作業區域內活動。現場物料堆放較為雜亂，且地面有明顯泥濘與水窪。",
+   "seconds": 49.3
+  },
+  {
+   "image": "a_sn65974d_sn2555969001366-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "氧氣乙炔鋼瓶",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.02",
+     "×"
+    ],
+    [
+     "10.03",
+     "×"
+    ]
+   ],
+   "summary": "現場堆放多瓶氧氣與乙炔鋼瓶，呈現雜亂堆放狀態，且瓶身無明顯警示標誌或防護措施。",
+   "seconds": 27.0
+  },
+  {
+   "image": "a_sn67439d_sn2622949001558-1.jpg",
+   "gt_violation": true,
+   "pred_violation": null,
+   "pred_violation_x_only": null,
+   "status": "PARSE_ERROR",
+   "p_violation": null,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者\", \"result\": \"未加裝護套等防護設施\"}]}",
+   "flagged": [],
+   "summary": "",
+   "seconds": 65.9
+  },
+  {
+   "image": "a_sn67728d_sn263578112248-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "本工程今日施工勞工人數      人，是否皆為合法勞工且均已投保勞工保險",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "此現場為地鐵站內部辦公/監控區域，目前無高處作業、開挖或大型機械作業。人員均在地面作業，且有配戴反光背心，但未佩戴安全帽，且無明顯穿著防砸安全鞋。",
+   "seconds": 25.3
+  },
+  {
+   "image": "a_sn67713d_sn263546112245-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "勞工安全衛生工作守則",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "現場概況簡述",
+   "seconds": 33.4
+  },
+  {
+   "image": "a_sn65327d_sn2520249001155-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "職業安全衛生人員",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "6.05",
+     "×"
+    ],
+    [
+     "6.06",
+     "×"
+    ],
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "施工現場人員穿戴裝備與交通維持狀況稽核。現場有兩名工作人員，均配戴安全帽與反光背心，但在防護裝備與現場交通安全設施方面仍有待改善之處。",
+   "seconds": 30.7
+  },
+  {
+   "image": "a_sn67612d_sn2632249000808-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "FP",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "現場為營建工地之工作車車斗內作業，一名勞工正處於工作車車斗內操作或整理水瓶與相關物資。勞工配戴安全帽、反光背心，符合基本個人防護裝備要求。現場無明顯高處作業、開口或危險構造，亦無明顯的感電、火災或毒氣風險。",
+   "seconds": 39.1
+  },
+  {
+   "image": "a_sn69737d_sn2727114368-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "銲接作業",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"銲接作業\", \"result\": \"未使用適當防護（手套）\"}, {\"item\": \"銲接作業\", \"result\": \"未使用適當防護（護目鏡）\"}]}",
+   "flagged": [
+    [
+     "9.02",
+     "×"
+    ]
+   ],
+   "summary": "施工人員於道路旁進行工程作業，現場設置有交通安全設施（護欄及警示標誌）。人員配戴安全帽與反光背心，但未配戴防護手套。",
+   "seconds": 23.1
+  },
+  {
+   "image": "a_sn68200d_sn26640077099-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場於隧道內進行高處電纜/管線維護作業。畫面顯示一名作業人員位於高空作業車（吊籃式平台）上進行上方構造維護，地面有一名人員負責監督。現場設備包含高空工作車，並有明顯的警示標誌與基礎設施。",
+   "seconds": 31.6
+  },
+  {
+   "image": "a_sn69501d_sn2717759000652-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場檢查發現施工人員備有充足的飲水與簡易餐點，並放置於專用的保溫箱內。從照片觀察，飲水與餐點擺放整齊，且此設施明顯為工作休息區的補給點。目前畫面範圍內未見高處作業、開口部或任何具體的墜落/倒塌風險構造。",
+   "seconds": 26.2
+  },
+  {
+   "image": "a_sn68919d_sn269401110066-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.02",
+     "×"
+    ]
+   ],
+   "summary": "此現場為道路施工區域，目前有作業人員在路面上進行工程。現場已設置交通錐作為區域隔離與引導，並有明顯的施工告示牌。從影像觀察，作業人員配戴安全帽及反光背心，交通維持設施基本到位，但針對施工區域的動線與周邊環境整潔仍有優化空間。",
+   "seconds": 28.0
+  },
+  {
+   "image": "a_sn68637d_sn2682979001369-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場為工地內的作業人員互動畫面，共計有4名作業人員。現場人員皆著裝安全帽與反光背心，並在進行文件或作業相關之溝通。現場地面平整，無明顯高處作業或重大結構倒塌風險。",
+   "seconds": 26.2
+  },
+  {
+   "image": "a_sn65982d_sn2556129001366-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "起重機其外伸撐座伸至最大極限位置，外伸時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "工地現場施工觀察：一名勞工正在大型貨車（疑似吊裝或運輸作業）旁進行檢查或操作，車輛支撐腳已落地並墊設護板。勞工配備安全帽、反光背心及手套。",
+   "seconds": 34.0
+  },
+  {
+   "image": "a_sn67374d_sn2620964137-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工作場所暴露之鋼筋、鋼材、鐵件、鋁件及其他材料等易生職業災害者\", \"result\": \"未加裝護套等防護設施\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "1.02",
+     "×"
+    ],
+    [
+     "1.04",
+     "×"
+    ],
+    [
+     "1.07",
+     "×"
+    ],
+    [
+     "1.08",
+     "×"
+    ],
+    [
+     "10.06",
+     "×"
+    ]
+   ],
+   "summary": "本現場為高架橋或大型橋樑基礎施工現場，畫面顯示混凝土結構已部分成型，且有明顯的高處落差與結構邊緣。現場已設置部分紅色安全網與交通錐作為隔離，但針對高處作業的防墜設施與構造安全仍有顯著缺失。",
+   "seconds": 53.6
+  },
+  {
+   "image": "a_sn67125d_sn2603609001002-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工區：\", \"result\": \"垃圾未清理\"}]}",
+   "flagged": [
+    [
+     "環保-2",
+     "×"
+    ]
+   ],
+   "summary": "此現場為台11線路段工程。經稽核發現，工區內於紅圈標示範圍內，有建築廢棄物、石塊及雜物散亂堆放，未進行適當清理，符合環境保護稽核項次中的缺失情形。",
+   "seconds": 34.1
+  },
+  {
+   "image": "a_sn67625d_sn2632579000804-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "車輛機械",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場人員於路邊作業，身著反光背心與安全帽，並持有相關文件與手機進行操作。現場停放有黃色工程車輛。",
+   "seconds": 31.9
+  },
+  {
+   "image": "a_sn68853d_sn26919871213-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "FN",
+   "p_violation": null,
+   "item": "交通警告或阻隔設施",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"交通警告或阻隔設施：\", \"result\": \"不清晰\"}]}",
+   "flagged": [],
+   "summary": "現場為道路施工區域，設有黃色警示工作車與交通警示牌。現場有人員在工作車旁作業，並放置交通錐。現場設有明顯的施工告示與警示設施，與周邊車輛及環境維持基本安全秩序。",
+   "seconds": 33.0
+  },
+  {
+   "image": "a_sn67152d_sn26057371211-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "FP",
+   "p_violation": null,
+   "item": "起重機其外伸撐座伸至最大極限位置，外伸時",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "7.01",
+     "△"
+    ],
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "現場為道路修繕施工，包含使用高空作業車進行上方作業、大型貨車載運廢棄物及地面綠化作業。現場設有交通錐與警示設施，工人基本配戴安全帽與反光背心，但高空作業車作業範圍周邊缺乏明顯的物理隔離，且作業車輛在道路邊緣作業，需注意與流動車輛的距離。",
+   "seconds": 43.0
+  },
+  {
+   "image": "a_sn67736d_sn26359560293-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "9.02",
+     "×"
+    ]
+   ],
+   "summary": "現場為工地內的機具與人員集體會議或安全教育場景。多名作業人員聚集於黃色工程車旁，現場設有大型遮陽棚。作業人員均配戴安全帽、反光背心，並有明顯的工程車輛作為背景。",
+   "seconds": 27.0
+  },
+  {
+   "image": "a_sn67142d_sn2604449000653-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場為大型建築工地周邊，畫面顯示施工區域周界圍籬，並有明顯的警示標語。現場地面有規劃好的動線標示（黃色、綠色線條），並有廣告或施工告示牌。從畫面觀察，目前無明顯的高處作業、開口或危險構造，亦無明顯的違規情事。",
+   "seconds": 40.9
+  },
+  {
+   "image": "a_sn68202d_sn26640477098-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "交通警告或阻隔設施",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "施工現場於隧道出口處進行道路工程，現場設置有交通錐、反光標誌及警示牌以進行車道分隔與安全管制。",
+   "seconds": 26.0
+  },
+  {
+   "image": "a_sn67455d_sn2623959000138-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工區：\", \"result\": \"垃圾未清理\"}]}",
+   "flagged": [
+    [
+     "環保-2",
+     "×"
+    ],
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "現場為道路維修工程，畫面顯示大型管線與基礎構造，地面堆放有工程廢棄物（如紅桶、雜物）及工具。現場無明顯高處作業構造，亦無明顯開口部或邊緣落差。",
+   "seconds": 36.4
+  },
+  {
+   "image": "a_sn65764d_sn25432459787-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "氧氣乙炔鋼瓶",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"氧氣乙炔鋼瓶\", \"result\": \"未加設遮陽設施\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "×"
+    ]
+   ],
+   "summary": "施工現場點位稽核：現場包含綠色臨時辦公室、堆放之管材與沙包、防撞護欄、交通錐及移動式安全告示牌。目前無人員在場，現場物料堆放較雜亂，但無明顯的高處作業構造（如鷹架、樓層開口等）。",
+   "seconds": 28.3
+  },
+  {
+   "image": "a_sn67730d_sn263580112244-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "本工程今日施工勞工人數      人，是否皆為合法勞工且均已投保勞工保險",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "現場為捷運站內部（或近鄰）的監控室或辦公區域，畫面中顯示三名工作人員正在座位上進行操作。現場環境整齊，主要為室內辦公環境，無明顯的高處作業、開挖或大型機械作業。",
+   "seconds": 37.4
+  },
+  {
+   "image": "a_sn66058d_sn255797729-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "TP",
+   "p_violation": null,
+   "item": "施工場所對於置放於高處之物件有飛落之虞者",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"施工場所對於置放於高處之物件有飛落之虞者\", \"result\": \"未予以固定之\"}]}",
+   "flagged": [
+    [
+     "9.01",
+     "△"
+    ]
+   ],
+   "summary": "現場為高空作業平台或鷹架區域，畫面顯示作業員於金屬平台進行作業。現場已設置紅色安全網作為墜落防止設施，並配備鷹架支撐結構。透過觀察，現場已設有安全網與護欄，但在高處作業的具體防墜措施（如安全帶配掛）及個人防護具（PPE）的完整性仍需細查。",
+   "seconds": 43.9
+  },
+  {
+   "image": "a_sn65246d_sn25166177091-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "高架作業",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "現場呈現高空作業畫面，一名作業人員正位於高空工作車（或類似移動式作業平台）上進行作業。觀察到人員配戴安全帽、反光背心，並有著安全帶且掛鉤掛於作業設備上，符合基本高空作業防墜要求。現場環境整潔，未見明顯的墜落、崩塌或感電風險。",
+   "seconds": 37.6
+  },
+  {
+   "image": "a_sn67551d_sn2627449000722-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之處所進行作業時",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之處所進行作業時\", \"result\": \"未以架設施工架等方法設置工作臺（工作臺應低於施工架立柱頂點1公尺以上）\"}]}",
+   "flagged": [
+    [
+     "1.01",
+     "×"
+    ],
+    [
+     "10.02",
+     "×"
+    ]
+   ],
+   "summary": "現場概況簡述",
+   "seconds": 39.3
+  },
+  {
+   "image": "a_sn67918d_sn26474678127-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "FN",
+   "p_violation": null,
+   "item": "工程告示牌",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工程告示牌：\", \"result\": \"尺寸或內容不符規定\"}]}",
+   "flagged": [],
+   "summary": "本案為公路工程施工現場之資訊看板稽核。現場目前僅見工程資訊告示牌，未見實際施工架、高處作業、機械設備或人員作業活動。由於照片內容僅為靜態告示牌，無法觀察到任何高處作業設施或動態作業風險。",
+   "seconds": 33.2
+  },
+  {
+   "image": "a_sn66830d_sn25928059951-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "FN",
+   "p_violation": null,
+   "item": "臨時改道路線並無足夠警告設施",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"臨時改道路線並無足夠警告設施：\", \"result\": \"阻礙交通\"}]}",
+   "flagged": [],
+   "summary": "本現場為高速公路（國道）在線施工或巡檢畫面，主要觀察到多輛車輛在路面上行駛，包含白色轎車、白色貨車及其他行駛車輛。現場設有大型導航指示牌及路段速限告示。目前畫面中未見明顯的施工架設、開挖區域或人員高處作業情形，主要重點在於車輛通行與路段維持。",
+   "seconds": 26.1
+  },
+  {
+   "image": "a_sn65342d_sn2520529000657-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "工作場所出入口",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "6.12",
+     "×"
+    ],
+    [
+     "7.01",
+     "△"
+    ],
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "施工現場稽核：現場包含土石方堆放與工程機械（挖掘機）作業。主要觀察到一名穿著反光背心之作業人員，其佩戴安全帽、戴手套、穿著防護背心，符合基本PPE要求。然而，現場存在人員未配戴安全帽與反光背心的違規情形（摩托車騎士），且工程機械作業半徑內缺乏明確的警示與隔離措施。",
+   "seconds": 35.1
+  },
+  {
+   "image": "a_sn67459d_sn26240378756-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "FP",
+   "p_violation": null,
+   "item": "工程告示牌",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "本現場為高速公路施工區域，目前有工程車停放於道路旁，並設置有交通安全告示牌、導引錐與警示標誌。現場初步觀察符合基本交通維持規範，但需注意工地範圍內物料與設施的整齊度。",
+   "seconds": 39.8
+  },
+  {
+   "image": "a_sn67918d_sn26474578126-1.jpg",
+   "gt_violation": true,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "FN",
+   "p_violation": null,
+   "item": "施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"施工時工地前後路段或岔路之下列警告設施欠缺或設置不符規定：\", \"result\": \"拒馬、交通錐\"}]}",
+   "flagged": [],
+   "summary": "道路施工現場交通維持與人員防護檢查。現場設置有明顯的「車輛慢行」與「道路工程」告示牌，並配置交通錐與護欄進行區域隔離。現場有兩名作業人員，均正確配戴安全帽與反光背心。",
+   "seconds": 29.2
+  },
+  {
+   "image": "a_sn68656d_sn2683379001363-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "FP",
+   "p_violation": null,
+   "item": "營建機械停放",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "9.02",
+     "×"
+    ]
+   ],
+   "summary": "施工現場人員作業監測。現場一名勞工穿戴安全帽、反光背心，並於重型車輛（貨車）旁站立，車輪已放置防滑輪擋。從影像觀察，該人員手部未佩戴防護手套。",
+   "seconds": 33.1
+  },
+  {
+   "image": "a_sn68018d_sn265540110218-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"臨時用電設備裝設漏電斷路器及接地線(應設置銅棒，不得以鋼筋替代)，移動電線\", \"result\": \"未予以架高等措施\"}]}",
+   "flagged": [
+    [
+     "2.02",
+     "×"
+    ],
+    [
+     "2.05",
+     "×"
+    ],
+    [
+     "10.02",
+     "×"
+    ],
+    [
+     "環保-1",
+     "×"
+    ],
+    [
+     "環保-2",
+     "×"
+    ],
+    [
+     "環保-10",
+     "×"
+    ]
+   ],
+   "summary": "工地現場包含高架橋結構、大型移動式起重機作業以及現場土石堆放。觀察到現場存在多項安全設施缺失與管理不善問題，包含高處作業防墜設施不足、機具與物料管理不整齊以及現場環境整潔度欠佳。",
+   "seconds": 47.9
+  },
+  {
+   "image": "a_sn67552d_sn2627569000728-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"工區：\", \"result\": \"垃圾未清理\"}]}",
+   "flagged": [
+    [
+     "10.02",
+     "×"
+    ]
+   ],
+   "summary": "現場為開放式施工區域，地面散亂堆放大量鋼筋與建築材料，並有大型藍色油桶與紅褐色防護網堆置。現場未見明顯的高處作業構造（如鷹架、高層建築邊緣）或大型機械作業中。",
+   "seconds": 30.5
+  },
+  {
+   "image": "a_sn68366d_sn26714959789-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"進入工區\", \"result\": \"未穿反光背心\"}, {\"item\": \"進入工區\", \"result\": \"未佩戴安全帽\"}]}",
+   "flagged": [
+    [
+     "環保-2",
+     "×"
+    ]
+   ],
+   "summary": "現場照片顯示一輛藍色工程車或運輸車的內部空間，掛有兩件橘色反光背心，並有一個綠色塑膠垃圾桶與一個白色垃圾袋。現場無明顯的高處作業構造或危險環境。",
+   "seconds": 31.2
+  },
+  {
+   "image": "a_sn67199d_sn2611399001158-1.jpg",
+   "gt_violation": false,
+   "pred_violation": true,
+   "pred_violation_x_only": false,
+   "status": "FP",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [
+    [
+     "10.02",
+     "△"
+    ]
+   ],
+   "summary": "工地現場目前處於靜態或低活動狀態，主要畫面為放置於地面上的鋼筋與兩座交通安全錐。現場設有大型資訊告示板（紅色貨櫃外牆），並標示有「交通部公路總局」相關工程資訊。",
+   "seconds": 46.5
+  },
+  {
+   "image": "a_sn68796d_sn2689449000653-1.jpg",
+   "gt_violation": false,
+   "pred_violation": null,
+   "pred_violation_x_only": null,
+   "status": "PARSE_ERROR",
+   "p_violation": null,
+   "item": "自行輸入",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "LLM 呼叫失敗: 500 Server Error: Internal Server Error for url: http://127.0.0.1:11434/api/chat",
+   "seconds": 65.9
+  },
+  {
+   "image": "a_sn69016d_sn26990278793-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "氧氣乙炔鋼瓶",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"氧氣乙炔鋼瓶\", \"result\": \"未依規定儲存、搬運、使用\"}]}",
+   "flagged": [
+    [
+     "10.03",
+     "×"
+    ]
+   ],
+   "summary": "現場觀察到一具鏽蝕嚴重的鋼製氣瓶（可能為氧氣或壓縮氣體）隨意橫放在碎石與泥土地面上，且周邊雜草叢生，缺乏妥善的存放設施與安全警告標誌。",
+   "seconds": 37.8
+  },
+  {
+   "image": "a_sn65842d_sn25467860602-1.jpg",
+   "gt_violation": false,
+   "pred_violation": false,
+   "pred_violation_x_only": false,
+   "status": "TN",
+   "p_violation": null,
+   "item": "車輛機械",
+   "gt_response": "{\"compliant\": true, \"findings\": []}",
+   "flagged": [],
+   "summary": "施工現場包含兩台工程機械（壓路機及推土機）與一輛工程車，正在進行道路鋪設或地基整平作業。現場設有交通告示牌與阻馬，且車輛配備警示燈。現場環境整潔，無明顯墜落或崩塌風險構造。",
+   "seconds": 55.5
+  },
+  {
+   "image": "a_sn68869d_sn2692239001557-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "進入工區",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"進入工區\", \"result\": \"未佩戴安全帽\"}]}",
+   "flagged": [
+    [
+     "9.01",
+     "×"
+    ]
+   ],
+   "summary": "本次稽核針對台11線8k750~910路段修補工程進行。現場主要進行路面修補與土石作業，現場設有警示標誌與交通錐，並有人員在作業。根據提供之照片與標註資訊，現場已設置明顯之安全標示與警示設施，且作業人員基本符合PPE穿戴要求。",
+   "seconds": 47.3
+  },
+  {
+   "image": "a_sn68285d_sn266757113153-1.jpg",
+   "gt_violation": true,
+   "pred_violation": true,
+   "pred_violation_x_only": true,
+   "status": "TP",
+   "p_violation": null,
+   "item": "於高差2公尺以上之工作場所邊緣及開口部分，",
+   "gt_response": "{\"compliant\": false, \"findings\": [{\"item\": \"於高差2公尺以上之工作場所邊緣及開口部分，\", \"result\": \"未設置符合規定之護欄、護蓋、安全網\"}]}",
+   "flagged": [
+    [
+     "1.08",
+     "△"
+    ],
+    [
+     "10.06",
+     "×"
+    ]
+   ],
+   "summary": "施工現場包含高處作業區域（橋樑/高架構造），現場已設置水平護欄及橙色防護網，但部分區域護欄結構與防護網緊密度或完整性仍有優化空間。現場包含大型機械與移動式結構，已見交通錐與安全標示。",
+   "seconds": 50.9
+  }
+ ]
+}
