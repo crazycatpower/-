@@ -55,13 +55,15 @@ def main():
     ap.add_argument("--set", default="val57", choices=["val57", "ext113"])
     ap.add_argument("--item", action="store_true", help="prompt 多給稽核項目")
     ap.add_argument("--merge", action="store_true", help="LoRA 併進 bf16 權重後再評測")
+    ap.add_argument("--threshold", type=float, help="缺失機率 ≥ 此值才判缺失（預設 0.5，即 greedy）")
     ap.add_argument("--out")
     args = ap.parse_args()
 
     is_base = args.adapter == "base"
     tag = "base" if is_base else "_".join(Path(args.adapter).parts[-2:])
     out_path = Path(args.out) if args.out else C.BASE_DIR / "results" / (
-        f"{args.set}_{tag}" + ("_item" if args.item else "") + ("_merged" if args.merge else "") + ".json")
+        f"{args.set}_{tag}" + ("_item" if args.item else "") + ("_merged" if args.merge else "")
+        + (f"_thr{args.threshold:g}" if args.threshold is not None else "") + ".json")
     out_path.parent.mkdir(exist_ok=True)
 
     targets = load_set(args.set)
@@ -73,7 +75,7 @@ def main():
     for i, (img_path, gt, item, gt_response) in enumerate(targets, 1):
         t0 = time.perf_counter()
         prompt = C.user_prompt(yolo.block(img_path), item if args.item else None)
-        text, p_violation = C.generate_answer(model, processor, C.load_image(img_path), prompt)
+        text, p_violation = C.generate_answer(model, processor, C.load_image(img_path), prompt, threshold=args.threshold)
         pred = C.predict_violation(text)
         status = "PARSE_ERROR" if pred is None else ("T" if pred == gt else "F") + ("P" if pred else "N")
         count[status] += 1
@@ -87,7 +89,7 @@ def main():
     precision = tp / (tp + fp) if tp + fp else 0
     recall = tp / (tp + fn) if tp + fn else 0
     summary = {
-        "adapter": args.adapter, "set": args.set, "item_hint": args.item, "merged": args.merge,
+        "adapter": args.adapter, "set": args.set, "item_hint": args.item, "merged": args.merge, "threshold": args.threshold,
         "n": n, "errors": errors, "tp": tp, "tn": tn, "fp": fp, "fn": fn,
         "accuracy": round((tp + tn) / parsed, 4) if parsed else 0,       # 解析失敗不計（歷史版本的算法）
         "accuracy_strict": round((tp + tn) / n, 4),                      # 解析失敗當成判錯

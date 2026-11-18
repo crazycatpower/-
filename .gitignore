@@ -28,3 +28,4 @@ external_data/fall_src/pdf/
 gemma3n-e2b-audit-lora-v11/
 gemma3n-e2b-audit-lora-fall/
 gemma3n-e2b-audit-lora-fall2/
+posthoc/siglip.npz

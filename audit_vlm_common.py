@@ -252,9 +252,12 @@ def answer_logits(model, batch, labels):
 
 
 @torch.no_grad()
-def generate_answer(model, processor, image, prompt_text, max_new_tokens=512):
+def generate_answer(model, processor, image, prompt_text, max_new_tokens=512, threshold=None):
     """greedy 生成答案。回傳 (文字, p_violation)：p_violation 是模型寫到 true/false 那一格時選 false 的機率，
-    沒寫到那一格（輸出壞掉）則為 None。"""
+    沒寫到那一格（輸出壞掉）則為 None。
+
+    threshold：給定時，寫到 true/false 那一格改成「p_violation ≥ threshold 才寫 false」，後面的缺失清單接著這個判定生成，
+    JSON 的內容與判定一致。None 時等同 0.5（greedy）。"""
     from transformers import LogitsProcessor, LogitsProcessorList
 
     _, t_id, f_id = decision_token_ids(processor.tokenizer)
@@ -262,9 +265,16 @@ def generate_answer(model, processor, image, prompt_text, max_new_tokens=512):
     class Probe(LogitsProcessor):
         def __init__(self):
             self.steps = []
+            self.decided = False
 
         def __call__(self, input_ids, scores):
-            self.steps.append(scores[0, [t_id, f_id]].float().cpu())
+            pair = scores[0, [t_id, f_id]].float()
+            self.steps.append(pair.cpu())
+            if threshold is not None and not self.decided and int(scores[0].argmax()) in (t_id, f_id):
+                self.decided = True
+                choose = f_id if torch.softmax(pair, 0)[1].item() >= threshold else t_id
+                scores[0, :] = float("-inf")
+                scores[0, choose] = 0.0
             return scores
 
     probe = Probe()

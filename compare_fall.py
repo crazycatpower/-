@@ -29,8 +29,9 @@ def metrics(rows):
     return f"n={n:3d} acc={acc:.3f} TP={c['TP']:2d} TN={c['TN']:2d} FP={c['FP']:2d} FN={c['FN']:2d} 壞={c['PARSE_ERROR']}"
 
 
-for path in sys.argv[1:]:
-    rows = json.load(open(path, encoding="utf-8"))["rows"]
-    fall = [r for r in rows if Path(r["image"]).name in FALL]
-    other = [r for r in rows if Path(r["image"]).name not in FALL]
-    print(f"{Path(path).stem}\n  墜落  {metrics(fall)}\n  其他  {metrics(other)}\n  全部  {metrics(rows)}")
+if __name__ == "__main__":
+    for path in sys.argv[1:]:
+        rows = json.load(open(path, encoding="utf-8"))["rows"]
+        fall = [r for r in rows if Path(r["image"]).name in FALL]
+        other = [r for r in rows if Path(r["image"]).name not in FALL]
+        print(f"{Path(path).stem}\n  墜落  {metrics(fall)}\n  其他  {metrics(other)}\n  全部  {metrics(rows)}")
