@@ -1,23 +1,25 @@
 {
  "train": {
-  "rows": 264,
-  "images": 88,
-  "compliant": 32,
+  "rows": 309,
+  "images": 103,
+  "compliant": 47,
   "violation": 56,
   "by_source": {
    "real": 44,
    "web": 26,
-   "manual": 18
+   "manual": 21,
+   "extra_real": 12
   }
  },
  "dev": {
-  "rows": 12,
-  "images": 12,
-  "compliant": 3,
-  "violation": 9,
+  "rows": 17,
+  "images": 17,
+  "compliant": 7,
+  "violation": 10,
   "by_source": {
    "real": 6,
-   "manual": 6
+   "manual": 7,
+   "extra_real": 4
   }
  }
 }

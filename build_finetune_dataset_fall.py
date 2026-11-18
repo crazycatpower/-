@@ -8,7 +8,8 @@
   2. external_data/web_labels.tsv 裡和墜落有關的網路照片（已在 v10 train 裡）。
   3. external_data/fall_labels.tsv：從公開手冊（臺中、彰化查核缺失手冊、職安署、職災預防中心、高雄屋頂作業指引）
      抽出、依圖說標註的照片。外部測試集 ext113 用過的 4 份手冊（新北墜落預防、高雄危害辨識／管溝／工地管理手冊）
-     不在其中。約四分之一（依合規／缺失分層）留作 dev。
+     不在其中。另外也包含 uploads/UploadImg 裡答案表沒收錄的內部照片（id 以 upload/ 開頭，逐張看圖標註）。
+     約四分之一（依合規／缺失分層）留作 dev。
 
 ext113 的墜落照片仍是測試集，不進訓練也不拿來挑 checkpoint。
 
@@ -78,7 +79,11 @@ def main():
         if not line.strip() or line.startswith("#"):
             continue
         rel, label, _code, item, result = line.split("\t")[:5]
-        labeled.append((C.BASE_DIR / "external_data" / "fall_src" / f"{rel}.jpg", label, item, result))
+        if rel.startswith("upload/"):  # 內部照片資料夾裡、答案表沒收錄的照片（另行標註）
+            path = C.IMG_DIR / rel.split("/", 1)[1]
+        else:
+            path = C.BASE_DIR / "external_data" / "fall_src" / f"{rel}.jpg"
+        labeled.append((path, label, item, result))
     dev_paths = set()
     for label in ("compliant", "violation"):
         group = [x for x in labeled if x[1] == label]
@@ -89,7 +94,7 @@ def main():
 
     def record(path, rows, item, group, version):
         return {"image": path.relative_to(C.BASE_DIR).as_posix(), "group": group, "version": version,
-                "source": "manual", "prompt": C.user_prompt(yolo.block(path)), "item": item,
+                "source": "extra_real" if C.IMG_DIR in path.parents else "manual", "prompt": C.user_prompt(yolo.block(path)), "item": item,
                 "response": C.response_for(rows)}
 
     for path, label, item, result in labeled:
